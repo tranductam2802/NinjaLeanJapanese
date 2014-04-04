@@ -1,5 +1,5 @@
 NINJA_LEARN_JAPANESE
-=================
+====================
 
 Description:
 ------------
