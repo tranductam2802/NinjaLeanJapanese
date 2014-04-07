@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary_app_color">#FFFFFFFF</color>
+    <color name="secondary_app_color">#FFFFFFFF</color>
+    <color name="tertiary_app_color">#FFFFFFFF</color>
+
+</resources>
