@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Text id -->
+    <item name="txt_welcome" type="id"></item>
+    
+    <!-- Button id -->
+    <item name="btn_start" type="id"></item>
+    <item name="btn_custom" type="id"></item>
+    <item name="btn_high_score" type="id"></item>
+    <item name="btn_option" type="id"></item>
+    <item name="btn_back" type="id"></item>
+
+</resources>

@@ -3,5 +3,8 @@
 
     <dimen name="start_screen_hozirontal_margin">20dp</dimen>
     <dimen name="start_screen_vertical_margin">20dp</dimen>
+    <!-- Activity start -->
+    <dimen name="ac_start_navi_btn_width">300dp</dimen>
+    <dimen name="ac_start_navi_btn_height">64dp</dimen>
 
 </resources>

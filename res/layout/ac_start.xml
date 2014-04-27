@@ -2,11 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FF191919"
+    android:gravity="center"
     android:orientation="vertical" >
 
     <TextView
-        style="@style/ac_start_navi_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:id="@id/btn_start"
+        style="@style/ac_start_navi_btn"
+        android:layout_width="@dimen/ac_start_navi_btn_width"
+        android:layout_height="@dimen/ac_start_navi_btn_height"
+        android:text="@string/menu_start" />
+
+    <TextView
+        android:id="@id/btn_custom"
+        style="@style/ac_start_navi_btn"
+        android:layout_width="@dimen/ac_start_navi_btn_width"
+        android:layout_height="@dimen/ac_start_navi_btn_height"
+        android:text="@string/menu_custom_game" />
+
+    <TextView
+        android:id="@id/btn_high_score"
+        style="@style/ac_start_navi_btn"
+        android:layout_width="@dimen/ac_start_navi_btn_width"
+        android:layout_height="@dimen/ac_start_navi_btn_height"
+        android:text="@string/menu_hight_score" />
+
+    <TextView
+        android:id="@id/btn_option"
+        style="@style/ac_start_navi_btn"
+        android:layout_width="@dimen/ac_start_navi_btn_width"
+        android:layout_height="@dimen/ac_start_navi_btn_height"
+        android:text="@string/menu_option" />
+
+    <TextView
+        android:id="@id/btn_back"
+        style="@style/ac_start_navi_btn"
+        android:layout_width="@dimen/ac_start_navi_btn_width"
+        android:layout_height="@dimen/ac_start_navi_btn_height"
+        android:text="@string/menu_exit" />
 
 </LinearLayout>

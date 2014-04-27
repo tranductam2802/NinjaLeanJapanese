@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primary_app_color">#FFFFFFFF</color>
+    <!-- Application color tone -->
+    <color name="primary_app_color">#FF191919</color>
     <color name="secondary_app_color">#FFFFFFFF</color>
     <color name="tertiary_app_color">#FFFFFFFF</color>
+
+    <!-- Button background color -->
+    <color name="btn_primary_bg">#FFFFFFFF</color>
+    <color name="btn_secondary_bg">#FFFFFFFF</color>
+    <color name="btn_tertiary_bg">#FFFFFFFF</color>
+    <color name="btn_navigate_bg">#FFFFFFFF</color>
+    <color name="btn_positive_bg">#FFFFFFFF</color>
+    <color name="btn_negative_bg">#FFFFFFFF</color>
+    <color name="btn_warning_bg">#FFFFFFFF</color>
+    <color name="btn_error_bg">#FFFFFFFF</color>
 
 </resources>

@@ -1,5 +1,35 @@
 <resources>
 
+    <!-- App common -->
     <string name="app_name">Ninja Lean Japanese</string>
+    <string name="loading">Loading…</string>
+    <string name="exit_message">Goodbye! Nine to meet you soon.</string>
+    <string name="back_press_message">Press back button again to exit</string>
+
+    <!-- Dialog text -->
+    <string name="dg_message_title">You have a message from NPC.</string>
+    <string name="dg_welcome_title">Welcome you!</string>
+    <string name="dg_congratulation_title">Wow! Congratulation</string>
+    <string name="dg_error_title">May be it had something went wrong!</string>
+    <string name="dg_warning_title">Are you sure to do it?</string>
+    <string name="dg_accept_button">OK</string>
+    <string name="dg_not_accept_button">NO</string>
+    <string name="dg_not_accept_exit_button">Wait! Keep me play.</string>
+    <string name="dg_cancel_button">Cancel</string>
+
+    <!-- Start activity menu -->
+    <string name="menu_start">Start new game</string>
+    <string name="menu_custom_game">Custom game</string>
+    <string name="menu_hight_score">Hight score</string>
+    <string name="menu_option">Option</string>
+    <string name="menu_exit">Exit</string>
+    <string name="menu_start_custom">Start custom game</string>
+    <string name="menu_make_game">Make new game</string>
+    <string name="menu_back">Back</string>
+
+    <!-- Error message -->
+
+
+    <!-- Other language text -->
 
 </resources>

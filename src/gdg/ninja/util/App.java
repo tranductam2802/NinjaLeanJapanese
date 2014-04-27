@@ -12,6 +12,9 @@ public class App extends Application{
 	// Application context be private to prevent change this static data.
 	private static Context CurrentApp;
 	
+	// Application config
+	
+	
 	/** Get current application context. */
 	public static final Context getContext(){
 		return CurrentApp;

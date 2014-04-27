@@ -1,14 +1,19 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppBaseTheme" parent="android:Theme.Light"></style>
 
     <style name="AppTheme" parent="AppBaseTheme"></style>
 
-    <style name="ac_start_navi_button">
-        <item name="android:textColor">#FF000000</item>
+    <style name="ac_start_navi_btn">
+        <item name="android:textColor">#FFFFFFFF</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">#19000000</item>
+        <item name="android:layout_margin">5dp</item>
     </style>
+    
+    
 
 </resources>
