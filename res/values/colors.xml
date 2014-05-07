@@ -16,4 +16,9 @@
     <color name="btn_warning_bg">#FFFFFFFF</color>
     <color name="btn_error_bg">#FFFFFFFF</color>
 
+    <!-- Testing purpose only -->
+    <color name="btn_create">#FFFFA500</color>
+    <color name="btn_take_picture">#FFFFA62F</color>
+    <color name="btn_choose_from_gallery">#FFFF0000</color>
+
 </resources>

@@ -2,6 +2,109 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="6" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="5" >
+
+        <!-- For save and create new game button -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@id/btn_create"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/btn_create"
+                android:text="OK" />
+        </LinearLayout>
+
+        <!-- For enter new word -->
+
+        <EditText
+            android:id="@id/txt_input_new_word"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="4"
+            android:hint="@string/hint_enter_new_word" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <!-- Where picture selected shown -->
+
+        <ImageView
+            android:id="@id/img_input_hint_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:contentDescription="@string/hint_input_hint_picture" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="2" >
+
+            <!-- Button Take Picture -->
+
+            <TextView
+                android:id="@id/btn_take_picture"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/btn_take_picture"
+                android:text="Take picture" />
+
+            <!-- Button Choose from galary -->
+
+            <TextView
+                android:id="@id/btn_choose_from_galary"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/btn_choose_from_gallery"
+                android:text="Gallery" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/txt_save_to" />
+
+        <!-- Spinner choose category -->
+
+        <Spinner
+            android:id="@id/spinner_choose_category"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package gdg.ninja.ui;
 
 import gdg.nat.R;
 import gdg.ninja.framework.BaseActivity;
+import gdg.ninja.util.Config;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -175,6 +176,8 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 			case R.id.btn_custom:
 				switch(mScreenState){
 					case START_GAME:
+						/* Test purpose */
+						if(Config.IS_DEBUG) startMakeGameAc();
 						changeScreenState(SCREEN_STATE.CUSTOM_GAME);
 						break;
 					case CUSTOM_GAME:

@@ -27,6 +27,14 @@
     <string name="menu_make_game">Make new game</string>
     <string name="menu_back">Back</string>
 
+    <!-- Create custome game activity -->
+    <string name="hint_enter_new_word">Enter new word!</string>
+    <string name="hint_input_hint_picture">Your hint picture!</string>
+    <string name="txt_save_to">Save to &#8230;</string>
+    <string name="intent_select_picture">Select picture from</string>
+    <string name="error_input_blank">You forgot to enter new word!</string>
+    <string name="error_input_already_exist">The word you enter already exist!</string>
+
     <!-- Error message -->
 
 

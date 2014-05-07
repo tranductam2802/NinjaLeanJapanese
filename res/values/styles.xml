@@ -1,6 +1,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light"></style>
 
     <style name="AppTheme" parent="AppBaseTheme"></style>
 
@@ -13,7 +13,5 @@
         <item name="android:background">#19000000</item>
         <item name="android:layout_margin">5dp</item>
     </style>
-    
-    
 
 </resources>
