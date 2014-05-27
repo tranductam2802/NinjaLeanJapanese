@@ -23,9 +23,11 @@ import android.widget.TextView;
 
 public class CreateCustomGameActivity extends BaseActivity implements
 		OnClickListener{
+
 	private static final int MEDIA_TYPE_IMAGE = 0;
 	private final int GALLERY_PIC_REQUEST = 1;
 	private final int CAMERA_PIC_REQUEST = 2;
+	private final String IMG_HINT_URI = "saved_image";
 
 	private TextView mTxtCreateButton;
 	private TextView mTxtTakePictureButton;
@@ -38,13 +40,30 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	private Uri imagePath;
 
 	private String TAG = "CREATE GAME ACTIVITY";
+
 	@Override
-	protected void onCreate(Bundle arg0){
-		super.onCreate(arg0);
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_create_custom_game);
 		initView();
 	}
 	
+	/* Handle screen orientation changes */
+	@Override
+	protected void onSaveInstanceState(Bundle outState){
+		if(imagePath != null && !imagePath.getPath().isEmpty())
+			outState.putParcelable(IMG_HINT_URI, imagePath);
+		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState){
+		// TODO Auto-generated method stub
+		imagePath = (Uri) savedInstanceState.getParcelable(IMG_HINT_URI);
+		mImgChoosedPicture.setImageURI(imagePath);
+		super.onRestoreInstanceState(savedInstanceState);
+	}
+
 	private void initView(){
 		mTxtCreateButton = (TextView) findViewById(R.id.btn_create);
 		mTxtTakePictureButton = (TextView) findViewById(R.id.btn_take_picture);
@@ -79,8 +98,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 			String Category){
 		/* Validate input new word */
 		if(newWord.equals("") || newWord == null){ // Check for blank input
-			mEditTxtNewWord.setError(getString(
-					R.string.error_input_blank));
+			mEditTxtNewWord.setError(getString(R.string.error_input_blank));
 			mEditTxtNewWord.requestFocus();
 			return false;
 		}
@@ -111,8 +129,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 		intent.setType("image/*");
 		intent.setAction(Intent.ACTION_GET_CONTENT);
 		startActivityForResult(Intent.createChooser(intent,
-				getString(R.string.intent_select_picture)),
-				GALLERY_PIC_REQUEST);
+				getString(R.string.intent_select_picture)), GALLERY_PIC_REQUEST);
 	}
 	
 	/* Helper function for Take Picture from camera: create file name */

@@ -11,27 +11,112 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int btn_choose_from_gallery=0x7f04000d;
+        /**  Testing purpose only 
+         */
+        public static final int btn_create=0x7f04000b;
+        public static final int btn_error_bg=0x7f04000a;
+        public static final int btn_navigate_bg=0x7f040006;
+        public static final int btn_negative_bg=0x7f040008;
+        public static final int btn_positive_bg=0x7f040007;
+        /**  Button background color 
+         */
+        public static final int btn_primary_bg=0x7f040003;
+        public static final int btn_secondary_bg=0x7f040004;
+        public static final int btn_take_picture=0x7f04000c;
+        public static final int btn_tertiary_bg=0x7f040005;
+        public static final int btn_warning_bg=0x7f040009;
+        /**  Application color tone 
+         */
         public static final int primary_app_color=0x7f040000;
         public static final int secondary_app_color=0x7f040001;
         public static final int tertiary_app_color=0x7f040002;
     }
     public static final class dimen {
+        public static final int ac_start_navi_btn_height=0x7f050003;
+        /**  Activity start 
+         */
+        public static final int ac_start_navi_btn_width=0x7f050002;
         public static final int start_screen_hozirontal_margin=0x7f050000;
         public static final int start_screen_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
+    public static final class id {
+        public static final int btn_back=0x7f060005;
+        public static final int btn_choose_from_galary=0x7f060008;
+        /**  Create custom game Button id 
+         */
+        public static final int btn_create=0x7f060006;
+        public static final int btn_custom=0x7f060002;
+        public static final int btn_high_score=0x7f060003;
+        public static final int btn_option=0x7f060004;
+        /**  Button id 
+         */
+        public static final int btn_start=0x7f060001;
+        public static final int btn_take_picture=0x7f060007;
+        /**  Create custom game other 
+         */
+        public static final int img_input_hint_picture=0x7f06000a;
+        public static final int spinner_choose_category=0x7f06000b;
+        /**  Create custom game Text id 
+         */
+        public static final int txt_input_new_word=0x7f060009;
+        /**  Text id 
+         */
+        public static final int txt_welcome=0x7f060000;
+    }
     public static final class layout {
-        public static final int ac_splash=0x7f030000;
-        public static final int ac_start=0x7f030001;
+        public static final int ac_create_custom_game=0x7f030000;
+        public static final int ac_custom_game=0x7f030001;
+        public static final int ac_game=0x7f030002;
+        public static final int ac_hight_score=0x7f030003;
+        public static final int ac_option=0x7f030004;
+        public static final int ac_splash=0x7f030005;
+        public static final int ac_start=0x7f030006;
+        public static final int layout_loading=0x7f030007;
     }
     public static final class string {
-        public static final int app_name=0x7f060000;
+        /**  App common 
+         */
+        public static final int app_name=0x7f070000;
+        public static final int back_press_message=0x7f070003;
+        public static final int dg_accept_button=0x7f070009;
+        public static final int dg_cancel_button=0x7f07000c;
+        public static final int dg_congratulation_title=0x7f070006;
+        public static final int dg_error_title=0x7f070007;
+        /**  Dialog text 
+         */
+        public static final int dg_message_title=0x7f070004;
+        public static final int dg_not_accept_button=0x7f07000a;
+        public static final int dg_not_accept_exit_button=0x7f07000b;
+        public static final int dg_warning_title=0x7f070008;
+        public static final int dg_welcome_title=0x7f070005;
+        public static final int error_input_already_exist=0x7f07001a;
+        public static final int error_input_blank=0x7f070019;
+        public static final int exit_message=0x7f070002;
+        /**  Create custome game activity 
+         */
+        public static final int hint_enter_new_word=0x7f070015;
+        public static final int hint_input_hint_picture=0x7f070016;
+        public static final int intent_select_picture=0x7f070018;
+        public static final int loading=0x7f070001;
+        public static final int menu_back=0x7f070014;
+        public static final int menu_custom_game=0x7f07000e;
+        public static final int menu_exit=0x7f070011;
+        public static final int menu_hight_score=0x7f07000f;
+        public static final int menu_make_game=0x7f070013;
+        public static final int menu_option=0x7f070010;
+        /**  Start activity menu 
+         */
+        public static final int menu_start=0x7f07000d;
+        public static final int menu_start_custom=0x7f070012;
+        public static final int txt_save_to=0x7f070017;
     }
     public static final class style {
-        public static final int AppBaseTheme=0x7f070000;
-        public static final int AppTheme=0x7f070001;
-        public static final int ac_start_navi_button=0x7f070002;
+        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppTheme=0x7f080001;
+        public static final int ac_start_navi_btn=0x7f080002;
     }
 }
