@@ -2,6 +2,7 @@
 
     <!-- App common -->
     <string name="app_name">Ninja Lean Japanese</string>
+    <string name="image_description">Image</string>
     <string name="loading">Loading…</string>
     <string name="exit_message">Goodbye! Nine to meet you soon.</string>
     <string name="back_press_message">Press back button again to exit</string>
@@ -34,6 +35,9 @@
     <string name="intent_select_picture">Select picture from</string>
     <string name="error_input_blank">You forgot to enter new word!</string>
     <string name="error_input_already_exist">The word you enter already exist!</string>
+
+    <!-- Screen title -->
+    <string name="sc_list_category_title">List categories</string>
 
     <!-- Error message -->
 

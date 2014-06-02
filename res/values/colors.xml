@@ -21,4 +21,7 @@
     <color name="btn_take_picture">#FFFFA62F</color>
     <color name="btn_choose_from_gallery">#FFFF0000</color>
 
+    <!-- Color definication -->
+    <color name="gray">#FFC0C0C0</color>
+
 </resources>
