@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/ltv_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:cacheColorHint="@android:color/transparent"
+    android:horizontalSpacing="@dimen/list_game_categories_screen_hozirontal_margin"
+    android:listSelector="#C6000000"
+    android:padding="@dimen/list_game_categories_item_horizontal_padding"
+    android:scrollbars="none"
+    android:verticalSpacing="@dimen/list_game_categories_item_horizontal_padding" >
+
+</GridView>

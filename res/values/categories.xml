@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="cate_id">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </integer-array>
+
+    <string-array name="cate_name">
+        <item>Mot dieu gian di 1</item>
+        <item>Mot dieu gian di 2</item>
+        <item>Mot dieu gian di 3</item>
+        <item>Mot dieu gian di 4</item>
+        <item>Mot dieu gian di 5</item>
+        <item>Mot dieu gian di 6</item>
+        <item>Mot dieu gian di 7</item>
+        <item>Mot dieu gian di 8</item>
+        <item>Mot dieu gian di 9</item>
+        <item>Mot dieu gian di 10</item>
+    </string-array>
+    <string-array name="cate_desc">
+        <item>Boi vi anh da thuong Mup Phin that nhieu 1</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 2</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 3</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 4</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 5</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 6</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 7</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 8</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 9</item>
+        <item>Boi vi anh da thuong Mup Phin that nhieu 10</item>
+    </string-array>
+
+    <integer-array name="cate_stt">
+        <item>4</item>
+        <item>6</item>
+        <item>4</item>
+        <item>6</item>
+        <item>6</item>
+        <item>4</item>
+        <item>5</item>
+        <item>2</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+</resources>

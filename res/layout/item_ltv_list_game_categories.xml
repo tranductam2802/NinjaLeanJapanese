@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_game_categories_avatar_size"
+    android:background="#FF909345" >
+
+    <ImageView
+        android:id="@id/img_avatar"
+        android:layout_width="@dimen/list_game_categories_avatar_size"
+        android:layout_height="@dimen/list_game_categories_avatar_size"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@color/btn_create"
+        android:contentDescription="@string/image_description"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@id/txt_categories_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@id/rate_one"
+        android:layout_toRightOf="@id/img_avatar"
+        android:ellipsize="end"
+        android:paddingBottom="@dimen/list_game_categories_item_vertical_padding"
+        android:paddingLeft="@dimen/list_game_categories_item_horizontal_padding"
+        android:paddingRight="@dimen/list_game_categories_item_horizontal_padding"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@id/rate_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/txt_categories_description"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_toLeftOf="@id/rate_two"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_off" />
+
+    <ImageView
+        android:id="@id/rate_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/txt_categories_description"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_toLeftOf="@id/rate_three"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_off" />
+
+    <ImageView
+        android:id="@id/rate_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/txt_categories_description"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/list_game_categories_item_horizontal_padding"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_off" />
+
+    <TextView
+        android:id="@id/txt_categories_description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/txt_categories_name"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/img_avatar"
+        android:paddingBottom="@dimen/list_game_categories_item_vertical_padding"
+        android:paddingLeft="@dimen/list_game_categories_item_horizontal_padding"
+        android:paddingRight="@dimen/list_game_categories_item_horizontal_padding"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:typeface="sans" />
+
+</RelativeLayout>

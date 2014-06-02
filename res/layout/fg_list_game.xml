@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/ltv_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:cacheColorHint="@android:color/transparent"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="@dimen/list_game_categories_divider_height"
+    android:listSelector="#C6000000"
+    android:orientation="vertical"
+    android:padding="@dimen/list_game_categories_screen_hozirontal_margin"
+    android:scrollbars="none" >
+
+</ListView>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF090849"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@id/img_avatar"
+            android:layout_width="@dimen/quest_image_size"
+            android:layout_height="@dimen/quest_image_size"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/quest_image_margin"
+            android:contentDescription="@string/image_description"
+            android:scaleType="fitXY" />
+
+        <FrameLayout
+            android:layout_width="@dimen/quest_image_button_size"
+            android:layout_height="@dimen/quest_image_button_group_height"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" >
+
+            <ImageView
+                android:id="@id/btn_share_facebook"
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:layout_gravity="top"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerInside" />
+
+            <ImageView
+                android:id="@id/btn_share_google"
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerInside" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="@dimen/quest_image_button_size"
+            android:layout_height="@dimen/quest_image_button_group_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" >
+
+            <ImageView
+                android:id="@id/btn_boom"
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:layout_gravity="top"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerInside" />
+
+            <ImageView
+                android:id="@id/btn_flag"
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:layout_gravity="bottom"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerInside" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/line_shadow" />
+
+    <LinearLayout
+        android:id="@id/ltv_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/quest_tag_line_height"
+        android:orientation="horizontal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/line_shadow" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@id/quest_line_one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/quest_tag_line_height"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:id="@id/quest_line_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/quest_tag_line_height"
+                android:orientation="horizontal" />
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ads_height" />
+
+</LinearLayout>

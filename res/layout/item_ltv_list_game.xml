@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/layout"
+    android:layout_width="@dimen/list_game_quest_avatar_size"
+    android:layout_height="@dimen/list_game_quest_avatar_size"
+    android:background="@android:color/transparent" >
+
+    <ImageView
+        android:id="@id/img_avatar"
+        android:layout_width="@dimen/list_game_quest_avatar_size"
+        android:layout_height="@dimen/list_game_quest_avatar_size"
+        android:layout_centerInParent="true"
+        android:background="@color/btn_create"
+        android:contentDescription="@string/image_description"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@id/rate_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_marginRight="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_toLeftOf="@id/rate_two"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_off" />
+
+    <ImageView
+        android:id="@id/rate_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/list_game_categories_item_horizontal_padding"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_off" />
+
+    <ImageView
+        android:id="@id/rate_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_marginLeft="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_toRightOf="@id/rate_two"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_off" />
+
+</RelativeLayout>
