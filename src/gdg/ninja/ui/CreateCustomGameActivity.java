@@ -2,7 +2,7 @@ package gdg.ninja.ui;
 
 import gdg.nat.R;
 import gdg.ninja.framework.BaseActivity;
-import gdg.ninja.util.DebugLog;
+import gdg.ninja.util.NLog;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -89,7 +89,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	private void createGame(){
 		String new_word = mEditTxtNewWord.getText().toString();
 		if(isDataValidated(new_word, imagePath, "Default")){
-			DebugLog.i(TAG, "Word: " + new_word + " Image Path: " + imagePath);
+			NLog.i(TAG, "Word: " + new_word + " Image Path: " + imagePath);
 			// TODO: Implement save new word to database
 		}
 	}
@@ -143,7 +143,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 		// Create the storage directory if it does not exist
 		if(!mediaStorageDir.exists()){
 			if(!mediaStorageDir.mkdirs()){
-				DebugLog.d("Create new game", "failed to create directory");
+				NLog.d("Create new game", "failed to create directory");
 				return null;
 			}
 		}
@@ -156,7 +156,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 			mediaFile = new File(mediaStorageDir.getPath() + File.separator
 					+ "IMG_" + timeStamp + ".jpg");
 		}else{
-			DebugLog.e("Create new game",
+			NLog.e("Create new game",
 					"type of media file not supported: type was:" + type);
 			return null;
 		}
@@ -183,7 +183,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 				
 			}
 			
-			DebugLog.i(TAG, "image Path: " + imagePath);
+			NLog.i(TAG, "image Path: " + imagePath);
 			if(imagePath != null) mImgChoosedPicture.setImageURI(imagePath);
 		}
 	}

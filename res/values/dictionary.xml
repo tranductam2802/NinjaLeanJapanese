@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="dict_en">
+        <item>a</item>
+        <item>i</item>
+        <item>u</item>
+        <item>e</item>
+        <item>o</item>
+    </string-array>
+    <string-array name="dict_ja">
+        <item>あ</item>
+        <item>い</item>
+        <item>う</item>
+        <item>え</item>
+        <item>お</item>
+    </string-array>
+
+</resources>

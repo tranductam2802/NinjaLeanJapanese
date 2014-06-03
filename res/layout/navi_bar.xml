@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gdg.ninja.navigate.NavigationBar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/navigation_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/navi_bar_height"
+    android:background="@color/primary_app_color"
+    android:gravity="center_horizontal" >
+
+    <ImageButton
+        android:id="@id/btn_left_navi"
+        style="@style/navi_bar_btn"
+        android:layout_width="@dimen/navi_bar_height"
+        android:layout_height="@dimen/navi_bar_height"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/image_description"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@id/txt_title_navi"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navi_bar_height"
+        android:layout_toLeftOf="@id/btn_right_navi"
+        android:layout_toRightOf="@id/btn_left_navi"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <ImageButton
+        android:id="@id/btn_right_navi"
+        style="@style/navi_bar_btn"
+        android:layout_width="@dimen/navi_bar_height"
+        android:layout_height="@dimen/navi_bar_height"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/image_description"
+        android:scaleType="centerInside" />
+
+</gdg.ninja.navigate.NavigationBar>

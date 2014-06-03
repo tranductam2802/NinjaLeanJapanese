@@ -3,6 +3,8 @@
 
     <!-- Text id -->
     <item name="txt_welcome" type="id"></item>
+    <item name="txt_categories_name" type="id"></item>
+    <item name="txt_categories_description" type="id"></item>
 
     <!-- Button id -->
     <item name="btn_start" type="id"></item>
@@ -10,6 +12,15 @@
     <item name="btn_high_score" type="id"></item>
     <item name="btn_option" type="id"></item>
     <item name="btn_back" type="id"></item>
+    <item name="ltv_list" type="id"></item>
+    <item name="img_avatar" type="id"></item>
+    <item name="rate_one" type="id"></item>
+    <item name="rate_two" type="id"></item>
+    <item name="rate_three" type="id"></item>
+    <item name="btn_boom" type="id"></item>
+    <item name="btn_flag" type="id"></item>
+    <item name="btn_share_facebook" type="id"></item>
+    <item name="btn_share_google" type="id"></item>
 
     <!-- Create custom game Button id -->
     <item name="btn_create" type="id"></item>
@@ -22,5 +33,18 @@
     <!-- Create custom game other -->
     <item name="img_input_hint_picture" type="id"></item>
     <item name="spinner_choose_category" type="id"></item>
+
+    <!-- Game -->
+    <item name="quest_line_one" type="id"></item>
+    <item name="quest_line_two" type="id"></item>
+
+    <!-- Navigator -->
+    <item name="navigation_bar" type="id"></item>
+    <item name="btn_left_navi" type="id"></item>
+    <item name="txt_title_navi" type="id"></item>
+    <item name="btn_right_navi" type="id"></item>
+    <item name="place_holder" type="id"></item>
+    
+    <item name="layout" type="id"></item>
 
 </resources>

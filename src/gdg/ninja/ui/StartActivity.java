@@ -14,14 +14,14 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-enum SCREEN_STATE{
+enum SCREEN_STATE {
 	START_GAME, CUSTOM_GAME
 }
 
 /**
  * Start activity that control and navigation application screen.
  */
-public class StartActivity extends BaseActivity implements OnClickListener{
+public class StartActivity extends BaseActivity implements OnClickListener {
 	private boolean isExitable = false;
 
 	private SCREEN_STATE mScreenState;
@@ -33,14 +33,14 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 	private TextView mTxtExitButton;
 
 	@Override
-	protected void onCreate(Bundle arg0){
+	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		setContentView(R.layout.ac_start);
 		mScreenState = SCREEN_STATE.START_GAME;
 		initView();
 	}
 
-	private void initView(){
+	private void initView() {
 		mTxtStartButton = (TextView) findViewById(R.id.btn_start);
 		mTxtCustomButton = (TextView) findViewById(R.id.btn_custom);
 		mTxtHishtScoreButton = (TextView) findViewById(R.id.btn_high_score);
@@ -54,33 +54,34 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 		mTxtOptionButton.setOnClickListener(this);
 		mTxtExitButton.setOnClickListener(this);
 
-		switch(mScreenState){
-			case START_GAME:
-				initViewStartGame();
-				break;
-			case CUSTOM_GAME:
-				initViewCustomGame();
-				break;
-			default:
-				break;
-		}
+		changeScreenState(mScreenState);
 	}
 
 	/* Load data and show Start game screen */
-	private void initViewStartGame(){
-
+	private void initViewStartGame() {
+		mTxtStartButton.setText(R.string.menu_start);
+		mTxtCustomButton.setText(R.string.menu_custom_game);
+		mTxtHishtScoreButton.setText(R.string.menu_hight_score);
+		mTxtHishtScoreButton.setVisibility(View.VISIBLE);
+		mTxtOptionButton.setText(R.string.menu_option);
+		mTxtOptionButton.setVisibility(View.VISIBLE);
+		mTxtExitButton.setText(R.string.menu_exit);
 	}
 
 	/* Load data and show Custom game screen */
-	private void initViewCustomGame(){
-
+	private void initViewCustomGame() {
+		mTxtStartButton.setText(R.string.menu_start_custom);
+		mTxtCustomButton.setText(R.string.menu_make_game);
+		mTxtHishtScoreButton.setVisibility(View.GONE);
+		mTxtOptionButton.setVisibility(View.GONE);
+		mTxtExitButton.setText(R.string.menu_back);
 	}
 
 	// Handler an runnable to delay exit time.
 	private Handler mHandler = new Handler();
-	private Runnable mRunnable = new Runnable(){
+	private Runnable mRunnable = new Runnable() {
 		@Override
-		public void run(){
+		public void run() {
 			isExitable = false;
 		}
 	};
@@ -92,14 +93,15 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 	 * user mistake. The last, we have a goodbye dialog.
 	 */
 	@Override
-	public void onBackPressed(){
-		if(dialog != null && dialog.isShowing()) return;
+	public void onBackPressed() {
+		if (dialog != null && dialog.isShowing())
+			return;
 		mHandler.removeCallbacks(mRunnable);
 		final int EXIT_AVAILABLE_TIME_DELAY = 2 * 1000;
-		if(isExitable){
+		if (isExitable) {
 			isExitable = false;
 			exitGame();
-		}else{
+		} else {
 			isExitable = true;
 			mHandler.postDelayed(mRunnable, EXIT_AVAILABLE_TIME_DELAY);
 			Context context = getApplicationContext();
@@ -108,46 +110,56 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 		}
 	}
 
-	private void startGameAc(){
+	private void startGameAc() {
 		Intent intent = new Intent(this, GameActivity.class);
 		startActivity(intent);
 	}
 
-	private void startCustomGameAc(){
+	private void startCustomGameAc() {
 		Intent intent = new Intent(this, CustomGameActivity.class);
 		startActivity(intent);
 	}
 
-	private void changeScreenState(SCREEN_STATE state){
+	private void changeScreenState(SCREEN_STATE state) {
+		mScreenState = state;
+		switch (state) {
+		case START_GAME:
+			initViewStartGame();
+			break;
+		case CUSTOM_GAME:
+			initViewCustomGame();
+			break;
+		default:
+		}
 	}
 
-	private void startMakeGameAc(){
+	private void startMakeGameAc() {
 		Intent intent = new Intent(this, CreateCustomGameActivity.class);
 		startActivity(intent);
 	}
 
 	/* Start high score screen */
-	private void startHighScoreAc(){
+	private void startHighScoreAc() {
 		Intent intent = new Intent(this, HighScoreActivity.class);
 		startActivity(intent);
 	}
 
 	/* Start option screen */
-	private void startOptionAc(){
+	private void startOptionAc() {
 		Intent intent = new Intent(this, OptionActivity.class);
 		startActivity(intent);
 	}
 
-	private void exitGame(){
-		if(dialog == null || !dialog.isShowing()){
+	private void exitGame() {
+		if (dialog == null || !dialog.isShowing()) {
 			Builder builder = new Builder(this);
 			builder.setTitle(R.string.dg_message_title);
 			builder.setMessage(R.string.exit_message);
 			builder.setNegativeButton(R.string.dg_not_accept_exit_button, null);
 			builder.setPositiveButton(R.string.dg_accept_button,
-					new DialogInterface.OnClickListener(){
+					new DialogInterface.OnClickListener() {
 						@Override
-						public void onClick(DialogInterface dialog, int which){
+						public void onClick(DialogInterface dialog, int which) {
 							finish();
 						}
 					});
@@ -158,68 +170,66 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 	}
 
 	@Override
-	public void onClick(View view){
+	public void onClick(View view) {
 		int viewId = view.getId();
-		switch(viewId){
-			case R.id.btn_start:
-				switch(mScreenState){
-					case START_GAME:
-						startGameAc();
-						break;
-					case CUSTOM_GAME:
-						startCustomGameAc();
-						break;
-					default:
-						break;
-				}
+		switch (viewId) {
+		case R.id.btn_start:
+			switch (mScreenState) {
+			case START_GAME:
+				startGameAc();
 				break;
-			case R.id.btn_custom:
-				switch(mScreenState){
-					case START_GAME:
-						/* Test purpose */
-						if(Config.IS_DEBUG) startMakeGameAc();
-						changeScreenState(SCREEN_STATE.CUSTOM_GAME);
-						break;
-					case CUSTOM_GAME:
-						startMakeGameAc();
-						break;
-					default:
-						break;
-				}
-				break;
-			case R.id.btn_high_score:
-				switch(mScreenState){
-					case START_GAME:
-						startHighScoreAc();
-						break;
-					case CUSTOM_GAME:
-					default:
-						break;
-				}
-				break;
-			case R.id.btn_option:
-				switch(mScreenState){
-					case START_GAME:
-						startOptionAc();
-						break;
-					case CUSTOM_GAME:
-					default:
-						break;
-				}
-				break;
-			case R.id.btn_back:
-				switch(mScreenState){
-					case START_GAME:
-						exitGame();
-						break;
-					case CUSTOM_GAME:
-						changeScreenState(SCREEN_STATE.START_GAME);
-					default:
-						break;
-				}
+			case CUSTOM_GAME:
+				startCustomGameAc();
 				break;
 			default:
 				break;
+			}
+			break;
+		case R.id.btn_custom:
+			switch (mScreenState) {
+			case START_GAME:
+				changeScreenState(SCREEN_STATE.CUSTOM_GAME);
+				break;
+			case CUSTOM_GAME:
+				startMakeGameAc();
+				break;
+			default:
+				break;
+			}
+			break;
+		case R.id.btn_high_score:
+			switch (mScreenState) {
+			case START_GAME:
+				startHighScoreAc();
+				break;
+			case CUSTOM_GAME:
+			default:
+				break;
+			}
+			break;
+		case R.id.btn_option:
+			switch (mScreenState) {
+			case START_GAME:
+				startOptionAc();
+				break;
+			case CUSTOM_GAME:
+			default:
+				break;
+			}
+			break;
+		case R.id.btn_back:
+			switch (mScreenState) {
+			case START_GAME:
+				exitGame();
+				break;
+			case CUSTOM_GAME:
+				changeScreenState(SCREEN_STATE.START_GAME);
+			default:
+				break;
+			}
+			break;
+		default:
+			break;
 		}
 	}
 }
