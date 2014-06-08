@@ -99,9 +99,9 @@ public final class R {
         public static final int btn_custom=0x7f080004;
         public static final int btn_flag=0x7f08000e;
         public static final int btn_high_score=0x7f080005;
-        public static final int btn_left_navi=0x7f08001a;
+        public static final int btn_left_navi=0x7f08001b;
         public static final int btn_option=0x7f080006;
-        public static final int btn_right_navi=0x7f08001c;
+        public static final int btn_right_navi=0x7f08001d;
         public static final int btn_share_facebook=0x7f08000f;
         public static final int btn_share_google=0x7f080010;
         /**  Button id 
@@ -112,12 +112,13 @@ public final class R {
         /**  Create custom game other 
          */
         public static final int img_input_hint_picture=0x7f080015;
-        public static final int layout=0x7f08001e;
+        public static final int img_quest_hint=0x7f080019;
+        public static final int layout=0x7f08001f;
         public static final int ltv_list=0x7f080008;
         /**  Navigator 
          */
-        public static final int navigation_bar=0x7f080019;
-        public static final int place_holder=0x7f08001d;
+        public static final int navigation_bar=0x7f08001a;
+        public static final int place_holder=0x7f08001e;
         /**  Game 
          */
         public static final int quest_line_one=0x7f080017;
@@ -131,32 +132,36 @@ public final class R {
         /**  Create custom game Text id 
          */
         public static final int txt_input_new_word=0x7f080014;
-        public static final int txt_title_navi=0x7f08001b;
+        public static final int txt_title_navi=0x7f08001c;
         /**  Text id 
          */
         public static final int txt_welcome=0x7f080000;
     }
     public static final class layout {
         public static final int ac_create_custom_game=0x7f030000;
-        public static final int ac_custom_game=0x7f030001;
-        public static final int ac_game=0x7f030002;
-        public static final int ac_hight_score=0x7f030003;
-        public static final int ac_option=0x7f030004;
-        public static final int ac_splash=0x7f030005;
-        public static final int ac_start=0x7f030006;
-        public static final int fg_list_game=0x7f030007;
-        public static final int fg_list_quest=0x7f030008;
-        public static final int fg_quest=0x7f030009;
-        public static final int item_ltv_list_game=0x7f03000a;
-        public static final int item_ltv_list_game_categories=0x7f03000b;
-        public static final int layout_loading=0x7f03000c;
-        public static final int navi_bar=0x7f03000d;
+        public static final int ac_crop_image=0x7f030001;
+        public static final int ac_custom_game=0x7f030002;
+        public static final int ac_game=0x7f030003;
+        public static final int ac_hight_score=0x7f030004;
+        public static final int ac_option=0x7f030005;
+        public static final int ac_splash=0x7f030006;
+        public static final int ac_start=0x7f030007;
+        public static final int fg_list_game=0x7f030008;
+        public static final int fg_list_quest=0x7f030009;
+        public static final int fg_quest=0x7f03000a;
+        public static final int item_ltv_list_game=0x7f03000b;
+        public static final int item_ltv_list_game_categories=0x7f03000c;
+        public static final int layout_loading=0x7f03000d;
+        public static final int navi_bar=0x7f03000e;
     }
     public static final class string {
         /**  App common 
          */
         public static final int app_name=0x7f090000;
         public static final int back_press_message=0x7f090004;
+        public static final int btn_crop=0x7f09001d;
+        public static final int btn_rotate_left=0x7f09001e;
+        public static final int btn_rotate_right=0x7f09001f;
         public static final int dg_accept_button=0x7f09000a;
         public static final int dg_cancel_button=0x7f09000d;
         public static final int dg_congratulation_title=0x7f090007;
@@ -190,7 +195,10 @@ public final class R {
         public static final int menu_start_custom=0x7f090013;
         /**  Screen title 
          */
-        public static final int sc_list_category_title=0x7f09001c;
+        public static final int sc_list_category_title=0x7f090020;
+        /**  Crop image activity 
+         */
+        public static final int txt_crop_image_title=0x7f09001c;
         public static final int txt_save_to=0x7f090018;
     }
     public static final class style {

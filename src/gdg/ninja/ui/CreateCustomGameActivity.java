@@ -1,6 +1,7 @@
 package gdg.ninja.ui;
 
 import gdg.nat.R;
+import gdg.ninja.croplib.Crop;
 import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.util.NLog;
 
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 public class CreateCustomGameActivity extends BaseActivity implements
 		OnClickListener{
 
+	public static final String IMAGE_PATH = "IMAGE_PATH";
 	private static final int MEDIA_TYPE_IMAGE = 0;
 	private final int GALLERY_PIC_REQUEST = 1;
 	private final int CAMERA_PIC_REQUEST = 2;
@@ -37,30 +40,35 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	private Spinner mSpinChooseCategory;
 	private ImageView mImgChoosedPicture;
 	
-	private Uri imagePath;
+	private Uri inputImagePath;
+	private Uri outputImagePath;
 
-	private String TAG = "CREATE GAME ACTIVITY";
+	private String TAG = "CREATE CUSTOM GAME ACTIVITY";
 
+	private Activity mActivity;
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_create_custom_game);
+		
+		mActivity = this;
+
 		initView();
 	}
 	
 	/* Handle screen orientation changes */
 	@Override
 	protected void onSaveInstanceState(Bundle outState){
-		if(imagePath != null && !imagePath.getPath().isEmpty())
-			outState.putParcelable(IMG_HINT_URI, imagePath);
+		if(inputImagePath != null && !inputImagePath.getPath().isEmpty())
+			outState.putParcelable(IMG_HINT_URI, inputImagePath);
 		super.onSaveInstanceState(outState);
 	}
 
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState){
 		// TODO Auto-generated method stub
-		imagePath = (Uri) savedInstanceState.getParcelable(IMG_HINT_URI);
-		mImgChoosedPicture.setImageURI(imagePath);
+		inputImagePath = (Uri) savedInstanceState.getParcelable(IMG_HINT_URI);
+		mImgChoosedPicture.setImageURI(inputImagePath);
 		super.onRestoreInstanceState(savedInstanceState);
 	}
 
@@ -88,8 +96,8 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	/* Validate data and create new game */
 	private void createGame(){
 		String new_word = mEditTxtNewWord.getText().toString();
-		if(isDataValidated(new_word, imagePath, "Default")){
-			NLog.i(TAG, "Word: " + new_word + " Image Path: " + imagePath);
+		if(isDataValidated(new_word, inputImagePath, "Default")){
+			NLog.i(TAG, "Word: " + new_word + " Image Path: " + inputImagePath);
 			// TODO: Implement save new word to database
 		}
 	}
@@ -125,11 +133,12 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	
 	/* Choose picture from Gallery and put into mImgChoosedPicture */
 	private void choosePictureFromGallery(){
-		Intent intent = new Intent();
-		intent.setType("image/*");
-		intent.setAction(Intent.ACTION_GET_CONTENT);
-		startActivityForResult(Intent.createChooser(intent,
-				getString(R.string.intent_select_picture)), GALLERY_PIC_REQUEST);
+			Intent intent = new Intent();
+			intent.setType("image/*");
+			intent.setAction(Intent.ACTION_GET_CONTENT);
+			startActivityForResult(Intent.createChooser(intent,
+					getString(R.string.intent_select_picture)),
+					GALLERY_PIC_REQUEST);
 	}
 	
 	/* Helper function for Take Picture from camera: create file name */
@@ -168,8 +177,8 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	private void takePictureFromCamera(){
 		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
 		File newFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
-		imagePath = Uri.fromFile(newFile);
-		intent.putExtra(MediaStore.EXTRA_OUTPUT, imagePath);
+		inputImagePath = Uri.fromFile(newFile);
+		intent.putExtra(MediaStore.EXTRA_OUTPUT, inputImagePath);
 		startActivityForResult(intent, CAMERA_PIC_REQUEST);
 	}
 	
@@ -178,13 +187,21 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 		if(resultCode == RESULT_OK){
 			if(requestCode == GALLERY_PIC_REQUEST){
-				imagePath = data.getData();
-			}else if(requestCode == CAMERA_PIC_REQUEST){
+				inputImagePath = data.getData();
 				
+				File output = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+				outputImagePath = Uri.fromFile(output);
+				
+				new Crop(inputImagePath).output(outputImagePath).quality(90)
+						.withMaxSize(1024, 1024).start(mActivity);
+			}else if(requestCode == CAMERA_PIC_REQUEST){
+				outputImagePath = inputImagePath;
+				new Crop(inputImagePath).quality(90).withMaxSize(1024, 1024)
+						.start(mActivity);
+			}else if(requestCode == Crop.REQUEST_CROP){
+				mImgChoosedPicture.setImageURI(outputImagePath);
 			}
-			
-			NLog.i(TAG, "image Path: " + imagePath);
-			if(imagePath != null) mImgChoosedPicture.setImageURI(imagePath);
+
 		}
 	}
 

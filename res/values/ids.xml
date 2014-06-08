@@ -37,6 +37,7 @@
     <!-- Game -->
     <item name="quest_line_one" type="id"></item>
     <item name="quest_line_two" type="id"></item>
+    <item name="img_quest_hint" type="id"></item>
 
     <!-- Navigator -->
     <item name="navigation_bar" type="id"></item>
