@@ -26,11 +26,10 @@ import android.widget.TextView;
 public class CreateCustomGameActivity extends BaseActivity implements
 		OnClickListener{
 
-	public static final String IMAGE_PATH = "IMAGE_PATH";
-	private static final int MEDIA_TYPE_IMAGE = 0;
+	private final int MEDIA_TYPE_IMAGE = 0;
 	private final int GALLERY_PIC_REQUEST = 1;
 	private final int CAMERA_PIC_REQUEST = 2;
-	private final String IMG_HINT_URI = "saved_image";
+	private final String IMG_HINT_URI = "saved_image_uri";
 
 	private TextView mTxtCreateButton;
 	private TextView mTxtTakePictureButton;
@@ -59,16 +58,16 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	/* Handle screen orientation changes */
 	@Override
 	protected void onSaveInstanceState(Bundle outState){
-		if(inputImagePath != null && !inputImagePath.getPath().isEmpty())
-			outState.putParcelable(IMG_HINT_URI, inputImagePath);
+		if(outputImagePath != null && !outputImagePath.getPath().isEmpty())
+			outState.putParcelable(IMG_HINT_URI, outputImagePath);
 		super.onSaveInstanceState(outState);
 	}
 
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState){
 		// TODO Auto-generated method stub
-		inputImagePath = (Uri) savedInstanceState.getParcelable(IMG_HINT_URI);
-		mImgChoosedPicture.setImageURI(inputImagePath);
+		outputImagePath = (Uri) savedInstanceState.getParcelable(IMG_HINT_URI);
+		mImgChoosedPicture.setImageURI(outputImagePath);
 		super.onRestoreInstanceState(savedInstanceState);
 	}
 
@@ -142,7 +141,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	}
 	
 	/* Helper function for Take Picture from camera: create file name */
-	private static File getOutputMediaFile(int type){
+	private File getOutputMediaFile(int type){
 		// For future implementation: store videos in a separate directory
 		File mediaStorageDir = new File(
 				Environment.getExternalStorageDirectory(), "NinjaLearnJapanese");
@@ -152,7 +151,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 		// Create the storage directory if it does not exist
 		if(!mediaStorageDir.exists()){
 			if(!mediaStorageDir.mkdirs()){
-				NLog.d("Create new game", "failed to create directory");
+				NLog.e("Create new game", "failed to create directory. Code: ");
 				return null;
 			}
 		}
