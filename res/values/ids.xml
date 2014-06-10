@@ -34,6 +34,7 @@
     <!-- Create custom game other -->
     <item name="img_input_hint_picture" type="id"></item>
     <item name="spinner_choose_category" type="id"></item>
+    <item name="img_quest_hint" type="id"></item>
 
     <!-- Navigator -->
     <item name="navigation_bar" type="id"></item>

@@ -36,6 +36,12 @@
     <string name="error_input_blank">You forgot to enter new word!</string>
     <string name="error_input_already_exist">The word you enter already exist!</string>
 
+    <!-- Crop image activity -->
+    <string name="txt_crop_image_title">Adjust your image!</string>
+    <string name="btn_crop">Done</string>
+    <string name="btn_rotate_left">Rotate left</string>
+    <string name="btn_rotate_right">Rotate right</string>
+
     <!-- Screen title -->
     <string name="sc_list_category_title">List categories</string>
 

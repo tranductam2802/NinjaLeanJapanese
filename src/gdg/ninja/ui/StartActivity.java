@@ -95,6 +95,10 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 	public void onBackPressed() {
 		if (dialog != null && dialog.isShowing())
 			return;
+		if (mScreenState == SCREEN_STATE.CUSTOM_GAME) {
+			changeScreenState(SCREEN_STATE.START_GAME);
+			return;
+		}
 		mHandler.removeCallbacks(mRunnable);
 		final int EXIT_AVAILABLE_TIME_DELAY = 2 * 1000;
 		if (isExitable) {
@@ -122,13 +126,13 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 	private void changeScreenState(SCREEN_STATE state) {
 		mScreenState = state;
 		switch (state) {
-		case START_GAME:
-			initViewStartGame();
-			break;
-		case CUSTOM_GAME:
-			initViewCustomGame();
-			break;
-		default:
+			case START_GAME:
+				initViewStartGame();
+				break;
+			case CUSTOM_GAME:
+				initViewCustomGame();
+				break;
+			default:
 		}
 	}
 
@@ -172,63 +176,63 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View view) {
 		int viewId = view.getId();
 		switch (viewId) {
-		case R.id.btn_start:
-			switch (mScreenState) {
-			case START_GAME:
-				startGameAc();
+			case R.id.btn_start:
+				switch (mScreenState) {
+					case START_GAME:
+						startGameAc();
+						break;
+					case CUSTOM_GAME:
+						startCustomGameAc();
+						break;
+					default:
+						break;
+				}
 				break;
-			case CUSTOM_GAME:
-				startCustomGameAc();
+			case R.id.btn_custom:
+				switch (mScreenState) {
+					case START_GAME:
+						changeScreenState(SCREEN_STATE.CUSTOM_GAME);
+						break;
+					case CUSTOM_GAME:
+						startMakeGameAc();
+						break;
+					default:
+						break;
+				}
+				break;
+			case R.id.btn_high_score:
+				switch (mScreenState) {
+					case START_GAME:
+						startHighScoreAc();
+						break;
+					case CUSTOM_GAME:
+					default:
+						break;
+				}
+				break;
+			case R.id.btn_option:
+				switch (mScreenState) {
+					case START_GAME:
+						startOptionAc();
+						break;
+					case CUSTOM_GAME:
+					default:
+						break;
+				}
+				break;
+			case R.id.btn_back:
+				switch (mScreenState) {
+					case START_GAME:
+						exitGame();
+						break;
+					case CUSTOM_GAME:
+						changeScreenState(SCREEN_STATE.START_GAME);
+					default:
+						break;
+				}
 				break;
 			default:
 				break;
-			}
-			break;
-		case R.id.btn_custom:
-			switch (mScreenState) {
-			case START_GAME:
-				changeScreenState(SCREEN_STATE.CUSTOM_GAME);
-				break;
-			case CUSTOM_GAME:
-				startMakeGameAc();
-				break;
-			default:
-				break;
-			}
-			break;
-		case R.id.btn_high_score:
-			switch (mScreenState) {
-			case START_GAME:
-				startHighScoreAc();
-				break;
-			case CUSTOM_GAME:
-			default:
-				break;
-			}
-			break;
-		case R.id.btn_option:
-			switch (mScreenState) {
-			case START_GAME:
-				startOptionAc();
-				break;
-			case CUSTOM_GAME:
-			default:
-				break;
-			}
-			break;
-		case R.id.btn_back:
-			switch (mScreenState) {
-			case START_GAME:
-				exitGame();
-				break;
-			case CUSTOM_GAME:
-				changeScreenState(SCREEN_STATE.START_GAME);
-			default:
-				break;
-			}
-			break;
-		default:
-			break;
 		}
 	}
 }

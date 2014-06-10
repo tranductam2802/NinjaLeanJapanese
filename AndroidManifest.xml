@@ -34,6 +34,7 @@
         <activity android:name="gdg.ninja.ui.CreateCustomGameActivity" />
         <activity android:name="gdg.ninja.ui.HighScoreActivity" />
         <activity android:name="gdg.ninja.ui.OptionActivity" />
+        <activity android:name="gdg.ninja.croplib.CropActivity" />
     </application>
 
 </manifest>
