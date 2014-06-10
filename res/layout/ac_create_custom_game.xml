@@ -24,7 +24,7 @@
                 android:id="@id/btn_create"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@color/btn_create"
+                android:background="@color/secondary_app_color"
                 android:text="OK" />
         </LinearLayout>
 

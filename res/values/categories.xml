@@ -52,4 +52,20 @@
         <item>0</item>
     </integer-array>
 
+    <string-array name="answer">
+        <item>きょとけいあいう</item>
+        <item>きょと</item>
+        <item>きょお</item>
+        <item>きょう</item>
+        <item>さきょ</item>
+        <item>びょいん</item>
+        <item>なに</item>
+        <item>なんに</item>
+        <item>ずっと</item>
+        <item>おっちょこちょい</item>
+        <item>こわります</item>
+        <item>もおた</item>
+        <item>もうた</item>
+    </string-array>
+
 </resources>

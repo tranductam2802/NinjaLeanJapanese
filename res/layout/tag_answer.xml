@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@id/answer_tag"
+        android:layout_width="@dimen/answer_tag_size"
+        android:layout_height="@dimen/answer_tag_size"
+        android:layout_margin="2dp"
+        android:background="@color/tertiary_app_color"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+</FrameLayout>

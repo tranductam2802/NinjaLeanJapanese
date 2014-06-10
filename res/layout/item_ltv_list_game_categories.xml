@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_game_categories_avatar_size"
-    android:background="#FF909345" >
+    android:layout_height="@dimen/list_game_categories_tag_button_height"
+    android:background="@drawable/dr_tag_button_ac_categories_selector" >
 
     <ImageView
         android:id="@id/img_avatar"
@@ -10,7 +10,7 @@
         android:layout_height="@dimen/list_game_categories_avatar_size"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:background="@color/btn_create"
+        android:background="@color/primary_app_color"
         android:contentDescription="@string/image_description"
         android:scaleType="centerInside" />
 
@@ -19,12 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/list_game_categories_item_vertical_padding"
+        android:layout_marginLeft="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_marginRight="@dimen/list_game_categories_item_horizontal_padding"
         android:layout_toLeftOf="@id/rate_one"
         android:layout_toRightOf="@id/img_avatar"
         android:ellipsize="end"
-        android:paddingBottom="@dimen/list_game_categories_item_vertical_padding"
-        android:paddingLeft="@dimen/list_game_categories_item_horizontal_padding"
-        android:paddingRight="@dimen/list_game_categories_item_horizontal_padding"
         android:singleLine="true"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -67,15 +67,18 @@
     <TextView
         android:id="@id/txt_categories_description"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_below="@id/txt_categories_name"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_marginRight="@dimen/list_game_categories_item_horizontal_padding"
+        android:layout_marginTop="@dimen/list_game_categories_item_vertical_padding"
         android:layout_toRightOf="@id/img_avatar"
-        android:paddingBottom="@dimen/list_game_categories_item_vertical_padding"
-        android:paddingLeft="@dimen/list_game_categories_item_horizontal_padding"
-        android:paddingRight="@dimen/list_game_categories_item_horizontal_padding"
+        android:ellipsize="end"
+        android:gravity="top|left"
+        android:maxLines="2"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="italic"

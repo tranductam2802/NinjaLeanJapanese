@@ -1,7 +1,5 @@
 package gdg.ninja.ui;
 
-import java.util.List;
-
 import gdg.nat.R;
 import gdg.ninja.framework.BaseFragment;
 import gdg.ninja.gameinfo.QuestInfo;
@@ -10,6 +8,10 @@ import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
 import gdg.ninja.navigate.NavigationBar.INavigationBarListener;
 import gdg.ninja.util.App;
 import gdg.ninja.util.QuestGenerator;
+
+import java.util.List;
+
+import android.app.AlertDialog.Builder;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +19,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class QuestFragment extends BaseFragment implements
-		INavigationBarListener {
+		INavigationBarListener, OnClickListener {
 	private static final String KEY_CATEGORY_ID = "category";
 	private static final String KEY_QUEST_ID = "quest";
 
@@ -30,8 +33,9 @@ public class QuestFragment extends BaseFragment implements
 	private ImageView mImgFlag;
 
 	private LinearLayout mLnlAnswerLayout;
-	private LinearLayout mLnlQuestOne;
-	private LinearLayout mLnlQuestTwo;
+	private LinearLayout mLnlQuestLayout;
+	private Tag[] mListAnswer;
+	private Tag[] mListQuest;
 
 	private int mCategoryId;
 	private int mQuestId;
@@ -72,38 +76,99 @@ public class QuestFragment extends BaseFragment implements
 		mImgShareGoogle = (ImageView) v.findViewById(R.id.btn_share_google);
 		mImgBomb = (ImageView) v.findViewById(R.id.btn_boom);
 		mImgFlag = (ImageView) v.findViewById(R.id.btn_flag);
+		mImgShareFacebook.setOnClickListener(this);
+		mImgShareGoogle.setOnClickListener(this);
+		mImgBomb.setOnClickListener(this);
+		mImgFlag.setOnClickListener(this);
 
 		mLnlAnswerLayout = (LinearLayout) v.findViewById(R.id.ltv_list);
-		mLnlQuestOne = (LinearLayout) v.findViewById(R.id.quest_line_one);
-		mLnlQuestTwo = (LinearLayout) v.findViewById(R.id.quest_line_two);
+		mLnlQuestLayout = (LinearLayout) v.findViewById(R.id.quest);
 
-		mImgAvatar.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				List<QuestInfo> listQuest = App.getListQuestById(mCategoryId);
-				boolean isNext = false;
-				for (QuestInfo quest : listQuest) {
-					if (isNext) {
-						QuestFragment fragment = QuestFragment.getInstance(
-								quest.getQuestId(), mCategoryId);
-						mNaviManager.showPage(fragment, "");
-						break;
-					} else {
-						if (quest.getQuestId() == mQuestId) {
-							isNext = true;
-						}
-					}
+		mImgAvatar.setImageResource(R.drawable.dummy_image);
+		mImgAvatar.setImageResource(R.drawable.dummy_image);
+		QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
+		QuestGenerator questGenerator = new QuestGenerator(getActivity());
+		List<String> quest = questGenerator.getQuest(questInfo.getAnswer(),
+				mCategoryId);
+		int size = quest.size();
+		mListAnswer = new Tag[size];
+		for (int i = 0; i < size; i++) {
+			mListAnswer[i] = new Tag();
+			mListAnswer[i].string = quest.get(i);
+			View view = View.inflate(getActivity(), R.layout.tag_answer, null);
+			mListAnswer[i].view = (TextView) view.findViewById(R.id.answer_tag);
+			mLnlAnswerLayout.addView(view);
+			mListAnswer[i].view.setText(mListAnswer[i].string);
+		}
+	}
+
+	private void onWinGame() {
+		Builder builder = new Builder(getActivity());
+		// TODO: Create new game
+		dialog = builder.create();
+		dialog.show();
+	}
+
+	private void onWinDialogNextClicked() {
+		List<QuestInfo> listQuest = App.getListQuestById(mCategoryId);
+		boolean isNext = false;
+		for (QuestInfo quest : listQuest) {
+			if (isNext) {
+				QuestFragment fragment = QuestFragment.getInstance(
+						quest.getQuestId(), mCategoryId);
+				mNaviManager.showPage(fragment, "");
+				break;
+			} else {
+				if (quest.getQuestId() == mQuestId) {
+					isNext = true;
 				}
 			}
-		});
+		}
+		if (isNext)
+			mNaviManager.goBack();
 	}
 
 	@Override
 	public String getTitle() {
 		QuestInfo quest = App.getQuestById(mQuestId, mCategoryId);
-		QuestGenerator questGenerator = new QuestGenerator();
-		return questGenerator.getAnswer(quest.getAnswer()).toString() + mQuestId;
+		QuestGenerator questGenerator = new QuestGenerator(getActivity());
+		return questGenerator.getQuest(quest.getAnswer(), mCategoryId)
+				.toString() + mQuestId;
+	}
+
+	private void shareFacebook() {
+		// TODO:
+	}
+
+	private void shareGoogle() {
+		// TODO:
+	}
+
+	private void bombQuest() {
+		// TODO:
+	}
+
+	private void flagQuest() {
+		// TODO:
+	}
+
+	@Override
+	public void onClick(View v) {
+		int id = v.getId();
+		switch (id) {
+			case R.id.btn_share_facebook:
+				shareFacebook();
+				break;
+			case R.id.btn_share_google:
+				shareGoogle();
+				break;
+			case R.id.btn_boom:
+				bombQuest();
+				break;
+			case R.id.btn_flag:
+				flagQuest();
+				break;
+		}
 	}
 
 	@Override
@@ -124,5 +189,10 @@ public class QuestFragment extends BaseFragment implements
 	@Override
 	public void onRightClicked() {
 		// Do nothing
+	}
+
+	public class Tag {
+		public String string;
+		public TextView view;
 	}
 }

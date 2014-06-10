@@ -10,7 +10,7 @@
         android:layout_width="@dimen/list_game_quest_avatar_size"
         android:layout_height="@dimen/list_game_quest_avatar_size"
         android:layout_centerInParent="true"
-        android:background="@color/btn_create"
+        android:background="@color/primary_app_color"
         android:contentDescription="@string/image_description"
         android:scaleType="centerInside" />
 

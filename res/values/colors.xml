@@ -2,26 +2,16 @@
 <resources>
 
     <!-- Application color tone -->
-    <color name="primary_app_color">#FF191919</color>
-    <color name="secondary_app_color">#FFFFFFFF</color>
-    <color name="tertiary_app_color">#FFFFFFFF</color>
-
-    <!-- Button background color -->
-    <color name="btn_primary_bg">#FFFFFFFF</color>
-    <color name="btn_secondary_bg">#FFFFFFFF</color>
-    <color name="btn_tertiary_bg">#FFFFFFFF</color>
-    <color name="btn_navigate_bg">#FFFFFFFF</color>
-    <color name="btn_positive_bg">#FFFFFFFF</color>
-    <color name="btn_negative_bg">#FFFFFFFF</color>
-    <color name="btn_warning_bg">#FFFFFFFF</color>
-    <color name="btn_error_bg">#FFFFFFFF</color>
+    <color name="primary_app_color">#FF47AC75</color>
+    <color name="secondary_app_color">#FF2EA065</color>
+    <color name="tertiary_app_color">#FF9BC84C</color>
 
     <!-- Testing purpose only -->
-    <color name="btn_create">#FFFFA500</color>
     <color name="btn_take_picture">#FFFFA62F</color>
     <color name="btn_choose_from_gallery">#FFFF0000</color>
-
-    <!-- Color definication -->
-    <color name="gray">#FFC0C0C0</color>
+    <color name="btn_facebook">#FF5D87DC</color>
+    <color name="btn_google">#FFEA6244</color>
+    <color name="btn_bomb">#FFFF792D</color>
+    <color name="btn_flag">#FFFF4BA5</color>
 
 </resources>

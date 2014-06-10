@@ -3,7 +3,6 @@ package gdg.ninja.navigate;
 import gdg.nat.R;
 import gdg.ninja.util.NLog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.util.AttributeSet;
@@ -99,8 +98,8 @@ public class NavigationBar extends RelativeLayout {
 			}
 			BTN_RIGHT_MODE rightMode = naviBarListener.getButtonRightMode();
 			switch (rightMode) {
-				case FACEBOOK:
-					setBtnFacebook();
+				case SETTING:
+					setBtnSetting();
 					break;
 				case NONE:
 				default:
@@ -115,35 +114,23 @@ public class NavigationBar extends RelativeLayout {
 
 	private void resetNavigationBar() {
 		btnLeft.setVisibility(View.GONE);
-		txtTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+		txtTitle.setText("");
 		btnRight.setVisibility(View.GONE);
 	}
 
 	public void setBtnBack() {
-		btnLeft.setImageResource(R.drawable.ic_btn_back);
+		btnLeft.setImageResource(R.drawable.ic_arow_back);
 		btnLeft.setVisibility(View.VISIBLE);
 		if (btnRight.getVisibility() == View.GONE) {
 			btnRight.setVisibility(View.INVISIBLE);
-			txtTitle.setCompoundDrawablesWithIntrinsicBounds(
-					R.drawable.ic_btn_back_arrow, 0, 0, 0);
-		} else {
-			txtTitle.setCompoundDrawablesWithIntrinsicBounds(
-					R.drawable.ic_btn_back_arrow, 0,
-					R.drawable.ic_btn_facebook_arrow, 0);
 		}
 	}
 
-	public void setBtnFacebook() {
-		btnRight.setImageResource(R.drawable.ic_facebook);
+	public void setBtnSetting() {
+		btnRight.setImageResource(R.drawable.ic_setting);
 		btnRight.setVisibility(View.VISIBLE);
 		if (btnRight.getVisibility() == View.GONE) {
 			btnRight.setVisibility(View.INVISIBLE);
-			txtTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-					R.drawable.ic_btn_facebook_arrow, 0);
-		} else {
-			txtTitle.setCompoundDrawablesWithIntrinsicBounds(
-					R.drawable.ic_btn_back_arrow, 0,
-					R.drawable.ic_btn_facebook_arrow, 0);
 		}
 	}
 
@@ -151,13 +138,9 @@ public class NavigationBar extends RelativeLayout {
 		btnLeft.setOnClickListener(null);
 		if (btnRight.getVisibility() == View.VISIBLE) {
 			btnLeft.setVisibility(View.INVISIBLE);
-			Drawable[] drawable = txtTitle.getCompoundDrawables();
-			txtTitle.setCompoundDrawablesWithIntrinsicBounds(null, null,
-					drawable[2], null);
 		} else {
 			btnLeft.setVisibility(View.GONE);
 			btnRight.setVisibility(View.GONE);
-			txtTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 		}
 	}
 
@@ -165,13 +148,9 @@ public class NavigationBar extends RelativeLayout {
 		btnRight.setOnClickListener(null);
 		if (btnLeft.getVisibility() == View.VISIBLE) {
 			btnRight.setVisibility(View.INVISIBLE);
-			Drawable[] drawable = txtTitle.getCompoundDrawables();
-			txtTitle.setCompoundDrawablesWithIntrinsicBounds(drawable[0], null,
-					null, null);
 		} else {
 			btnLeft.setVisibility(View.GONE);
 			btnRight.setVisibility(View.GONE);
-			txtTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 		}
 	}
 
@@ -192,6 +171,6 @@ public class NavigationBar extends RelativeLayout {
 	}
 
 	public enum BTN_RIGHT_MODE {
-		FACEBOOK, NONE;
+		SETTING, NONE;
 	}
 }

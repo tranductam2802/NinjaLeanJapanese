@@ -68,9 +68,14 @@ public class NavigationManager {
 					fragmentManager.popBackStack();
 				}
 			}
-		transaction.setCustomAnimations(R.anim.fragment_enter,
-				R.anim.fragment_exit, R.anim.fragment_pop_enter,
-				R.anim.fragment_pop_exit);
+		if (fragmentManager.getBackStackEntryCount() == 0) {
+			transaction.setCustomAnimations(0, R.anim.fragment_exit,
+					R.anim.fragment_pop_enter, R.anim.fragment_pop_exit);
+		} else {
+			transaction.setCustomAnimations(R.anim.fragment_enter,
+					R.anim.fragment_exit, R.anim.fragment_pop_enter,
+					R.anim.fragment_pop_exit);
+		}
 		transaction.replace(mPlaceholder, fragment);
 		mBackStack.push(fragment);
 		transaction.addToBackStack(requestCode);

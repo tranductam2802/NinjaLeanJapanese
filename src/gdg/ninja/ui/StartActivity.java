@@ -2,7 +2,6 @@ package gdg.ninja.ui;
 
 import gdg.nat.R;
 import gdg.ninja.framework.BaseActivity;
-import gdg.ninja.util.Config;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;

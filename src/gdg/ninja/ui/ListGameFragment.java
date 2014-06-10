@@ -8,6 +8,7 @@ import gdg.ninja.navigate.NavigationBar.BTN_LEFT_MODE;
 import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
 import gdg.ninja.navigate.NavigationBar.INavigationBarListener;
 import gdg.ninja.util.App;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,11 +71,12 @@ public class ListGameFragment extends BaseFragment implements
 
 	@Override
 	public BTN_RIGHT_MODE getButtonRightMode() {
-		return BTN_RIGHT_MODE.FACEBOOK;
+		return BTN_RIGHT_MODE.SETTING;
 	}
 
 	@Override
 	public void onRightClicked() {
-		// TODO: Share facebook
+		Intent intent = new Intent(getActivity(), OptionActivity.class);
+		startActivity(intent);
 	}
 }

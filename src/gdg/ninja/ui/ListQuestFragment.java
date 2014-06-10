@@ -12,6 +12,7 @@ import gdg.ninja.util.App;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
@@ -140,7 +141,7 @@ public class ListQuestFragment extends BaseFragment implements
 
 	@Override
 	public BTN_RIGHT_MODE getButtonRightMode() {
-		return BTN_RIGHT_MODE.FACEBOOK;
+		return BTN_RIGHT_MODE.SETTING;
 	}
 
 	@Override
@@ -150,6 +151,7 @@ public class ListQuestFragment extends BaseFragment implements
 
 	@Override
 	public void onRightClicked() {
-		// TODO: Share facebok
+		Intent intent = new Intent(getActivity(), OptionActivity.class);
+		startActivity(intent);
 	}
 }

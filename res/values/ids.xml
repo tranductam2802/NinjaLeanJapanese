@@ -13,6 +13,7 @@
     <item name="btn_option" type="id"></item>
     <item name="btn_back" type="id"></item>
     <item name="ltv_list" type="id"></item>
+    <item name="quest" type="id"></item>
     <item name="img_avatar" type="id"></item>
     <item name="rate_one" type="id"></item>
     <item name="rate_two" type="id"></item>
@@ -34,17 +35,14 @@
     <item name="img_input_hint_picture" type="id"></item>
     <item name="spinner_choose_category" type="id"></item>
 
-    <!-- Game -->
-    <item name="quest_line_one" type="id"></item>
-    <item name="quest_line_two" type="id"></item>
-
     <!-- Navigator -->
     <item name="navigation_bar" type="id"></item>
     <item name="btn_left_navi" type="id"></item>
     <item name="txt_title_navi" type="id"></item>
     <item name="btn_right_navi" type="id"></item>
     <item name="place_holder" type="id"></item>
-    
     <item name="layout" type="id"></item>
+    <item name="answer_tag" type="id"></item>
+    <item name="quest_tag" type="id"></item>
 
 </resources>

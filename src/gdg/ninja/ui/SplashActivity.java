@@ -1,18 +1,22 @@
 package gdg.ninja.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gdg.nat.R;
 import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.gameinfo.CategoriesInfo;
 import gdg.ninja.gameinfo.QuestInfo;
 import gdg.ninja.util.App;
+import gdg.ninja.util.Config;
 import gdg.ninja.util.NLog;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.TextView;
 
 /**
  * Loading class. That load preference application data. Checking and validate
@@ -30,8 +34,6 @@ public class SplashActivity extends BaseActivity {
 		super.onCreate(arg0);
 		NLog.i(TAG, "App status: On create");
 		setContentView(R.layout.ac_splash);
-		initView();
-		initData();
 		Handler handler = new Handler();
 		Runnable runnable = new Runnable() {
 			@Override
@@ -42,10 +44,16 @@ public class SplashActivity extends BaseActivity {
 			}
 		};
 		handler.postDelayed(runnable, MIN_LOADING_TIME);
+		initView();
+		initData();
 	}
 
 	private void initView() {
 		// TODO: initial view and view animation
+		TextView txtWelcome = (TextView) findViewById(R.id.txt_welcome);
+		Typeface tf = Typeface
+				.createFromAsset(getAssets(), Config.DEFAULT_FONT);
+		txtWelcome.setTypeface(tf);
 	}
 
 	private void initData() {
@@ -64,16 +72,15 @@ public class SplashActivity extends BaseActivity {
 		int[] listId = resources.getIntArray(R.array.cate_id);
 		String[] listName = resources.getStringArray(R.array.cate_name);
 		String[] listDesc = resources.getStringArray(R.array.cate_desc);
+		String[] listAnswer = resources.getStringArray(R.array.answer);
 		int[] listStt = resources.getIntArray(R.array.cate_stt);
 		int length = listId.length;
 		for (int i = 0; i < length; i++) {
 			CategoriesInfo cateItem = new CategoriesInfo(i, listId[i],
 					listName[i], listDesc[i], listStt[i]);
 			for (int j = 0; j < length; j++) {
-				QuestInfo questItem = new QuestInfo(j, listId[j], listName[j],
-						listStt[j]);
-				cateItem.addListQuest(questItem);
-				cateItem.addListQuest(questItem);
+				QuestInfo questItem = new QuestInfo(j, listId[j],
+						listAnswer[j], listStt[j]);
 				cateItem.addListQuest(questItem);
 			}
 			listCategories.add(cateItem);

@@ -9,7 +9,10 @@
     android:dividerHeight="@dimen/list_game_categories_divider_height"
     android:listSelector="#C6000000"
     android:orientation="vertical"
-    android:padding="@dimen/list_game_categories_screen_hozirontal_margin"
+    android:paddingBottom="@dimen/list_game_categories_screen_vertical_margin"
+    android:paddingLeft="@dimen/list_game_categories_screen_hozirontal_margin"
+    android:paddingRight="@dimen/list_game_categories_screen_hozirontal_margin"
+    android:paddingTop="@dimen/list_game_categories_item_vertical_padding"
     android:scrollbars="none" >
 
 </ListView>

@@ -3,17 +3,18 @@
     android:id="@id/navigation_bar"
     android:layout_width="match_parent"
     android:layout_height="@dimen/navi_bar_height"
-    android:background="@color/primary_app_color"
-    android:gravity="center_horizontal" >
+    android:background="@color/primary_app_color" >
 
     <ImageButton
         android:id="@id/btn_left_navi"
         style="@style/navi_bar_btn"
         android:layout_width="@dimen/navi_bar_height"
-        android:layout_height="@dimen/navi_bar_height"
+        android:layout_height="@dimen/navi_bar_buttonheight"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/image_description"
-        android:scaleType="centerInside" />
+        android:src="@drawable/ic_arow_back" />
 
     <TextView
         android:id="@id/txt_title_navi"
@@ -33,9 +34,11 @@
         android:id="@id/btn_right_navi"
         style="@style/navi_bar_btn"
         android:layout_width="@dimen/navi_bar_height"
-        android:layout_height="@dimen/navi_bar_height"
+        android:layout_height="@dimen/navi_bar_buttonheight"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/image_description"
-        android:scaleType="centerInside" />
+        android:src="@drawable/ic_setting" />
 
 </gdg.ninja.navigate.NavigationBar>

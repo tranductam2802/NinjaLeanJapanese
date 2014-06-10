@@ -6,7 +6,7 @@
     android:background="@android:color/transparent"
     android:cacheColorHint="@android:color/transparent"
     android:horizontalSpacing="@dimen/list_game_categories_screen_hozirontal_margin"
-    android:listSelector="#C6000000"
+    android:listSelector="@android:color/transparent"
     android:padding="@dimen/list_game_categories_item_horizontal_padding"
     android:scrollbars="none"
     android:verticalSpacing="@dimen/list_game_categories_item_horizontal_padding" >
