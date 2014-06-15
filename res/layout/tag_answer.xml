@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <View
+        style="@style/tag_quest"
+        android:layout_width="@dimen/tag_size"
+        android:layout_height="@dimen/tag_size" />
+
     <TextView
         android:id="@id/answer_tag"
-        android:layout_width="@dimen/answer_tag_size"
-        android:layout_height="@dimen/answer_tag_size"
-        android:layout_margin="2dp"
-        android:background="@color/tertiary_app_color"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+        style="@style/tag_answer"
+        android:layout_width="@dimen/tag_size"
+        android:layout_height="@dimen/tag_size"
+        android:visibility="invisible" />
 
 </FrameLayout>

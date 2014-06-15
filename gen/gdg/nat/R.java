@@ -42,13 +42,11 @@ public final class R {
         public static final int tertiary_app_color=0x7f060002;
     }
     public static final class dimen {
-        public static final int ac_start_navi_btn_height=0x7f070017;
+        public static final int ac_start_navi_btn_height=0x7f070015;
         /**  Activity start 
          */
-        public static final int ac_start_navi_btn_width=0x7f070016;
+        public static final int ac_start_navi_btn_width=0x7f070014;
         public static final int ads_height=0x7f070002;
-        public static final int answer_tag_line_padding=0x7f07000e;
-        public static final int answer_tag_size=0x7f07000f;
         public static final int list_game_categories_avatar_size=0x7f070008;
         public static final int list_game_categories_divider_height=0x7f070009;
         public static final int list_game_categories_item_horizontal_padding=0x7f070005;
@@ -58,22 +56,22 @@ public final class R {
         public static final int list_game_categories_screen_hozirontal_margin=0x7f070003;
         public static final int list_game_categories_screen_vertical_margin=0x7f070004;
         public static final int list_game_categories_tag_button_height=0x7f070007;
-        public static final int list_game_quest_avatar_size=0x7f070015;
-        public static final int navi_bar_buttonheight=0x7f070019;
+        public static final int list_game_quest_avatar_size=0x7f070013;
+        public static final int navi_bar_buttonheight=0x7f070017;
         /**  Naviagator 
          */
-        public static final int navi_bar_height=0x7f070018;
+        public static final int navi_bar_height=0x7f070016;
         public static final int quest_image_button_group_height=0x7f07000d;
         public static final int quest_image_button_size=0x7f07000c;
         public static final int quest_image_margin=0x7f07000b;
         public static final int quest_image_size=0x7f07000a;
         public static final int quest_tag_line_height=0x7f070010;
-        public static final int quest_tag_line_horizontal_space=0x7f070013;
-        public static final int quest_tag_line_padding=0x7f070011;
-        public static final int quest_tag_line_vertical_space=0x7f070012;
-        public static final int quest_tag_size=0x7f070014;
+        public static final int quest_tag_line_horizontal_space=0x7f070012;
+        public static final int quest_tag_line_vertical_space=0x7f070011;
         public static final int start_screen_hozirontal_margin=0x7f070000;
         public static final int start_screen_vertical_margin=0x7f070001;
+        public static final int tag_margin=0x7f07000f;
+        public static final int tag_size=0x7f07000e;
     }
     public static final class drawable {
         public static final int bg_app=0x7f020000;
@@ -101,55 +99,59 @@ public final class R {
         public static final int ic_setting=0x7f020016;
     }
     public static final class id {
-        public static final int answer_tag=0x7f08001f;
+        public static final int answer_tag=0x7f080024;
         public static final int btn_back=0x7f080007;
-        public static final int btn_boom=0x7f08000e;
-        public static final int btn_choose_from_galary=0x7f080014;
+        public static final int btn_boom=0x7f080013;
+        public static final int btn_choose_from_galary=0x7f080019;
         /**  Create custom game Button id 
          */
-        public static final int btn_create=0x7f080012;
+        public static final int btn_create=0x7f080017;
         public static final int btn_custom=0x7f080004;
-        public static final int btn_flag=0x7f08000f;
+        public static final int btn_flag=0x7f080014;
         public static final int btn_high_score=0x7f080005;
-        public static final int btn_left_navi=0x7f08001a;
+        public static final int btn_left_navi=0x7f08001f;
         public static final int btn_option=0x7f080006;
-        public static final int btn_right_navi=0x7f08001c;
-        public static final int btn_share_facebook=0x7f080010;
-        public static final int btn_share_google=0x7f080011;
+        public static final int btn_right_navi=0x7f080021;
+        public static final int btn_share_facebook=0x7f080015;
+        public static final int btn_share_google=0x7f080016;
         /**  Button id 
          */
         public static final int btn_start=0x7f080003;
-        public static final int btn_take_picture=0x7f080013;
-        public static final int img_avatar=0x7f08000a;
+        public static final int btn_take_picture=0x7f080018;
+        public static final int img_avatar=0x7f08000f;
         /**  Create custom game other 
          */
-        public static final int img_input_hint_picture=0x7f080016;
-        public static final int img_quest_hint=0x7f080018;
-        public static final int layout=0x7f08001e;
+        public static final int img_input_hint_picture=0x7f08001b;
+        public static final int img_quest_hint=0x7f08001d;
+        public static final int layout=0x7f080023;
         public static final int ltv_list=0x7f080008;
+        public static final int ltv_list_one=0x7f080009;
+        public static final int ltv_list_two=0x7f08000a;
         /**  Navigator 
          */
-        public static final int navigation_bar=0x7f080019;
-        public static final int place_holder=0x7f08001d;
-        public static final int quest=0x7f080009;
-        public static final int quest_tag=0x7f080020;
-        public static final int rate_one=0x7f08000b;
-        public static final int rate_three=0x7f08000d;
-        public static final int rate_two=0x7f08000c;
-        public static final int spinner_choose_category=0x7f080017;
+        public static final int navigation_bar=0x7f08001e;
+        public static final int place_holder=0x7f080022;
+        public static final int quest=0x7f08000b;
+        public static final int quest_one=0x7f08000c;
+        public static final int quest_tag=0x7f080025;
+        public static final int quest_three=0x7f08000e;
+        public static final int quest_two=0x7f08000d;
+        public static final int rate_one=0x7f080010;
+        public static final int rate_three=0x7f080012;
+        public static final int rate_two=0x7f080011;
+        public static final int spinner_choose_category=0x7f08001c;
         public static final int txt_categories_description=0x7f080002;
         public static final int txt_categories_name=0x7f080001;
         /**  Create custom game Text id 
          */
-        public static final int txt_input_new_word=0x7f080015;
-        public static final int txt_title_navi=0x7f08001b;
+        public static final int txt_input_new_word=0x7f08001a;
+        public static final int txt_title_navi=0x7f080020;
         /**  Text id 
          */
         public static final int txt_welcome=0x7f080000;
     }
     public static final class integer {
-        public static final int max_number_answer=0x7f090000;
-        public static final int max_number_quest=0x7f090001;
+        public static final int max_tag_per_row=0x7f090000;
     }
     public static final class layout {
         public static final int ac_create_custom_game=0x7f030000;
@@ -222,5 +224,7 @@ public final class R {
         public static final int AppTheme=0x7f0b0001;
         public static final int ac_start_navi_btn=0x7f0b0002;
         public static final int navi_bar_btn=0x7f0b0003;
+        public static final int tag_answer=0x7f0b0004;
+        public static final int tag_quest=0x7f0b0005;
     }
 }

@@ -1,10 +1,12 @@
 package gdg.ninja.ui;
 
-import android.os.Bundle;
 import gdg.nat.R;
 import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.navigate.NavigationBar;
 import gdg.ninja.navigate.NavigationManager;
+import android.annotation.TargetApi;
+import android.os.Build;
+import android.os.Bundle;
 
 public class GameActivity extends BaseActivity {
 	private NavigationBar mNaviBar;
@@ -22,6 +24,7 @@ public class GameActivity extends BaseActivity {
 		return mNaviManager;
 	}
 
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	private void initView() {
 		mNaviManager = new NavigationManager(this);
 		mNaviBar = (NavigationBar) findViewById(R.id.navigation_bar);

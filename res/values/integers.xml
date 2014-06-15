@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="max_number_answer" format="integer" type="integer">10</item>
-    <item name="max_number_quest" format="integer" type="integer">20</item>
+    <item name="max_tag_per_row" format="integer" type="integer">8</item>
 
 </resources>

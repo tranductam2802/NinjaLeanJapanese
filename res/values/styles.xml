@@ -25,4 +25,24 @@
         <item name="android:scaleType">fitCenter</item>
     </style>
 
+    <style name="tag_answer">
+        <item name="android:layout_margin">@dimen/tag_margin</item>
+        <item name="android:background">@color/tertiary_app_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="tag_quest">
+        <item name="android:layout_margin">@dimen/tag_margin</item>
+        <item name="android:background">@color/tertiary_app_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
 </resources>

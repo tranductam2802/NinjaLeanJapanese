@@ -16,13 +16,11 @@
     <dimen name="quest_image_margin">20dp</dimen>
     <dimen name="quest_image_button_size">65dp</dimen>
     <dimen name="quest_image_button_group_height">150dp</dimen>
-    <dimen name="answer_tag_line_padding">10dp</dimen>
-    <dimen name="answer_tag_size">30dp</dimen>
+    <dimen name="tag_size">35dp</dimen>
+    <dimen name="tag_margin">3dp</dimen>
     <dimen name="quest_tag_line_height">130dp</dimen>
-    <dimen name="quest_tag_line_padding">10dp</dimen>
     <dimen name="quest_tag_line_vertical_space">5dp</dimen>
     <dimen name="quest_tag_line_horizontal_space">5dp</dimen>
-    <dimen name="quest_tag_size">30dp</dimen>
     <dimen name="list_game_quest_avatar_size">85dp</dimen>
     <!-- Activity start -->
     <dimen name="ac_start_navi_btn_width">300dp</dimen>

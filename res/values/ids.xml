@@ -13,7 +13,12 @@
     <item name="btn_option" type="id"></item>
     <item name="btn_back" type="id"></item>
     <item name="ltv_list" type="id"></item>
+    <item name="ltv_list_one" type="id"></item>
+    <item name="ltv_list_two" type="id"></item>
     <item name="quest" type="id"></item>
+    <item name="quest_one" type="id"></item>
+    <item name="quest_two" type="id"></item>
+    <item name="quest_three" type="id"></item>
     <item name="img_avatar" type="id"></item>
     <item name="rate_one" type="id"></item>
     <item name="rate_two" type="id"></item>

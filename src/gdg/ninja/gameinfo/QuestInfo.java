@@ -1,10 +1,14 @@
 package gdg.ninja.gameinfo;
 
+import java.security.InvalidKeyException;
+
 public class QuestInfo {
 	private int questId;
 	private int imgId;
 	private String answer;
 	private int questStt;
+
+	private final int MAX_ANSWER_LENGTH = 20;
 
 	public int getQuestId() {
 		return questId;
@@ -26,7 +30,11 @@ public class QuestInfo {
 		return answer;
 	}
 
-	public void setAnswer(String answer) {
+	public void setAnswer(String answer) throws InvalidKeyException {
+		if (answer.length() > MAX_ANSWER_LENGTH)
+			throw new InvalidKeyException("This answer \"" + answer
+					+ "\" had length(" + answer.length() + ") max more than "
+					+ MAX_ANSWER_LENGTH);
 		this.answer = answer;
 	}
 

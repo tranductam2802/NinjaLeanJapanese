@@ -2,6 +2,7 @@ package gdg.ninja.util;
 
 import android.util.Log;
 
+// TODO: Done class
 public final class NLog{
 	public static final String TAG = "Ninja_language";
 	

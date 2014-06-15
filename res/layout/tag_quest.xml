@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@id/quest_tag"
-    android:layout_width="@dimen/quest_tag_size"
-    android:layout_height="@dimen/quest_tag_size" />
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@id/quest_tag"
+        style="@style/tag_quest"
+        android:layout_width="@dimen/tag_size"
+        android:layout_height="@dimen/tag_size" />
+
+</FrameLayout>

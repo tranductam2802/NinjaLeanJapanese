@@ -76,20 +76,39 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@id/ltv_list"
+        android:id="@id/ltv_list_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/answer_tag_line_padding" />
+        android:orientation="horizontal" />
 
     <LinearLayout
-        android:id="@id/quest"
+        android:id="@id/ltv_list_two"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/quest_tag_line_height"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@id/quest_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/quest_image_margin"
-        android:background="@color/primary_app_color"
-        android:orientation="horizontal"
-        android:padding="@dimen/quest_tag_line_padding" />
+        android:gravity="center"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@id/quest_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@id/quest_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" />
 
 </LinearLayout>
