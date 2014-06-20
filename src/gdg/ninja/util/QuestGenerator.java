@@ -31,9 +31,8 @@ public class QuestGenerator{
 		// TODO: Refactoring.
 		List<String> result = new ArrayList<String>();
 		
-		char[] answerCharArray = answer.toCharArray();
-		
 		// TODO: check for performance
+		char[] answerCharArray = answer.toCharArray();
 		for(char x : answerCharArray){
 			result.add(String.valueOf(x));
 		}
@@ -56,18 +55,20 @@ public class QuestGenerator{
 		List<Integer> listIndex = new ArrayList<Integer>();
 		Resources resources = getContext().getResources();
 		String[] dict = resources.getStringArray(R.array.dict_ja);
-		int answerLength = answer.length();
 		int dictLength = dict.length;
-		for(int i = 0; i < answerLength; i++){
-			String subString = answer.substring(i, i + 1);
-			result.add(subString);
+		
+		// TODO: check for performance
+		char[] answerCharArray = answer.toCharArray();
+		for(char x : answerCharArray){
+			String singleCharacter = String.valueOf(x);
+			result.add(singleCharacter);
 			for(int j = 0; j < dictLength; j++){
-				if(subString.equals(dict[j])){
+				if(singleCharacter.equals(dict[j])){
 					listIndex.add(j);
-					break;
 				}
 			}
 		}
+
 		// Get quest tag
 		int index = 0; // Index is a unique number for each question used for
 						// generate frog tag
@@ -86,6 +87,7 @@ public class QuestGenerator{
 				for(String resultItem : result){
 					if(resultItem.equals(dictItem)){
 						isGenerate = true;
+						index = (index + 2) % dictLength;
 						continue CHECK_IS_GENERATE;
 					}
 				}
@@ -100,6 +102,7 @@ public class QuestGenerator{
 					}
 					if(!isTsuValid){
 						isGenerate = true;
+						index = (index + 2) % dictLength;
 						continue CHECK_IS_GENERATE;
 					}
 				}
@@ -113,9 +116,12 @@ public class QuestGenerator{
 							break;
 						}
 					}
-					if(!isYAYUTOValid) isGenerate = true;
+					if(!isYAYUTOValid){
+						isGenerate = true;
+						index = (index + 2) % dictLength;
+					}
 				}
-				index = (index + 2) % dictLength;
+
 			}
 			result.add(dict[index]);
 		}
