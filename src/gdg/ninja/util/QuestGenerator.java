@@ -11,46 +11,37 @@ import android.content.Context;
 import android.content.res.Resources;
 
 // TODO: Done class
-public class QuestGenerator {
+public class QuestGenerator{
 	private Context context;
-
-	private final String TSU = "Ç¡";
-	private final String A = "Ç†";
-	private final String I = "Ç¢";
-	private final String U = "Ç§";
-	private final String E = "Ç¶";
-	private final String O = "Ç®";
-	private final String YA = "Ç·";
-	private final String YU = "Ç„";
-	private final String YO = "ÇÂ";
-	private final String KI = "Ç´";
-	private final String SHI = "Çµ";
-	private final String CHI = "Çø";
-	private final String NI = "Ç…";
-	private final String HI = "Ç–";
-	private final String MI = "Ç›";
-	private final String RI = "ÇË";
-	private final String GI = "Ç¨";
-	private final String JI = "Ç∂";
-	private final String DI = "Ç¿";
-	private final String BI = "Ç—";
-	private final String PI = "Ç“";
-
-	private Context getContext() {
+	
+	private final String TSU = "„Å£";
+	private final String IGNORE_TSU = "„ÅÇ„ÅÑ„ÅÜ„Åà„Åä„ÇÑ„ÇÜ„Çà„Ç¢„Ç§„Ç¶„Ç®„Ç™„É§„É¶„É®";
+	private final String YAYUYO_STRING = "„ÇÑ„ÇÜ„Çà„É§„É¶„É®";
+	private final String VALID_YAYUYO = "„Åç„Åó„Å°„Å´„Å≤„Åø„Çä„Åé„Åò„Å¢„Å≥„Å¥„Åç„Ç≠„Ç∑„ÉÅ„Éã„Éí„Éü„É™„ÇÆ„Ç∏„ÉÇ„Éì„Éî";
+	
+	private Context getContext(){
 		return context;
 	}
-
-	public QuestGenerator(Context context) {
+	
+	public QuestGenerator(Context context){
 		this.context = context;
 	}
-
-	public List<String> getAnswer(String answer) {
+	
+	public List<String> getAnswer(String answer){
 		// TODO: Refactoring.
 		List<String> result = new ArrayList<String>();
-		int dataLength = answer.length();
-		for (int i = 0; i < dataLength; i++) {
-			result.add(answer.substring(i, i + 1));
+		
+		char[] answerCharArray = answer.toCharArray();
+		
+		// TODO: check for performance
+		for(char x : answerCharArray){
+			result.add(String.valueOf(x));
 		}
+		
+		// int dataLength = answer.length();
+		// for (int i = 0; i < dataLength; i++) {
+		// result.add(answer.substring(i, i + 1));
+		// }
 		return result;
 	}
 
@@ -58,7 +49,7 @@ public class QuestGenerator {
 	 * Generate quest item. If quest item generated is tsu, check any consonant
 	 * item. If that is ya, yu or yo so that it need i columns character.
 	 */
-	public List<String> getQuest(String answer, int level) {
+	public List<String> getQuest(String answer, int level){
 		// TODO: Refactoring.
 		// Get answer tag
 		List<String> result = new ArrayList<String>();
@@ -67,74 +58,71 @@ public class QuestGenerator {
 		String[] dict = resources.getStringArray(R.array.dict_ja);
 		int answerLength = answer.length();
 		int dictLength = dict.length;
-		for (int i = 0; i < answerLength; i++) {
+		for(int i = 0; i < answerLength; i++){
 			String subString = answer.substring(i, i + 1);
 			result.add(subString);
-			for (int j = 0; j < dictLength; j++) {
-				if (subString.equals(dict[j])) {
+			for(int j = 0; j < dictLength; j++){
+				if(subString.equals(dict[j])){
 					listIndex.add(j);
 					break;
 				}
 			}
 		}
 		// Get quest tag
-		int index = 0;
-		for (Integer answerIndex : listIndex) {
+		int index = 0; // Index is a unique number for each question used for
+						// generate frog tag
+		for(Integer answerIndex : listIndex){
 			index += answerIndex;
 		}
-		for (int i = 0; i < level; i++) {
+		for(int i = 0; i < level; i++){
 			boolean isGenerate = true;
 			index = 2 * (index + i * 10) % dictLength;
-			while (isGenerate) {
+			
+			CHECK_IS_GENERATE: while(isGenerate){
 				isGenerate = false;
 				String dictItem = dict[index];
-				// Check unique
-				for (String resultItem : result) {
-					if (resultItem.equals(dictItem))
+				// Check unique (not duplicate with the tag which already exist
+				// in quest)
+				for(String resultItem : result){
+					if(resultItem.equals(dictItem)){
 						isGenerate = true;
+						continue CHECK_IS_GENERATE;
+					}
 				}
-				// Check tsu
-				// TODO; Thieu chu cung, thieu ya yu yo
-				if (dict[index].equals(TSU)) {
-					boolean isTsu = true;
-					for (String item : result) {
-						if (!item.equals(A) && !item.equals(I)
-								&& !item.equals(U) && !item.equals(E)
-								&& !item.equals(O)) {
-							isTsu = false;
+
+				if(dictItem.equals(TSU)){
+					boolean isTsuValid = false;
+					for(String item : result){
+						if(!IGNORE_TSU.contains(item)){
+							isTsuValid = true;
 							break;
 						}
 					}
-					if (isTsu)
+					if(!isTsuValid){
 						isGenerate = true;
+						continue CHECK_IS_GENERATE;
+					}
 				}
+
 				// Check ya yu yo
-				// TODO: thieu chu cung
-				if (dict[index].equals(YA) || dict[index].equals(YU)
-						|| dict[index].equals(YO)) {
-					boolean isTsu = true;
-					for (String item : result) {
-						if (item.equals(KI) || item.equals(SHI)
-								|| item.equals(CHI) || item.equals(NI)
-								|| item.equals(HI) || item.equals(MI)
-								|| item.equals(RI) || item.equals(GI)
-								|| item.equals(JI) || item.equals(DI)
-								|| item.equals(BI) || item.equals(PI)) {
-							isTsu = false;
+				if(YAYUYO_STRING.contains(dictItem)){
+					boolean isYAYUTOValid = false;
+					for(String item : result){
+						if(VALID_YAYUYO.contains(item)){
+							isYAYUTOValid = true;
 							break;
 						}
 					}
-					if (isTsu)
-						isGenerate = true;
+					if(!isYAYUTOValid) isGenerate = true;
 				}
 				index = (index + 2) % dictLength;
 			}
 			result.add(dict[index]);
 		}
 		// Sort
-		Collections.sort(result, new Comparator<String>() {
+		Collections.sort(result, new Comparator<String>(){
 			@Override
-			public int compare(String lhs, String rhs) {
+			public int compare(String lhs, String rhs){
 				return lhs.compareTo(rhs);
 			}
 		});
