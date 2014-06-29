@@ -3,7 +3,7 @@
     android:id="@id/navigation_bar"
     android:layout_width="match_parent"
     android:layout_height="@dimen/navi_bar_height"
-    android:background="@color/primary_app_color" >
+    android:background="@color/start_menu_color" >
 
     <ImageButton
         android:id="@id/btn_left_navi"

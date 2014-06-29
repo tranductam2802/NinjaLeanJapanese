@@ -23,7 +23,7 @@ public class ImageResizer{
 		options.inJustDecodeBounds = false;
 		return BitmapFactory.decodeFile(filename, options);
 	}
-
+	
 	public static Bitmap decodeSampledBitmapFromDescriptor(
 			FileDescriptor fileDescriptor, int reqWidth, int reqHeight){
 		
@@ -38,7 +38,7 @@ public class ImageResizer{
 		
 		// Decode bitmap with inSampleSize set
 		options.inJustDecodeBounds = false;
-
+		
 		return BitmapFactory
 				.decodeFileDescriptor(fileDescriptor, null, options);
 	}

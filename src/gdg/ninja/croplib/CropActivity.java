@@ -34,17 +34,17 @@ public class CropActivity extends Activity implements OnClickListener{
 	private int mMaxY;
 	
 	private int mQuality;
-
+	
 	private String mSourcePath;
 	private String mOutputPath;
-
+	
 	@Override
 	protected void onCreate(Bundle arg0){
 		super.onCreate(arg0);
 		setContentView(R.layout.ac_crop_image);
 		
 		mActivity = this;
-
+		
 		initViews();
 		initData();
 	}
@@ -63,7 +63,7 @@ public class CropActivity extends Activity implements OnClickListener{
 			mOutputUri = extras.getParcelable(Extra.IMAGE_OUTPUT);
 			
 			mSourcePath = FileUtils.getPath(mActivity, mSourceUri);
-
+			
 			if(mOutputUri == null) mOutputUri = mSourceUri;
 			
 			mOutputPath = FileUtils.getPath(mActivity, mOutputUri);
@@ -84,7 +84,7 @@ public class CropActivity extends Activity implements OnClickListener{
 			finishOnFail();
 		}
 	}
-
+	
 	private void initViews(){
 		btnCrop = (Button) findViewById(R.id.btn_create);
 		btnRotateLeft = (Button) findViewById(R.id.btn_left_navi);
@@ -116,7 +116,7 @@ public class CropActivity extends Activity implements OnClickListener{
 			finishOnFail();
 		}
 	}
-
+	
 	@Override
 	public void onClick(View btn){
 		int btn_id = btn.getId();
@@ -126,10 +126,8 @@ public class CropActivity extends Activity implements OnClickListener{
 			resultIntent.setData(mSourceUri);
 			setResult(RESULT_OK, resultIntent);
 			finish();
-		}else if(btn_id == R.id.btn_left_navi)
-			mCropView.rotateImage(-90);
+		}else if(btn_id == R.id.btn_left_navi) mCropView.rotateImage(-90);
 		else if(btn_id == R.id.btn_right_navi) mCropView.rotateImage(90);
-
+		
 	}
 }
-

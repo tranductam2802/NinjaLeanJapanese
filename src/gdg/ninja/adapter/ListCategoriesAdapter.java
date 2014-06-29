@@ -13,47 +13,47 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ListCategoriesAdapter extends BaseAdapter {
+public class ListCategoriesAdapter extends BaseAdapter{
 	private Context mContext;
-
+	
 	private List<CategoriesInfo> mList;
-
-	public void setList(ArrayList<CategoriesInfo> list) {
+	
+	public void setList(ArrayList<CategoriesInfo> list){
 		this.mList = list;
 	}
-
-	public void addList(ArrayList<CategoriesInfo> list) {
+	
+	public void addList(ArrayList<CategoriesInfo> list){
 		this.mList.addAll(mList);
 	}
-
-	public void addItem(CategoriesInfo item) {
+	
+	public void addItem(CategoriesInfo item){
 		this.mList.add(item);
 	}
-
-	public ListCategoriesAdapter(List<CategoriesInfo> list, Context context) {
+	
+	public ListCategoriesAdapter(List<CategoriesInfo> list, Context context){
 		this.mList = list;
 		this.mContext = context;
 	}
-
+	
 	@Override
-	public int getCount() {
+	public int getCount(){
 		return mList.size();
 	}
-
+	
 	@Override
-	public CategoriesInfo getItem(int position) {
+	public CategoriesInfo getItem(int position){
 		return mList.get(position);
 	}
-
+	
 	@Override
-	public long getItemId(int position) {
+	public long getItemId(int position){
 		return 0;
 	}
-
+	
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent){
 		ViewHolder holder = null;
-		if (convertView == null) {
+		if(convertView == null){
 			convertView = View.inflate(mContext,
 					R.layout.item_ltv_list_game_categories, null);
 			holder = new ViewHolder();
@@ -70,7 +70,7 @@ public class ListCategoriesAdapter extends BaseAdapter {
 			holder.imgRateThree = (ImageView) convertView
 					.findViewById(R.id.rate_three);
 			convertView.setTag(holder);
-		} else {
+		}else{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		CategoriesInfo item = getItem(position);
@@ -78,7 +78,7 @@ public class ListCategoriesAdapter extends BaseAdapter {
 		holder.txtCategoryName.setText(item.getCateName());
 		holder.txtCategoryDescription.setText(item.getCateDesc());
 		int rate = item.getStt();
-		switch (rate) {
+		switch(rate){
 			case 6:
 				holder.imgRateThree.setImageResource(R.drawable.ic_rate_on);
 				holder.imgRateTwo.setImageResource(R.drawable.ic_rate_on);
@@ -117,8 +117,8 @@ public class ListCategoriesAdapter extends BaseAdapter {
 		}
 		return convertView;
 	}
-
-	public class ViewHolder {
+	
+	public class ViewHolder{
 		public ImageView imgAvatar;
 		public TextView txtCategoryName;
 		public TextView txtCategoryDescription;

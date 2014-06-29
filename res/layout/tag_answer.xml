@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <View
-        style="@style/tag_quest"
+        style="@style/tag_answer_close"
         android:layout_width="@dimen/tag_size"
         android:layout_height="@dimen/tag_size" />
 

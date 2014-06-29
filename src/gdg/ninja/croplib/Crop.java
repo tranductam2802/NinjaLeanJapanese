@@ -7,7 +7,7 @@ import android.net.Uri;
 public class Crop{
 	
 	public static final int REQUEST_CROP = 6932;
-
+	
 	static interface Extra{
 		String MAX_X = "max_x";
 		String MAX_Y = "max_y";

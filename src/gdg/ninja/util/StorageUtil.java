@@ -4,7 +4,7 @@ import java.io.File;
 
 import android.content.Context;
 
-public class StorageUtil {
+public class StorageUtil{
 	private final static String TAG = "StorageUtil";
 	private final static String ROOT_FOLDER = "Ninja/Language";
 	private final static String PHOTO_FOLDER = "Ninja_Photo";
@@ -26,9 +26,9 @@ public class StorageUtil {
 	}
 	
 	/** Get file from user */
-//	public static File getFileByUser(Context context, String filePath) {
-//	}
+	// public static File getFileByUser(Context context, String filePath) {
+	// }
 	/** Get file send by another user */
-//	public static File getFileSent(Context context, String filePath) {
-//	}
+	// public static File getFileSent(Context context, String filePath) {
+	// }
 }

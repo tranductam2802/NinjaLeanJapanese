@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <solid android:color="@color/secondary_app_color" />
+    <solid android:color="@color/press_button_1" />
 
-    <stroke
-        android:width="1px"
-        android:color="#CE9F9385" />
+   
 
 </shape>

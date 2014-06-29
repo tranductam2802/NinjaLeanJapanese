@@ -5,24 +5,24 @@ import android.app.AlertDialog;
 import android.support.v4.app.FragmentActivity;
 
 /** Base activity of the framework */
-public class BaseActivity extends FragmentActivity {
+public class BaseActivity extends FragmentActivity{
 	protected AlertDialog dialog;
-
+	
 	protected NavigationManager mNaviManager;
-
+	
 	@Override
-	public void onDestroy() {
+	public void onDestroy(){
 		super.onDestroy();
-		if (dialog != null && dialog.isShowing()) {
+		if(dialog != null && dialog.isShowing()){
 			dialog.dismiss();
 		}
 	}
-
+	
 	@Override
-	public void onBackPressed() {
-		if (mNaviManager == null) {
+	public void onBackPressed(){
+		if(mNaviManager == null){
 			super.onBackPressed();
-		} else {
+		}else{
 			mNaviManager.goBack();
 		}
 	}

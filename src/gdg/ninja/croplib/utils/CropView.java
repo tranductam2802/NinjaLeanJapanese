@@ -41,7 +41,7 @@ public class CropView extends ImageView{
 	}
 	
 	AffectedSide affectedSide = AffectedSide.NONE;
-
+	
 	public CropView(Context context){
 		super(context);
 		initCropView();
@@ -56,7 +56,7 @@ public class CropView extends ImageView{
 		super(context, attrs, defStyle);
 		initCropView();
 	}
-
+	
 	private void initCropView(){
 		cornerOfRectPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		cornerOfRectPaint.setColor(frameColor);
@@ -69,7 +69,7 @@ public class CropView extends ImageView{
 		
 		shadowLayerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		shadowLayerPaint.setColor(outsideColor);
-
+		
 		leftTop = new Point();
 		rightBottom = new Point();
 		previous = new Point();
@@ -79,7 +79,7 @@ public class CropView extends ImageView{
 		cornerBottomRight = new Point();
 		
 		mHandler = new Handler();
-
+		
 	}
 	
 	@SuppressLint("DrawAllocation")
@@ -95,12 +95,12 @@ public class CropView extends ImageView{
 					
 				}
 			}, 100);
-
+		
 		canvas.drawRect(leftTop.x, leftTop.y, rightBottom.x, rightBottom.y,
 				cornerOfRectPaint);
 		drawShadowOverlay(canvas);
 		draw4circle(canvas, affectedSide);
-
+		
 		if(DEBUG){
 			Log.i(TAG, "LeftTop(" + leftTop.x + "," + leftTop.y + ")");
 			Log.i(TAG, "RightBottom(" + rightBottom.x + "," + rightBottom.y
@@ -157,7 +157,7 @@ public class CropView extends ImageView{
 				break;
 		}
 	}
-
+	
 	@Override
 	public boolean onTouchEvent(MotionEvent event){
 		int eventAction = event.getAction();
@@ -168,7 +168,7 @@ public class CropView extends ImageView{
 					affectedSide = getAffectedSide(event.getX(), event.getY());
 				}else
 					affectedSide = AffectedSide.NONE;
-
+				
 				previous.set((int) event.getX(), (int) event.getY());
 				
 				break;
@@ -180,9 +180,9 @@ public class CropView extends ImageView{
 				
 				adjustRectangle(affectedSide, (int) event.getX(),
 						(int) event.getY());
-
+				
 				invalidate();
-
+				
 				previous.set((int) event.getX(), (int) event.getY());
 				
 				break;
@@ -265,13 +265,13 @@ public class CropView extends ImageView{
 		if(DEBUG)
 			Log.i(TAG, "imageScaledWidth = " + imageScaledWidth
 					+ " imageScaledHeight = " + imageScaledHeight);
-
+		
 		return (x >= (center.x - (imageScaledWidth / 2))
 				&& x <= (center.x + (imageScaledWidth / 2))
 				&& y >= (center.y - (imageScaledHeight / 2)) && y <= (center.y + (imageScaledHeight / 2)));
 		
 	}
-
+	
 	/* Set the default axis for crop frame base on current image */
 	private void resetPoints(){
 		float[] f = new float[9];
@@ -282,11 +282,11 @@ public class CropView extends ImageView{
 				* f[Matrix.MSCALE_X]);
 		imageScaledHeight = Math.round(getDrawable().getIntrinsicHeight()
 				* f[Matrix.MSCALE_Y]);
-
+		
 		// Set the default crop frame to the largest dimension
 		defaultCroppedSize = (imageScaledHeight < imageScaledWidth)? (int) (imageScaledHeight / 1.25)
 				: (int) (imageScaledWidth / 1.25);
-
+		
 		center.set(getWidth() / 2, getHeight() / 2);
 		leftTop.set((getWidth() - defaultCroppedSize) / 2,
 				(getHeight() - defaultCroppedSize) / 2);
@@ -325,7 +325,7 @@ public class CropView extends ImageView{
 							+ (int) ((rightBottom.x - leftTop.x) * (originalBitmap
 									.getWidth() / (float) imageScaledWidth)));
 		}
-
+		
 		int croppedImgWidth = (int) ((rightBottom.x - leftTop.x) * ratioOfBmpVsScreen_X);
 		
 		Bitmap croppedBmp = Bitmap.createBitmap(originalBitmap,
@@ -334,7 +334,7 @@ public class CropView extends ImageView{
 				croppedImgWidth);
 		
 		originalBitmap.recycle(); // Recycle bitmap as soon as we don't use it
-
+		
 		return croppedBmp;
 	}
 	
@@ -345,7 +345,7 @@ public class CropView extends ImageView{
 		Bitmap source = getCurrentBitmap();
 		Matrix matrix = new Matrix();
 		matrix.postRotate(angle);
-
+		
 		this.setImageBitmap(Bitmap.createBitmap(source, 0, 0,
 				source.getWidth(), source.getHeight(), matrix, true));
 		resetPoints();
@@ -356,6 +356,5 @@ public class CropView extends ImageView{
 		BitmapDrawable drawable = (BitmapDrawable) getDrawable();
 		return drawable.getBitmap();
 	}
-
+	
 }
-

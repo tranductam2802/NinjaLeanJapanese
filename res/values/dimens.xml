@@ -4,27 +4,35 @@
     <dimen name="start_screen_hozirontal_margin">20dp</dimen>
     <dimen name="start_screen_vertical_margin">20dp</dimen>
     <dimen name="ads_height">75dp</dimen>
+    <dimen name="logo_size_width">294dp</dimen>
+    <dimen name="logo_size_height">125dp</dimen>
+    <dimen name="nexus4_width">365dp</dimen>
     <!-- Activity Game -->
     <dimen name="list_game_categories_screen_hozirontal_margin">15dp</dimen>
     <dimen name="list_game_categories_screen_vertical_margin">15dp</dimen>
     <dimen name="list_game_categories_item_horizontal_padding">5dp</dimen>
     <dimen name="list_game_categories_item_vertical_padding">2dp</dimen>
-    <dimen name="list_game_categories_tag_button_height">64dp</dimen>
+    <dimen name="list_game_categories_tag_button_height">60dp</dimen>  
     <dimen name="list_game_categories_avatar_size">64dp</dimen>
     <dimen name="list_game_categories_divider_height">10dp</dimen>
-    <dimen name="quest_image_size">250dp</dimen>
+    <dimen name="quest_image_size">289dp</dimen>
     <dimen name="quest_image_margin">20dp</dimen>
-    <dimen name="quest_image_button_size">65dp</dimen>
+    <dimen name="quest_image_button_size">95dp</dimen>
+    <dimen name="quest_image_button_share_height">50dp</dimen>
     <dimen name="quest_image_button_group_height">150dp</dimen>
     <dimen name="tag_size">35dp</dimen>
     <dimen name="tag_margin">3dp</dimen>
     <dimen name="quest_tag_line_height">130dp</dimen>
     <dimen name="quest_tag_line_vertical_space">5dp</dimen>
     <dimen name="quest_tag_line_horizontal_space">5dp</dimen>
+    <dimen name="quest_answer">90dp</dimen>
     <dimen name="list_game_quest_avatar_size">85dp</dimen>
     <!-- Activity start -->
     <dimen name="ac_start_navi_btn_width">300dp</dimen>
-    <dimen name="ac_start_navi_btn_height">64dp</dimen>
+    <dimen name="ac_start_navi_btn_height">61dp</dimen>
+    <dimen name="menu_button_height">90dp</dimen>
+    <dimen name="frame_logo">158dp</dimen>
+    
     <!-- Naviagator -->
     <dimen name="navi_bar_height">58dp</dimen>
     <dimen name="navi_bar_buttonheight">48dp</dimen>

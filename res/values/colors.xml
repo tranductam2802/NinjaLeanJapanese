@@ -2,16 +2,26 @@
 <resources>
 
     <!-- Application color tone -->
-    <color name="primary_app_color">#FF47AC75</color>
-    <color name="secondary_app_color">#FF2EA065</color>
-    <color name="tertiary_app_color">#FF9BC84C</color>
+    <color name="primary_app_color">#FF5ad6bc</color>
+    <color name="primary_app_color_2">#FF5ad6bc</color>
+    <color name="start_menu_color">#FF5ad6bc</color>
+    <color name="secondary_app_color">#FF5ad6bc</color>
+    <color name="tertiary_app_color">#FFffffff</color>
+    <color name="tertiary_answer_color">#FF5ad6bc</color>
 
     <!-- Testing purpose only -->
     <color name="btn_take_picture">#FFFFA62F</color>
     <color name="btn_choose_from_gallery">#FFFF0000</color>
-    <color name="btn_facebook">#FF5D87DC</color>
-    <color name="btn_google">#FFEA6244</color>
-    <color name="btn_bomb">#FFFF792D</color>
-    <color name="btn_flag">#FFFF4BA5</color>
+    <color name="btn_facebook">#FF3b5999</color>
+    <color name="btn_google">#FFd33e2a</color>
+    <color name="btn_bomb">#FF27ae61</color>
+    <color name="btn_flag">#FF2dcc70</color>
+    <color name="answer_color">#FFffffff</color>
+    
+    <!-- Start menu-->
+    <color name="press_button_1">#FFe9fcfd</color>
+    <color name="press_button_2">#FF8ddfd3</color>
+    
+    
 
 </resources>

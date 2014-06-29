@@ -43,7 +43,7 @@ public class QuestGenerator{
 		// }
 		return result;
 	}
-
+	
 	/**
 	 * Generate quest item. If quest item generated is tsu, check any consonant
 	 * item. If that is ya, yu or yo so that it need i columns character.
@@ -68,7 +68,7 @@ public class QuestGenerator{
 				}
 			}
 		}
-
+		
 		// Get quest tag
 		int index = 0; // Index is a unique number for each question used for
 						// generate frog tag
@@ -91,7 +91,7 @@ public class QuestGenerator{
 						continue CHECK_IS_GENERATE;
 					}
 				}
-
+				
 				if(dictItem.equals(TSU)){
 					boolean isTsuValid = false;
 					for(String item : result){
@@ -106,7 +106,7 @@ public class QuestGenerator{
 						continue CHECK_IS_GENERATE;
 					}
 				}
-
+				
 				// Check ya yu yo
 				if(YAYUYO_STRING.contains(dictItem)){
 					boolean isYAYUTOValid = false;
@@ -121,7 +121,7 @@ public class QuestGenerator{
 						index = (index + 2) % dictLength;
 					}
 				}
-
+				
 			}
 			result.add(dict[index]);
 		}

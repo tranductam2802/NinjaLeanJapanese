@@ -2,62 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="@color/start_menu_color"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/quest_image_size" >
 
         <ImageView
             android:id="@id/img_avatar"
             android:layout_width="@dimen/quest_image_size"
             android:layout_height="@dimen/quest_image_size"
-            android:layout_centerInParent="true"
-            android:layout_margin="@dimen/quest_image_margin"
+            android:layout_weight="3"
             android:background="@color/primary_app_color"
             android:contentDescription="@string/image_description"
             android:scaleType="fitXY" />
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="@dimen/quest_image_button_size"
-            android:layout_height="@dimen/quest_image_button_group_height"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true" >
-
-            <ImageView
-                android:id="@id/btn_share_facebook"
-                android:layout_width="@dimen/quest_image_button_size"
-                android:layout_height="@dimen/quest_image_button_size"
-                android:layout_gravity="top"
-                android:background="@color/btn_facebook"
-                android:contentDescription="@string/image_description"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_facebook" />
-
-            <ImageView
-                android:id="@id/btn_share_google"
-                android:layout_width="@dimen/quest_image_button_size"
-                android:layout_height="@dimen/quest_image_button_size"
-                android:layout_gravity="bottom"
-                android:background="@color/btn_google"
-                android:contentDescription="@string/image_description"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_google" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="@dimen/quest_image_button_size"
-            android:layout_height="@dimen/quest_image_button_group_height"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" >
+            android:layout_height="@dimen/quest_image_size"
+            android:layout_weight="1"
+            android:orientation="vertical" >
 
             <ImageView
                 android:id="@id/btn_boom"
                 android:layout_width="@dimen/quest_image_button_size"
                 android:layout_height="@dimen/quest_image_button_size"
-                android:layout_gravity="top"
                 android:background="@color/btn_bomb"
                 android:contentDescription="@string/image_description"
                 android:scaleType="centerInside"
@@ -67,27 +38,50 @@
                 android:id="@id/btn_flag"
                 android:layout_width="@dimen/quest_image_button_size"
                 android:layout_height="@dimen/quest_image_button_size"
-                android:layout_gravity="bottom"
                 android:background="@color/btn_flag"
                 android:contentDescription="@string/image_description"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_flag" />
-        </FrameLayout>
-    </RelativeLayout>
+
+            <ImageView
+                android:id="@id/btn_share_facebook"
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_share_height"
+                android:background="@color/btn_facebook"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/ic_facebook" />
+
+            <ImageView
+                android:id="@id/btn_share_google"
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_share_height"
+                android:background="@color/btn_google"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/ic_google" />
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@id/ltv_list_one"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/quest_answer"
+        android:background="@color/answer_color"
         android:gravity="center"
-        android:orientation="horizontal" />
+        android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@id/ltv_list_two"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal" />
+        <LinearLayout
+            android:id="@id/ltv_list_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@id/ltv_list_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@id/quest_one"

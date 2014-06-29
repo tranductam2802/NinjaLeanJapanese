@@ -18,64 +18,63 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class ListGameFragment extends BaseFragment implements
-		INavigationBarListener {
+		INavigationBarListener{
 	private ListView mLtvCategories;
-
+	
 	private ListCategoriesAdapter mAdapter;
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+			Bundle savedInstanceState){
 		View view = inflater.inflate(R.layout.fg_list_game, container, false);
 		initView(view);
 		initData();
 		return view;
 	}
-
-	private void initView(View view) {
+	
+	private void initView(View view){
 		mLtvCategories = (ListView) view.findViewById(R.id.ltv_list);
-		mLtvCategories.setOnItemClickListener(new OnItemClickListener() {
+		mLtvCategories.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+					int position, long id){
 				CategoriesInfo item = mAdapter.getItem(position);
-				if (item.getStt() < 3)
-					return;
+				if(item.getStt() < 3) return;
 				ListQuestFragment fragment = ListQuestFragment.getInstance(item
 						.getCateId());
 				mNaviManager.showPage(fragment, "");
 			}
 		});
 	}
-
-	private void initData() {
+	
+	private void initData(){
 		mAdapter = new ListCategoriesAdapter(App.getListCategories(),
 				getActivity());
 		mLtvCategories.setAdapter(mAdapter);
 	}
-
+	
 	@Override
-	public String getTitle() {
+	public String getTitle(){
 		return getString(R.string.sc_list_category_title);
 	}
-
+	
 	@Override
-	public BTN_LEFT_MODE getButtonLeftMode() {
+	public BTN_LEFT_MODE getButtonLeftMode(){
 		return BTN_LEFT_MODE.BACK;
 	}
-
+	
 	@Override
-	public void onLeftClicked() {
+	public void onLeftClicked(){
 		mNaviManager.goBack();
 	}
-
+	
 	@Override
-	public BTN_RIGHT_MODE getButtonRightMode() {
+	public BTN_RIGHT_MODE getButtonRightMode(){
 		return BTN_RIGHT_MODE.SETTING;
 	}
-
+	
 	@Override
-	public void onRightClicked() {
+	public void onRightClicked(){
 		Intent intent = new Intent(getActivity(), OptionActivity.class);
 		startActivity(intent);
 	}

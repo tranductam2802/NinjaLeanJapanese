@@ -27,76 +27,96 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int btn_bomb=0x7f060007;
-        public static final int btn_choose_from_gallery=0x7f060004;
-        public static final int btn_facebook=0x7f060005;
-        public static final int btn_flag=0x7f060008;
-        public static final int btn_google=0x7f060006;
+        public static final int answer_color=0x7f06000c;
+        public static final int btn_bomb=0x7f06000a;
+        public static final int btn_choose_from_gallery=0x7f060007;
+        public static final int btn_facebook=0x7f060008;
+        public static final int btn_flag=0x7f06000b;
+        public static final int btn_google=0x7f060009;
         /**  Testing purpose only 
          */
-        public static final int btn_take_picture=0x7f060003;
+        public static final int btn_take_picture=0x7f060006;
+        /**  Start menu
+         */
+        public static final int press_button_1=0x7f06000d;
+        public static final int press_button_2=0x7f06000e;
         /**  Application color tone 
          */
         public static final int primary_app_color=0x7f060000;
-        public static final int secondary_app_color=0x7f060001;
-        public static final int tertiary_app_color=0x7f060002;
+        public static final int primary_app_color_2=0x7f060001;
+        public static final int secondary_app_color=0x7f060003;
+        public static final int start_menu_color=0x7f060002;
+        public static final int tertiary_answer_color=0x7f060005;
+        public static final int tertiary_app_color=0x7f060004;
     }
     public static final class dimen {
-        public static final int ac_start_navi_btn_height=0x7f070015;
+        public static final int ac_start_navi_btn_height=0x7f07001a;
         /**  Activity start 
          */
-        public static final int ac_start_navi_btn_width=0x7f070014;
+        public static final int ac_start_navi_btn_width=0x7f070019;
         public static final int ads_height=0x7f070002;
-        public static final int list_game_categories_avatar_size=0x7f070008;
-        public static final int list_game_categories_divider_height=0x7f070009;
-        public static final int list_game_categories_item_horizontal_padding=0x7f070005;
-        public static final int list_game_categories_item_vertical_padding=0x7f070006;
+        public static final int frame_logo=0x7f07001c;
+        public static final int list_game_categories_avatar_size=0x7f07000b;
+        public static final int list_game_categories_divider_height=0x7f07000c;
+        public static final int list_game_categories_item_horizontal_padding=0x7f070008;
+        public static final int list_game_categories_item_vertical_padding=0x7f070009;
         /**  Activity Game 
          */
-        public static final int list_game_categories_screen_hozirontal_margin=0x7f070003;
-        public static final int list_game_categories_screen_vertical_margin=0x7f070004;
-        public static final int list_game_categories_tag_button_height=0x7f070007;
-        public static final int list_game_quest_avatar_size=0x7f070013;
-        public static final int navi_bar_buttonheight=0x7f070017;
+        public static final int list_game_categories_screen_hozirontal_margin=0x7f070006;
+        public static final int list_game_categories_screen_vertical_margin=0x7f070007;
+        public static final int list_game_categories_tag_button_height=0x7f07000a;
+        public static final int list_game_quest_avatar_size=0x7f070018;
+        public static final int logo_size_height=0x7f070004;
+        public static final int logo_size_width=0x7f070003;
+        public static final int menu_button_height=0x7f07001b;
+        public static final int navi_bar_buttonheight=0x7f07001e;
         /**  Naviagator 
          */
-        public static final int navi_bar_height=0x7f070016;
-        public static final int quest_image_button_group_height=0x7f07000d;
-        public static final int quest_image_button_size=0x7f07000c;
-        public static final int quest_image_margin=0x7f07000b;
-        public static final int quest_image_size=0x7f07000a;
-        public static final int quest_tag_line_height=0x7f070010;
-        public static final int quest_tag_line_horizontal_space=0x7f070012;
-        public static final int quest_tag_line_vertical_space=0x7f070011;
+        public static final int navi_bar_height=0x7f07001d;
+        public static final int nexus4_width=0x7f070005;
+        public static final int quest_answer=0x7f070017;
+        public static final int quest_image_button_group_height=0x7f070011;
+        public static final int quest_image_button_share_height=0x7f070010;
+        public static final int quest_image_button_size=0x7f07000f;
+        public static final int quest_image_margin=0x7f07000e;
+        public static final int quest_image_size=0x7f07000d;
+        public static final int quest_tag_line_height=0x7f070014;
+        public static final int quest_tag_line_horizontal_space=0x7f070016;
+        public static final int quest_tag_line_vertical_space=0x7f070015;
         public static final int start_screen_hozirontal_margin=0x7f070000;
         public static final int start_screen_vertical_margin=0x7f070001;
-        public static final int tag_margin=0x7f07000f;
-        public static final int tag_size=0x7f07000e;
+        public static final int tag_margin=0x7f070013;
+        public static final int tag_size=0x7f070012;
     }
     public static final class drawable {
-        public static final int bg_app=0x7f020000;
-        public static final int dr_line_shadow=0x7f020001;
-        public static final int dr_navi_bar_button=0x7f020002;
-        public static final int dr_tag_button_ac_categories=0x7f020003;
-        public static final int dr_tag_button_ac_categories_press=0x7f020004;
-        public static final int dr_tag_button_ac_categories_selector=0x7f020005;
-        public static final int dr_tag_button_ac_start=0x7f020006;
+        public static final int dr_line_shadow=0x7f020000;
+        public static final int dr_navi_bar_button=0x7f020001;
+        public static final int dr_tag_button_ac_categories=0x7f020002;
+        public static final int dr_tag_button_ac_categories_press=0x7f020003;
+        public static final int dr_tag_button_ac_categories_selector=0x7f020004;
+        public static final int dr_tag_button_ac_start=0x7f020005;
+        public static final int dr_tag_button_ac_start_2=0x7f020006;
         public static final int dr_tag_button_ac_start_press=0x7f020007;
-        public static final int dr_tag_button_ac_start_selector=0x7f020008;
-        public static final int dummy_image=0x7f020009;
-        public static final int ic_arow_back=0x7f02000a;
-        public static final int ic_bomb=0x7f02000b;
-        public static final int ic_btn_back=0x7f02000c;
-        public static final int ic_btn_back_arrow=0x7f02000d;
-        public static final int ic_btn_facebook_arrow=0x7f02000e;
-        public static final int ic_facebook=0x7f02000f;
-        public static final int ic_flag=0x7f020010;
-        public static final int ic_google=0x7f020011;
-        public static final int ic_launcher=0x7f020012;
-        public static final int ic_rate_half=0x7f020013;
-        public static final int ic_rate_off=0x7f020014;
-        public static final int ic_rate_on=0x7f020015;
-        public static final int ic_setting=0x7f020016;
+        public static final int dr_tag_button_ac_start_press_2=0x7f020008;
+        public static final int dr_tag_button_ac_start_selector=0x7f020009;
+        public static final int dr_tag_button_ac_start_selector_2=0x7f02000a;
+        public static final int dummy_image=0x7f02000b;
+        public static final int ic_arow_back=0x7f02000c;
+        public static final int ic_bomb=0x7f02000d;
+        public static final int ic_btn_back=0x7f02000e;
+        public static final int ic_btn_back_arrow=0x7f02000f;
+        public static final int ic_btn_facebook_arrow=0x7f020010;
+        public static final int ic_close=0x7f020011;
+        public static final int ic_facebook=0x7f020012;
+        public static final int ic_flag=0x7f020013;
+        public static final int ic_google=0x7f020014;
+        public static final int ic_launcher=0x7f020015;
+        public static final int ic_rate_half=0x7f020016;
+        public static final int ic_rate_off=0x7f020017;
+        public static final int ic_rate_on=0x7f020018;
+        public static final int ic_setting=0x7f020019;
+        public static final int ic_tut=0x7f02001a;
+        public static final int logo_app=0x7f02001b;
     }
     public static final class id {
         public static final int answer_tag=0x7f080024;
@@ -222,9 +242,11 @@ public final class R {
     public static final class style {
         public static final int AppBaseTheme=0x7f0b0000;
         public static final int AppTheme=0x7f0b0001;
-        public static final int ac_start_navi_btn=0x7f0b0002;
-        public static final int navi_bar_btn=0x7f0b0003;
-        public static final int tag_answer=0x7f0b0004;
-        public static final int tag_quest=0x7f0b0005;
+        public static final int ac_start_navi_btn_1=0x7f0b0002;
+        public static final int ac_start_navi_btn_2=0x7f0b0003;
+        public static final int navi_bar_btn=0x7f0b0004;
+        public static final int tag_answer=0x7f0b0005;
+        public static final int tag_answer_close=0x7f0b0006;
+        public static final int tag_quest=0x7f0b0007;
     }
 }

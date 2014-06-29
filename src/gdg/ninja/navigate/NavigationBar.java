@@ -11,84 +11,81 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class NavigationBar extends RelativeLayout {
+public class NavigationBar extends RelativeLayout{
 	private final String TAG = "NavigationBar";
-
+	
 	private ImageButton btnLeft, btnRight;
 	private TextView txtTitle;
 	private NavigationManager mNaviManager;
-
-	public NavigationBar(Context context, AttributeSet attrs) {
+	
+	public NavigationBar(Context context, AttributeSet attrs){
 		super(context, attrs);
 	}
-
-	public NavigationBar(Context context) {
+	
+	public NavigationBar(Context context){
 		super(context);
 	}
-
+	
 	/* When this view finish inflate. */
 	@Override
-	protected void onFinishInflate() {
+	protected void onFinishInflate(){
 		super.onFinishInflate();
 		btnLeft = (ImageButton) findViewById(R.id.btn_left_navi);
 		txtTitle = (TextView) findViewById(R.id.txt_title_navi);
 		btnRight = (ImageButton) findViewById(R.id.btn_right_navi);
 	}
-
-	public void initNaviBar(NavigationManager naviManager) {
+	
+	public void initNaviBar(NavigationManager naviManager){
 		this.mNaviManager = naviManager;
 		setupLeftButton();
 		setupRightButton();
 		mNaviManager
-				.addBackStackChangeListener(new OnBackStackChangedListener() {
+				.addBackStackChangeListener(new OnBackStackChangedListener(){
 					@Override
-					public void onBackStackChanged() {
+					public void onBackStackChanged(){
 						synsNavigationBar();
 					}
 				});
 	}
-
-	private void setupLeftButton() {
-		btnLeft.setOnClickListener(new OnClickListener() {
+	
+	private void setupLeftButton(){
+		btnLeft.setOnClickListener(new OnClickListener(){
 			@Override
-			public void onClick(View v) {
+			public void onClick(View v){
 				Fragment fragment = mNaviManager.getActiveFragment();
-				if (fragment == null)
-					return;
+				if(fragment == null) return;
 				NLog.i(TAG, "Fragment(btnLeft): " + fragment.toString());
-				if (fragment instanceof INavigationBarListener) {
+				if(fragment instanceof INavigationBarListener){
 					((INavigationBarListener) fragment).onLeftClicked();
 				}
 			}
 		});
 	}
-
-	private void setupRightButton() {
-		btnRight.setOnClickListener(new OnClickListener() {
+	
+	private void setupRightButton(){
+		btnRight.setOnClickListener(new OnClickListener(){
 			@Override
-			public void onClick(View v) {
+			public void onClick(View v){
 				Fragment fragment = mNaviManager.getActiveFragment();
-				if (fragment == null)
-					return;
+				if(fragment == null) return;
 				NLog.i(TAG, "Fragment(btnRight): " + fragment.toString());
-				if (fragment instanceof INavigationBarListener) {
+				if(fragment instanceof INavigationBarListener){
 					((INavigationBarListener) fragment).onRightClicked();
 				}
 			}
 		});
 	}
-
-	private void synsNavigationBar() {
+	
+	private void synsNavigationBar(){
 		Fragment fragment = mNaviManager.getActiveFragment();
-		if (fragment == null)
-			return;
+		if(fragment == null) return;
 		resetNavigationBar();
 		NLog.i(TAG, "Fragment(synsNavigationBar): " + fragment.toString());
-		if (fragment instanceof INavigationBarListener) {
+		if(fragment instanceof INavigationBarListener){
 			INavigationBarListener naviBarListener = (INavigationBarListener) fragment;
 			setTitle(naviBarListener.getTitle());
 			BTN_LEFT_MODE leftMode = naviBarListener.getButtonLeftMode();
-			switch (leftMode) {
+			switch(leftMode){
 				case BACK:
 					setBtnBack();
 					break;
@@ -97,7 +94,7 @@ public class NavigationBar extends RelativeLayout {
 					hideBtnLeft();
 			}
 			BTN_RIGHT_MODE rightMode = naviBarListener.getButtonRightMode();
-			switch (rightMode) {
+			switch(rightMode){
 				case SETTING:
 					setBtnSetting();
 					break;
@@ -107,70 +104,70 @@ public class NavigationBar extends RelativeLayout {
 			}
 		}
 	}
-
-	public void setTitle(String title) {
+	
+	public void setTitle(String title){
 		txtTitle.setText(title);
 	}
-
-	private void resetNavigationBar() {
+	
+	private void resetNavigationBar(){
 		btnLeft.setVisibility(View.GONE);
 		txtTitle.setText("");
 		btnRight.setVisibility(View.GONE);
 	}
-
-	public void setBtnBack() {
+	
+	public void setBtnBack(){
 		btnLeft.setImageResource(R.drawable.ic_arow_back);
 		btnLeft.setVisibility(View.VISIBLE);
-		if (btnRight.getVisibility() == View.GONE) {
+		if(btnRight.getVisibility() == View.GONE){
 			btnRight.setVisibility(View.INVISIBLE);
 		}
 	}
-
-	public void setBtnSetting() {
+	
+	public void setBtnSetting(){
 		btnRight.setImageResource(R.drawable.ic_setting);
 		btnRight.setVisibility(View.VISIBLE);
-		if (btnRight.getVisibility() == View.GONE) {
+		if(btnRight.getVisibility() == View.GONE){
 			btnRight.setVisibility(View.INVISIBLE);
 		}
 	}
-
-	public void hideBtnLeft() {
+	
+	public void hideBtnLeft(){
 		btnLeft.setOnClickListener(null);
-		if (btnRight.getVisibility() == View.VISIBLE) {
+		if(btnRight.getVisibility() == View.VISIBLE){
 			btnLeft.setVisibility(View.INVISIBLE);
-		} else {
+		}else{
 			btnLeft.setVisibility(View.GONE);
 			btnRight.setVisibility(View.GONE);
 		}
 	}
-
-	public void hideBtnRight() {
+	
+	public void hideBtnRight(){
 		btnRight.setOnClickListener(null);
-		if (btnLeft.getVisibility() == View.VISIBLE) {
+		if(btnLeft.getVisibility() == View.VISIBLE){
 			btnRight.setVisibility(View.INVISIBLE);
-		} else {
+		}else{
 			btnLeft.setVisibility(View.GONE);
 			btnRight.setVisibility(View.GONE);
 		}
 	}
-
-	public interface INavigationBarListener {
+	
+	public interface INavigationBarListener{
 		public String getTitle();
-
+		
 		public BTN_LEFT_MODE getButtonLeftMode();
-
+		
 		public void onLeftClicked();
-
+		
 		public BTN_RIGHT_MODE getButtonRightMode();
-
+		
 		public void onRightClicked();
 	}
-
-	public enum BTN_LEFT_MODE {
+	
+	public enum BTN_LEFT_MODE{
 		BACK, NONE;
 	}
-
-	public enum BTN_RIGHT_MODE {
+	
+	public enum BTN_RIGHT_MODE{
 		SETTING, NONE;
 	}
 }

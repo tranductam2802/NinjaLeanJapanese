@@ -25,12 +25,12 @@ import android.widget.TextView;
 
 public class CreateCustomGameActivity extends BaseActivity implements
 		OnClickListener{
-
+	
 	private final int MEDIA_TYPE_IMAGE = 0;
 	private final int GALLERY_PIC_REQUEST = 1;
 	private final int CAMERA_PIC_REQUEST = 2;
 	private final String IMG_HINT_URI = "saved_image_uri";
-
+	
 	private TextView mTxtCreateButton;
 	private TextView mTxtTakePictureButton;
 	private TextView mTxtChoosePictureButton;
@@ -41,17 +41,18 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	
 	private Uri inputImagePath;
 	private Uri outputImagePath;
-
+	
 	private String TAG = "CREATE CUSTOM GAME ACTIVITY";
-
+	
 	private Activity mActivity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_create_custom_game);
 		
 		mActivity = this;
-
+		
 		initView();
 	}
 	
@@ -62,7 +63,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 			outState.putParcelable(IMG_HINT_URI, outputImagePath);
 		super.onSaveInstanceState(outState);
 	}
-
+	
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState){
 		// TODO Auto-generated method stub
@@ -70,7 +71,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 		mImgChoosedPicture.setImageURI(outputImagePath);
 		super.onRestoreInstanceState(savedInstanceState);
 	}
-
+	
 	private void initView(){
 		mTxtCreateButton = (TextView) findViewById(R.id.btn_create);
 		mTxtTakePictureButton = (TextView) findViewById(R.id.btn_take_picture);
@@ -132,12 +133,11 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	
 	/* Choose picture from Gallery and put into mImgChoosedPicture */
 	private void choosePictureFromGallery(){
-			Intent intent = new Intent();
-			intent.setType("image/*");
-			intent.setAction(Intent.ACTION_GET_CONTENT);
-			startActivityForResult(Intent.createChooser(intent,
-					getString(R.string.intent_select_picture)),
-					GALLERY_PIC_REQUEST);
+		Intent intent = new Intent();
+		intent.setType("image/*");
+		intent.setAction(Intent.ACTION_GET_CONTENT);
+		startActivityForResult(Intent.createChooser(intent,
+				getString(R.string.intent_select_picture)), GALLERY_PIC_REQUEST);
 	}
 	
 	/* Helper function for Take Picture from camera: create file name */
@@ -200,10 +200,10 @@ public class CreateCustomGameActivity extends BaseActivity implements
 			}else if(requestCode == Crop.REQUEST_CROP){
 				mImgChoosedPicture.setImageURI(outputImagePath);
 			}
-
+			
 		}
 	}
-
+	
 	@Override
 	public void onClick(View view){
 		int viewID = view.getId();
@@ -221,5 +221,5 @@ public class CreateCustomGameActivity extends BaseActivity implements
 				break;
 		}
 	}
-
+	
 }
