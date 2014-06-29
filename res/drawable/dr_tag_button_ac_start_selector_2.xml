@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/dr_tag_button_ac_start_press_2" android:state_pressed="true"></item>
+    <item android:drawable="@drawable/dr_tag_button_ac_start_2"></item>
+
+</selector>
