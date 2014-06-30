@@ -17,12 +17,10 @@ public final class R {
         public static final int fragment_pop_exit=0x7f040005;
     }
     public static final class array {
-        public static final int answer=0x7f050004;
-        public static final int cate_desc=0x7f050002;
-        public static final int cate_id=0x7f050000;
-        public static final int cate_name=0x7f050001;
-        public static final int cate_stt=0x7f050003;
-        public static final int dict_ja=0x7f050005;
+        public static final int cate_img=0x7f050002;
+        public static final int defaultCategoryQueries=0x7f050000;
+        public static final int defaultQuestionQueries=0x7f050001;
+        public static final int dict_ja=0x7f050003;
     }
     public static final class attr {
     }

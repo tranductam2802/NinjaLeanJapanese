@@ -4,26 +4,26 @@ import java.security.InvalidKeyException;
 
 public class QuestInfo{
 	private int questId;
-	private int imgId;
+	private String imgPath;
 	private String answer;
 	private int questStt;
 	
 	private final int MAX_ANSWER_LENGTH = 20;
 	
+	public String getImgPath(){
+		return imgPath;
+	}
+	
+	public void setImgPath(String imgPath){
+		this.imgPath = imgPath;
+	}
+
 	public int getQuestId(){
 		return questId;
 	}
 	
 	public void setQuestId(int questId){
 		this.questId = questId;
-	}
-	
-	public int getImgId(){
-		return imgId;
-	}
-	
-	public void setImgId(int imgId){
-		this.imgId = imgId;
 	}
 	
 	public String getAnswer(){
@@ -46,10 +46,15 @@ public class QuestInfo{
 		this.questStt = questStt;
 	}
 	
-	public QuestInfo(int questId, int imgId, String answer, int questStt){
+	public QuestInfo(){
+		
+	}
+
+	public QuestInfo(int questId, String imgPath, String answer, int questStt){
 		this.questId = questId;
-		this.imgId = imgId;
+		this.imgPath = imgPath;
 		this.answer = answer;
 		this.questStt = questStt;
 	}
+
 }

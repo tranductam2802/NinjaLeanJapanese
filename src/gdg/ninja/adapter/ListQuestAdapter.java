@@ -2,11 +2,14 @@ package gdg.ninja.adapter;
 
 import gdg.nat.R;
 import gdg.ninja.gameinfo.QuestInfo;
+import gdg.ninja.util.ImagePathProcess;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
@@ -82,7 +85,27 @@ public class ListQuestAdapter extends BaseAdapter{
 			holder.layout.setLayoutParams(param);
 		}
 		QuestInfo item = getItem(position);
-		holder.imgAvatar.setImageResource(item.getImgId());
+		
+		try{
+			holder.imgAvatar.setImageBitmap(BitmapFactory
+					.decodeStream(ImagePathProcess.getImgInputStream(mContext,
+							item.getImgPath())));
+		}catch(IOException e){
+			// TODO Auto-generated catch block
+			holder.imgAvatar.setImageResource(R.drawable.ic_launcher);
+		}
+		// try{
+		// InputStream stream = ImagePathProcess.getImgInputStream(mContext,
+		// item.getImgPath());
+		//
+		// holder.imgAvatar.setImageBitmap(ImageResizer
+		// .decodeSampledBitmapFromStream(stream, 256, 256));
+		// holder.imgAvatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
+		//
+		// stream.close();
+		// }catch(IOException e){
+		// holder.imgAvatar.setImageResource(R.drawable.ic_launcher);
+		// }
 		int rate = item.getQuestStt();
 		switch(rate){
 			case 6:

@@ -1,18 +1,16 @@
 package gdg.ninja.ui;
 
 import gdg.nat.R;
+import gdg.ninja.database.DatabaseHandler;
 import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.gameinfo.CategoriesInfo;
-import gdg.ninja.gameinfo.QuestInfo;
 import gdg.ninja.util.App;
 import gdg.ninja.util.Config;
 import gdg.ninja.util.NLog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -65,24 +63,33 @@ public class SplashActivity extends BaseActivity{
 	
 	private void loadingAppData(){
 		// TODO: Loading data from preference and validate data
-		List<CategoriesInfo> listCategories = new ArrayList<CategoriesInfo>();
-		Resources resources = getResources();
-		int[] listId = resources.getIntArray(R.array.cate_id);
-		String[] listName = resources.getStringArray(R.array.cate_name);
-		String[] listDesc = resources.getStringArray(R.array.cate_desc);
-		String[] listAnswer = resources.getStringArray(R.array.answer);
-		int[] listStt = resources.getIntArray(R.array.cate_stt);
-		int length = listId.length;
-		for(int i = 0; i < length; i++){
-			CategoriesInfo cateItem = new CategoriesInfo(i, listId[i],
-					listName[i], listDesc[i], listStt[i]);
-			for(int j = 0; j < length; j++){
-				QuestInfo questItem = new QuestInfo(j, listId[j],
-						listAnswer[j], listStt[j]);
-				cateItem.addListQuest(questItem);
-			}
-			listCategories.add(cateItem);
-		}
+		DatabaseHandler mDatabase = new DatabaseHandler(this);
+		List<CategoriesInfo> listCategories = mDatabase.getAllCategory();
+		
+		// Resources resources = getResources();
+		
+		// String[] listImg = resources.getStringArray(R.array.cate_img);
+		//
+		// int[] listId = resources.getIntArray(R.array.cate_id);
+		// String[] listName = resources.getStringArray(R.array.cate_name);
+		// String[] listDesc = resources.getStringArray(R.array.cate_desc);
+
+		// int[] listStt = resources.getIntArray(R.array.cate_stt);
+		// int length = listImg.length;
+
+		// for(int i = 0; i < length; i++){
+		// CategoriesInfo cateItem = new CategoriesInfo(i, listImg[i],
+		// listName[i], listDesc[i], listStt[i]);
+		// String currentCateAnswer = "cate_" + i + "_answer";
+		// String currentCateImg = "cate_" + i + "_img";
+		// String[] listAnswer = resources.getStringArray(R.array.);
+		// for(int j = 0; j < length; j++){
+		// QuestInfo questItem = new QuestInfo(j, listId[j],
+		// listAnswer[j], listStt[j]);
+		// cateItem.addListQuest(questItem);
+		// }
+		// listCategories.add(cateItem);
+		// }
 		App.setListCate(listCategories);
 	}
 	

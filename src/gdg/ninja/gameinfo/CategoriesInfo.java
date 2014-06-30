@@ -5,7 +5,8 @@ import java.util.List;
 
 public class CategoriesInfo{
 	private int cateId;
-	private int imgId;
+	// private int imgId;
+	private String imgPath;
 	private String cateName;
 	private String cateDesc;
 	private int cateStt;
@@ -15,17 +16,25 @@ public class CategoriesInfo{
 		this.cateId = cateId;
 	}
 	
+	public String getImgPath(){
+		return imgPath;
+	}
+	
+	public void setImgPath(String imgPath){
+		this.imgPath = imgPath;
+	}
+
 	public int getCateId(){
 		return cateId;
 	}
 	
-	public void setImgId(int imgId){
-		this.imgId = imgId;
-	}
-	
-	public int getImgId(){
-		return imgId;
-	}
+	// public void setImgId(int imgId){
+	// this.imgId = imgId;
+	// }
+	//
+	// public int getImgId(){
+	// return imgId;
+	// }
 	
 	public void setCateName(String cateName){
 		this.cateName = cateName;
@@ -64,19 +73,23 @@ public class CategoriesInfo{
 		this.listQuest.add(quest);
 	}
 	
-	public CategoriesInfo(int imgId, String categoriesName,
+	public CategoriesInfo(String imgPath, String categoriesName,
 			String categoriesDesc, int stt){
-		this.imgId = imgId;
+		this.imgPath = imgPath;
 		this.cateName = categoriesName;
 		this.cateDesc = categoriesDesc;
 		this.cateStt = stt;
 		this.listQuest = new ArrayList<QuestInfo>();
 	}
 	
-	public CategoriesInfo(int cateId, int imgId, String categoriesName,
+	public CategoriesInfo(){
+		
+	}
+
+	public CategoriesInfo(int cateId, String imgPath, String categoriesName,
 			String categoriesDesc, int stt){
 		this.cateId = cateId;
-		this.imgId = imgId;
+		this.imgPath = imgPath;
 		this.cateName = categoriesName;
 		this.cateDesc = categoriesDesc;
 		this.cateStt = stt;

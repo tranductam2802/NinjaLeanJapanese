@@ -1,71 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer-array name="cate_id">
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-    </integer-array>
-
-    <string-array name="cate_name">
-        <item>Mot dieu gian di 1</item>
-        <item>Mot dieu gian di 2</item>
-        <item>Mot dieu gian di 3</item>
-        <item>Mot dieu gian di 4</item>
-        <item>Mot dieu gian di 5</item>
-        <item>Mot dieu gian di 6</item>
-        <item>Mot dieu gian di 7</item>
-        <item>Mot dieu gian di 8</item>
-        <item>Mot dieu gian di 9</item>
-        <item>Mot dieu gian di 10</item>
+    <string-array name="defaultCategoryQueries">
+        <item>INSERT INTO CATEGORY VALUES(1,\'Động vật\',\'Các con vật thân thuộc hằng ngày với con người.\',\'assets/img_cat_thumbs/img_cat_dongvat.png\',4);</item>
     </string-array>
-    <string-array name="cate_desc">
-        <item>Boi vi anh da thuong Mup Phin that nhieu 1</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 2</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 3</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 4</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 5</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 6</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 7</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 8</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 9</item>
-        <item>Boi vi anh da thuong Mup Phin that nhieu 10</item>
+    <string-array name="defaultQuestionQueries">
+        <item>INSERT INTO "QUESTION" VALUES(1,\'いぬ\',4,\'Động vật\',\'assets/cate_0_img/cho.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(2,\'ねこ\',6,\'Động vật\',\'assets/cate_0_img/meo.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(3,\'ぶた\',3,\'Động vật\',\'assets/cate_0_img/lon.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(4,\'にわとり\',3,\'Động vật\',\'assets/cate_0_img/ga.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(5,\'あひる\',3,\'Động vật\',\'assets/cate_0_img/vit.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(6,\'うま\',3,\'Động vật\',\'assets/cate_0_img/ngua.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(7,\'うし\',3,\'Động vật\',\'assets/cate_0_img/bo.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(8,\'ねずみ\',3,\'Động vật\',\'assets/cate_0_img/chuot.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(9,\'とり\',3,\'Động vật\',\'assets/cate_0_img/chim.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(10,\'ライオン\',3,\'Động vật\',\'assets/cate_0_img/sutu.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(11,\'ぞう\',3,\'Động vật\',\'assets/cate_0_img/voi.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(12,\'さかな\',3,\'Động vật\',\'assets/cate_0_img/ca.png\');</item>
     </string-array>
-
-    <integer-array name="cate_stt">
-        <item>4</item>
-        <item>6</item>
-        <item>4</item>
-        <item>6</item>
-        <item>6</item>
-        <item>4</item>
-        <item>5</item>
-        <item>2</item>
-        <item>0</item>
-        <item>0</item>
-    </integer-array>
-
-    <string-array name="answer">
-        <item>きょとけいあいう</item>
-        <item>きょと</item>
-        <item>きょお</item>
-        <item>ろうどうしっぺいへいしゃかいもん</item>
-        <item>きょう</item>
-        <item>さきょ</item>
-        <item>びょいん</item>
-        <item>なに</item>
-        <item>なんに</item>
-        <item>ずっと</item>
-        <item>こわります</item>
-        <item>もおた</item>
-        <item>もうた</item>
+    <string-array name="cate_img">
+        <item>assets/img_cat_thumbs/img_cat_dongvat.png</item>
     </string-array>
 
 </resources>

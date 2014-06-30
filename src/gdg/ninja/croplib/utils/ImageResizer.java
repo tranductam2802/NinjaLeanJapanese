@@ -1,6 +1,8 @@
 package gdg.ninja.croplib.utils;
 
 import java.io.FileDescriptor;
+import java.io.IOException;
+import java.io.InputStream;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,6 +24,29 @@ public class ImageResizer{
 		// Decode bitmap with inSampleSize set
 		options.inJustDecodeBounds = false;
 		return BitmapFactory.decodeFile(filename, options);
+	}
+	
+	public static Bitmap decodeSampledBitmapFromStream(InputStream inputStream,
+			int reqWidth, int reqHeight){
+		
+		// First decode with inJustDecodeBounds=true to check dimensions
+		final BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inJustDecodeBounds = true;
+		// BitmapFactory.decodeFile(filename, options);
+		BitmapFactory.decodeStream(inputStream, null, options);
+
+		// Calculate inSampleSize
+		options.inSampleSize = calculateInSampleSize(options, reqWidth,
+				reqHeight);
+		
+		// Decode bitmap with inSampleSize set
+		options.inJustDecodeBounds = false;
+		try{
+			inputStream.reset();
+		}catch(IOException e){
+			
+		}
+		return BitmapFactory.decodeStream(inputStream, null, options);
 	}
 	
 	public static Bitmap decodeSampledBitmapFromDescriptor(
