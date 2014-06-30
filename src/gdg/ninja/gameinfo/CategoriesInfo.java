@@ -3,91 +3,82 @@ package gdg.ninja.gameinfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriesInfo{
+public class CategoriesInfo {
 	private int cateId;
-	// private int imgId;
 	private String imgPath;
 	private String cateName;
 	private String cateDesc;
 	private int cateStt;
 	private List<QuestInfo> listQuest;
-	
-	public void setCateId(int cateId){
+
+	public void setCateId(int cateId) {
 		this.cateId = cateId;
 	}
-	
-	public String getImgPath(){
+
+	public String getImgPath() {
 		return imgPath;
 	}
-	
-	public void setImgPath(String imgPath){
+
+	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
 
-	public int getCateId(){
+	public int getCateId() {
 		return cateId;
 	}
-	
-	// public void setImgId(int imgId){
-	// this.imgId = imgId;
-	// }
-	//
-	// public int getImgId(){
-	// return imgId;
-	// }
-	
-	public void setCateName(String cateName){
+
+	public void setCateName(String cateName) {
 		this.cateName = cateName;
 	}
-	
-	public String getCateName(){
+
+	public String getCateName() {
 		return cateName;
 	}
-	
-	public void setCateDesc(String cateDesc){
+
+	public void setCateDesc(String cateDesc) {
 		this.cateDesc = cateDesc;
 	}
-	
-	public String getCateDesc(){
+
+	public String getCateDesc() {
 		return cateDesc;
 	}
-	
-	public void setStt(int stt){
+
+	public void setStt(int stt) {
 		this.cateStt = stt;
 	}
-	
-	public int getStt(){
+
+	public int getStt() {
 		return cateStt;
 	}
-	
-	public void setListQuest(List<QuestInfo> listQuest){
+
+	public void setListQuest(List<QuestInfo> listQuest) {
 		this.listQuest = listQuest;
 	}
-	
-	public List<QuestInfo> getListQuest(){
+
+	public List<QuestInfo> getListQuest() {
 		return listQuest;
 	}
-	
-	public void addListQuest(QuestInfo quest){
-		if(listQuest == null) return;
+
+	public void addListQuest(QuestInfo quest) {
+		if (listQuest == null)
+			return;
 		this.listQuest.add(quest);
 	}
-	
+
 	public CategoriesInfo(String imgPath, String categoriesName,
-			String categoriesDesc, int stt){
+			String categoriesDesc, int stt) {
 		this.imgPath = imgPath;
 		this.cateName = categoriesName;
 		this.cateDesc = categoriesDesc;
 		this.cateStt = stt;
 		this.listQuest = new ArrayList<QuestInfo>();
 	}
-	
-	public CategoriesInfo(){
-		
+
+	public CategoriesInfo() {
 	}
 
 	public CategoriesInfo(int cateId, String imgPath, String categoriesName,
-			String categoriesDesc, int stt){
+			String categoriesDesc, int stt) {
 		this.cateId = cateId;
 		this.imgPath = imgPath;
 		this.cateName = categoriesName;

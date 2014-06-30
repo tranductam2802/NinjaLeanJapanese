@@ -107,7 +107,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		// insert row
 		long category_id = db.insert(TABLE_CATEGORY, null, values);
 		
-		// return categoryID which is auto increament
+		// return categoryID which is auto increment
 		return category_id;
 
 	}
