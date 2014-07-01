@@ -1,7 +1,9 @@
 package gdg.ninja.ui;
 
 import gdg.nat.R;
+import gdg.ninja.database.DatabaseHandler;
 import gdg.ninja.framework.BaseFragment;
+import gdg.ninja.gameinfo.CategoriesInfo;
 import gdg.ninja.gameinfo.QuestInfo;
 import gdg.ninja.navigate.NavigationBar.BTN_LEFT_MODE;
 import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
@@ -55,6 +57,7 @@ public class QuestFragment extends BaseFragment implements
 	private boolean isAnimate = false;
 
 	private int numAnswered = 0;
+	private int numOfWrongAnswered = 0;
 
 	public static QuestFragment getInstance(int questId, int cateId) {
 		QuestFragment fragment = new QuestFragment();
@@ -142,6 +145,7 @@ public class QuestFragment extends BaseFragment implements
 			mNaviManager.goBack();
 		}
 		numAnswered = 0;
+		numOfWrongAnswered = 0;
 
 		// Quest generating
 		List<String> quest = questGenerator.getQuest(questInfo.getAnswer(),
@@ -306,9 +310,30 @@ public class QuestFragment extends BaseFragment implements
 			}
 		};
 		handler.postDelayed(runnable, DELAY_TIME);
+		
+		// Increase number of wrong answered
+		numOfWrongAnswered++;
 	}
 
 	private void onWinGame() {
+		// Calculate score base on wrong answered
+		int score;
+		if(numOfWrongAnswered > 10) score = 3;
+		else if(numOfWrongAnswered > 5) score = 4;
+		else if(numOfWrongAnswered > 1) score = 5;
+		else
+			score = 6;
+		
+		// Update Stt for current QuestList and CategoryList
+		App.getQuestById(mQuestId, mCategoryId).setQuestStt(score);
+		CategoriesInfo categoriesInfo = App.getCategoryById(mCategoryId);
+		categoriesInfo.reCalculateStt();
+
+		// Update score of current Quest and Stt of current Category in database
+		DatabaseHandler db = new DatabaseHandler(getActivity());
+		db.updateScoreByQuestId(mQuestId, score);
+		db.updateCateSttByCategoryId(mCategoryId, categoriesInfo.getStt());
+
 		Builder builder = new Builder(getActivity());
 		// TODO: Create new game
 		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
