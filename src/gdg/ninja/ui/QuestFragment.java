@@ -7,15 +7,12 @@ import gdg.ninja.navigate.NavigationBar.BTN_LEFT_MODE;
 import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
 import gdg.ninja.navigate.NavigationBar.INavigationBarListener;
 import gdg.ninja.util.App;
-import gdg.ninja.util.ImagePathProcess;
 import gdg.ninja.util.QuestGenerator;
 
-import java.io.IOException;
 import java.util.List;
 
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -25,6 +22,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class QuestFragment extends BaseFragment implements
 		INavigationBarListener, OnClickListener {
@@ -110,13 +109,10 @@ public class QuestFragment extends BaseFragment implements
 		QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
 
 		// Set quest image
-		try {
-			mImgAvatar.setImageBitmap(BitmapFactory
-					.decodeStream(ImagePathProcess.getImgInputStream(
-							getActivity(), questInfo.getImgPath())));
-		} catch (IOException e) {
-			mImgAvatar.setImageResource(R.drawable.dummy_image);
-		}
+		Picasso.with(getActivity())
+				.load(questInfo.getImgPath().replace("assets",
+						"file:///android_asset"))
+				.placeholder(R.drawable.dummy_image).into(mImgAvatar);
 
 		QuestGenerator questGenerator = new QuestGenerator(getActivity());
 		// Answer generating

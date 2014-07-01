@@ -2,19 +2,18 @@ package gdg.ninja.adapter;
 
 import gdg.nat.R;
 import gdg.ninja.gameinfo.CategoriesInfo;
-import gdg.ninja.util.ImagePathProcess;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class ListCategoriesAdapter extends BaseAdapter{
 	private Context mContext;
@@ -77,13 +76,10 @@ public class ListCategoriesAdapter extends BaseAdapter{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		CategoriesInfo item = getItem(position);
-		try{
-			holder.imgAvatar.setImageBitmap(BitmapFactory
-					.decodeStream(ImagePathProcess.getImgInputStream(mContext,
-							item.getImgPath())));
-		}catch(IOException e){
-			holder.imgAvatar.setImageResource(R.drawable.ic_launcher);
-		}
+		Picasso.with(mContext)
+		.load(item.getImgPath().replace("assets",
+				"file:///android_asset"))
+		.placeholder(R.drawable.dummy_image).into(holder.imgAvatar);
 		holder.txtCategoryName.setText(item.getCateName());
 		holder.txtCategoryDescription.setText(item.getCateDesc());
 		int rate = item.getStt();
