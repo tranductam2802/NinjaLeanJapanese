@@ -39,7 +39,12 @@ public class ListGameFragment extends BaseFragment implements
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id){
 				CategoriesInfo item = mAdapter.getItem(position);
-				if(item.getStt() < 3) return;
+				if(position != 0){
+					CategoriesInfo previousItem = mAdapter
+							.getItem(position - 1);
+					if(previousItem.getStt() < 3) return;
+				}
+
 				ListQuestFragment fragment = ListQuestFragment.getInstance(item
 						.getCateId());
 				mNaviManager.showPage(fragment, "");

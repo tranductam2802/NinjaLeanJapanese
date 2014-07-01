@@ -29,7 +29,7 @@ public class ListQuestFragment extends BaseFragment implements
 		INavigationBarListener{
 	private static final String KEY_CATEGORY_ID = "category";
 	private GridView mGrvListQuests;
-	
+
 	private ListQuestAdapter mAdapter;
 	private int mCategoryId = -1;
 	private String mScreenTitle = "";
@@ -63,7 +63,7 @@ public class ListQuestFragment extends BaseFragment implements
 		fragment.setArguments(bundle);
 		return fragment;
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -75,7 +75,7 @@ public class ListQuestFragment extends BaseFragment implements
 		}
 		mScreenTitle = App.getCategoryById(mCategoryId).getCateName();
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState){
@@ -83,7 +83,7 @@ public class ListQuestFragment extends BaseFragment implements
 		initView(view);
 		return view;
 	}
-	
+
 	@Override
 	public void onResume(){
 		super.onResume();
@@ -97,7 +97,10 @@ public class ListQuestFragment extends BaseFragment implements
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id){
 				QuestInfo item = mAdapter.getItem(position);
-				if(item.getQuestStt() < 3) return;
+				if(position != 0){
+					QuestInfo previousItem = mAdapter.getItem(position - 1);
+					if(previousItem.getQuestStt() < 3) return;
+				}
 				QuestFragment fragment = QuestFragment.getInstance(
 						item.getQuestId(), mCategoryId);
 				mNaviManager.showPage(fragment, "");
@@ -106,7 +109,7 @@ public class ListQuestFragment extends BaseFragment implements
 		mGrvListQuests.getViewTreeObserver().addOnGlobalLayoutListener(
 				mOnGlobalLayoutListener);
 	}
-	
+
 	@SuppressLint("NewApi")
 	@SuppressWarnings("deprecation")
 	@Override
@@ -127,27 +130,27 @@ public class ListQuestFragment extends BaseFragment implements
 		mAdapter = new ListQuestAdapter(listQuest, getActivity());
 		mGrvListQuests.setAdapter(mAdapter);
 	}
-	
+
 	@Override
 	public String getTitle(){
 		return mScreenTitle;
 	}
-	
+
 	@Override
 	public BTN_LEFT_MODE getButtonLeftMode(){
 		return BTN_LEFT_MODE.BACK;
 	}
-	
+
 	@Override
 	public BTN_RIGHT_MODE getButtonRightMode(){
 		return BTN_RIGHT_MODE.SETTING;
 	}
-	
+
 	@Override
 	public void onLeftClicked(){
 		mNaviManager.goBack();
 	}
-	
+
 	@Override
 	public void onRightClicked(){
 		Intent intent = new Intent(getActivity(), OptionActivity.class);
