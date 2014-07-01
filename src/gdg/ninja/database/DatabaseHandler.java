@@ -161,6 +161,9 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		return cateList;
 	}
 	
+	/*
+	 * Get all Quest by Category Name
+	 */
 	public List<QuestInfo> getAllQuestByCategoryName(String category_name){
 		List<QuestInfo> quests = new ArrayList<QuestInfo>();
 		
@@ -189,5 +192,31 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		}
 		
 		return quests;
+	}
+	
+	/*
+	 * Update score for a quest by it's Id
+	 */
+	public int updateScoreByQuestId(int questId, int valueOfScore){
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		ContentValues values = new ContentValues();
+		values.put(QUEST_STT, valueOfScore);
+		
+		return db.update(TABLE_QUESTION, values, QUEST_ID + " = ?",
+				new String[] { String.valueOf(questId)});
+	}
+	
+	/*
+	 * Update stt for a category by it's Id
+	 */
+	public int updateCateSttByCategoryId(int cateId, int newStt){
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		ContentValues values = new ContentValues();
+		values.put(CAT_STT, newStt);
+		
+		return db.update(TABLE_CATEGORY, values, CAT_ID + " = ?",
+				new String[] { String.valueOf(cateId)});
 	}
 }

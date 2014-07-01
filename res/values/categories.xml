@@ -2,21 +2,21 @@
 <resources>
 
     <string-array name="defaultCategoryQueries">
-        <item>INSERT INTO CATEGORY VALUES(1,\'Động vật\',\'Các con vật thân thuộc hằng ngày với con người.\',\'assets/img_cat_thumbs/img_cat_dongvat.png\',4);</item>
+        <item>INSERT INTO CATEGORY VALUES(1,\'Động vật\',\'Các con vật thân thuộc hằng ngày với con người.\',\'assets/img_cat_thumbs/img_cat_dongvat.png\',0);</item>
     </string-array>
     <string-array name="defaultQuestionQueries">
-        <item>INSERT INTO "QUESTION" VALUES(1,\'いぬ\',4,\'Động vật\',\'assets/cate_0_img/cho.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(2,\'ねこ\',6,\'Động vật\',\'assets/cate_0_img/meo.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(3,\'ぶた\',3,\'Động vật\',\'assets/cate_0_img/lon.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(4,\'にわとり\',3,\'Động vật\',\'assets/cate_0_img/ga.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(5,\'あひる\',3,\'Động vật\',\'assets/cate_0_img/vit.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(6,\'うま\',3,\'Động vật\',\'assets/cate_0_img/ngua.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(7,\'うし\',3,\'Động vật\',\'assets/cate_0_img/bo.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(8,\'ねずみ\',3,\'Động vật\',\'assets/cate_0_img/chuot.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(9,\'とり\',3,\'Động vật\',\'assets/cate_0_img/chim.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(10,\'ライオン\',3,\'Động vật\',\'assets/cate_0_img/sutu.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(11,\'ぞう\',3,\'Động vật\',\'assets/cate_0_img/voi.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(12,\'さかな\',3,\'Động vật\',\'assets/cate_0_img/ca.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(1,\'いぬ\',0,\'Động vật\',\'assets/cate_0_img/cho.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(2,\'ねこ\',0,\'Động vật\',\'assets/cate_0_img/meo.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(3,\'ぶた\',0,\'Động vật\',\'assets/cate_0_img/lon.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(4,\'にわとり\',0,\'Động vật\',\'assets/cate_0_img/ga.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(5,\'あひる\',0,\'Động vật\',\'assets/cate_0_img/vit.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(6,\'うま\',0,\'Động vật\',\'assets/cate_0_img/ngua.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(7,\'うし\',0,\'Động vật\',\'assets/cate_0_img/bo.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(8,\'ねずみ\',0,\'Động vật\',\'assets/cate_0_img/chuot.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(9,\'とり\',0,\'Động vật\',\'assets/cate_0_img/chim.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(10,\'ライオン\',0,\'Động vật\',\'assets/cate_0_img/sutu.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(11,\'ぞう\',0,\'Động vật\',\'assets/cate_0_img/voi.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(12,\'さかな\',0,\'Động vật\',\'assets/cate_0_img/ca.png\');</item>
     </string-array>
     <string-array name="cate_img">
         <item>assets/img_cat_thumbs/img_cat_dongvat.png</item>
