@@ -380,6 +380,9 @@ public class QuestFragment extends BaseFragment implements
 
 	private void bombQuest() {
 		// TODO: implement rule to restrict use bomb
+
+		resetQuestAndAnswer();
+
 		QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
 		String answer = questInfo.getAnswer();
 		for(Tag tag:mListQuest){
@@ -394,15 +397,7 @@ public class QuestFragment extends BaseFragment implements
 	private void compassQuest() {
 		// TODO: implement rules for use compassQuest and implement animation
 
-		// Reset Quest Tag and Answer Tag
-		for (Tag tag : mListAnswer) {
-			if (tag.preView != null) {
-				tag.view.setText("");
-				tag.view.setVisibility(View.INVISIBLE);
-				tag.preView.setVisibility(View.VISIBLE);
-			}
-		}
-
+		resetQuestAndAnswer();
 		// Fill the first Answer Tag
 		for (Tag tag : mListQuest) {
 			if (tag.string.equals(mListAnswer[0].string)) {
@@ -414,6 +409,21 @@ public class QuestFragment extends BaseFragment implements
 			}
 		}
 
+	}
+
+	/*
+	 * Reset Quest Tag and Answer Tag
+	 */
+	private void resetQuestAndAnswer() {
+		for (Tag tag : mListAnswer) {
+			if (tag.preView != null) {
+				tag.view.setText("");
+				tag.view.setVisibility(View.INVISIBLE);
+				tag.preView.setVisibility(View.VISIBLE);
+				tag.preView = null;
+			}
+		}
+		numAnswered = 0;
 	}
 
 	@Override
