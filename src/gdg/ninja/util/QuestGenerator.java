@@ -18,6 +18,10 @@ public class QuestGenerator{
 	private final String IGNORE_TSU = "あいうえおやゆよアイウエオヤユヨ";
 	private final String YAYUYO_STRING = "やゆよヤユヨ";
 	private final String VALID_YAYUYO = "きしちにひみりぎじぢびぴきキシチニヒミリギジヂビピ";
+
+	private enum QUEST_TYPE {
+		FULL_HIRAGANA, FULL_KATAKA, HALF_HIRA_KATA
+	}
 	
 	private Context getContext(){
 		return context;
@@ -72,13 +76,44 @@ public class QuestGenerator{
 		// Get quest tag
 		int index = 0; // Index is a unique number for each question used for
 						// generate frog tag
+
+		int numberOfHiraganaChar = 0;
+		int numberOfKatakaChar = 0;
+
 		for(Integer answerIndex : listIndex){
 			index += answerIndex;
+			if (answerIndex % 2 == 0)
+				numberOfHiraganaChar++;
+			else
+				numberOfKatakaChar++;
 		}
+
+		// Check what QUEST_TYPE of this quest
+		QUEST_TYPE questType;
+
+		if (numberOfHiraganaChar == 0)
+			questType = QUEST_TYPE.FULL_KATAKA;
+		else if (numberOfKatakaChar == 0)
+			questType = QUEST_TYPE.FULL_HIRAGANA;
+		else
+			questType = QUEST_TYPE.HALF_HIRA_KATA;
+
 		for(int i = 0; i < level; i++){
 			boolean isGenerate = true;
-			index = 2 * (index + i * 10) % dictLength;
 			
+			// Generate frog tag base on Quest_Type
+			switch (questType) {
+				case FULL_HIRAGANA:
+					index = 2 * (index + i * 10) % dictLength;
+					break;
+				case FULL_KATAKA:
+					index = (2 * (index + i * 10) + 1) % dictLength;
+					break;
+				case HALF_HIRA_KATA:
+					index = (index + i * 10) % dictLength;
+					break;
+			}
+
 			CHECK_IS_GENERATE: while(isGenerate){
 				isGenerate = false;
 				String dictItem = dict[index];
