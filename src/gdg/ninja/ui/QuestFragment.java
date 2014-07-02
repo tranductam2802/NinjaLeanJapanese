@@ -405,6 +405,7 @@ public class QuestFragment extends BaseFragment implements
 				mListAnswer[0].view.setVisibility(View.VISIBLE);
 				mListAnswer[0].preView = tag.view;
 				tag.view.setVisibility(View.INVISIBLE);
+				numAnswered++;
 				return;
 			}
 		}
