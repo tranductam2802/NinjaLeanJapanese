@@ -327,15 +327,21 @@ public class QuestFragment extends BaseFragment implements
 		else
 			score = 6;
 
-		// Update Stt for current QuestList and CategoryList
-		App.getQuestById(mQuestId, mCategoryId).setQuestStt(score);
-		CategoriesInfo categoriesInfo = App.getCategoryById(mCategoryId);
-		categoriesInfo.reCalculateStt();
+		QuestInfo quest = App.getQuestById(mQuestId, mCategoryId);
 
-		// Update score of current Quest and Stt of current Category in database
-		DatabaseHandler db = new DatabaseHandler(getActivity());
-		db.updateScoreByQuestId(mQuestId, score);
-		db.updateCateSttByCategoryId(mCategoryId, categoriesInfo.getStt());
+		// Only update score if new score is higher
+		if (score > quest.getQuestStt()) {
+			// Update Stt for current QuestList and CategoryList
+			quest.setQuestStt(score);
+			CategoriesInfo categoriesInfo = App.getCategoryById(mCategoryId);
+			categoriesInfo.reCalculateStt();
+
+			// Update score of current Quest and Stt of current Category in
+			// database
+			DatabaseHandler db = new DatabaseHandler(getActivity());
+			db.updateScoreByQuestId(mQuestId, score);
+			db.updateCateSttByCategoryId(mCategoryId, categoriesInfo.getStt());
+		}
 
 		Builder builder = new Builder(getActivity());
 		// TODO: Create new game
