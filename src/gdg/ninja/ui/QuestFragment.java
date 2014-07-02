@@ -310,7 +310,7 @@ public class QuestFragment extends BaseFragment implements
 			}
 		};
 		handler.postDelayed(runnable, DELAY_TIME);
-		
+
 		// Increase number of wrong answered
 		numOfWrongAnswered++;
 	}
@@ -318,12 +318,15 @@ public class QuestFragment extends BaseFragment implements
 	private void onWinGame() {
 		// Calculate score base on wrong answered
 		int score;
-		if(numOfWrongAnswered > 10) score = 3;
-		else if(numOfWrongAnswered > 5) score = 4;
-		else if(numOfWrongAnswered > 1) score = 5;
+		if (numOfWrongAnswered > 10)
+			score = 3;
+		else if (numOfWrongAnswered > 5)
+			score = 4;
+		else if (numOfWrongAnswered > 1)
+			score = 5;
 		else
 			score = 6;
-		
+
 		// Update Stt for current QuestList and CategoryList
 		App.getQuestById(mQuestId, mCategoryId).setQuestStt(score);
 		CategoriesInfo categoriesInfo = App.getCategoryById(mCategoryId);
@@ -385,7 +388,7 @@ public class QuestFragment extends BaseFragment implements
 
 		QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
 		String answer = questInfo.getAnswer();
-		for(Tag tag:mListQuest){
+		for (Tag tag : mListQuest) {
 			if (!answer.contains(tag.string)) {
 				// TODO: implement animation
 				tag.view.setVisibility(View.GONE);
@@ -429,6 +432,8 @@ public class QuestFragment extends BaseFragment implements
 
 	@Override
 	public void onClick(View v) {
+		if (isAnimate)
+			return;
 		int id = v.getId();
 		switch (id) {
 			case R.id.btn_share_facebook:
