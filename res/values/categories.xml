@@ -2,24 +2,33 @@
 <resources>
 
     <string-array name="defaultCategoryQueries">
-        <item>INSERT INTO CATEGORY VALUES(1,\'Động vật\',\'Các con vật thân thuộc hằng ngày với con người.\',\'assets/img_cat_thumbs/img_cat_dongvat.png\',0);</item>
+        <item>INSERT INTO CATEGORY VALUES(1,\'Động vật\',\'Các con vật thân thuộc hằng ngày với con người.\',\'assets/cate_0_img/cho.jpg\',0);</item>
     </string-array>
     <string-array name="defaultQuestionQueries">
-        <item>INSERT INTO "QUESTION" VALUES(1,\'いぬ\',0,\'Động vật\',\'assets/cate_0_img/cho.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(2,\'ねこ\',0,\'Động vật\',\'assets/cate_0_img/meo.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(3,\'ぶた\',0,\'Động vật\',\'assets/cate_0_img/lon.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(4,\'にわとり\',0,\'Động vật\',\'assets/cate_0_img/ga.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(5,\'あひる\',0,\'Động vật\',\'assets/cate_0_img/vit.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(6,\'うま\',0,\'Động vật\',\'assets/cate_0_img/ngua.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(7,\'うし\',0,\'Động vật\',\'assets/cate_0_img/bo.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(8,\'ねずみ\',0,\'Động vật\',\'assets/cate_0_img/chuot.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(9,\'とり\',0,\'Động vật\',\'assets/cate_0_img/chim.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(10,\'ライオン\',0,\'Động vật\',\'assets/cate_0_img/sutu.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(11,\'ぞう\',0,\'Động vật\',\'assets/cate_0_img/voi.png\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(12,\'さかな\',0,\'Động vật\',\'assets/cate_0_img/ca.png\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(1,\'いぬ\',0,\'Động vật\',\'assets/cate_0_img/cho.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(2,\'ねこ\',0,\'Động vật\',\'assets/cate_0_img/meo.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(3,\'ぶた\',0,\'Động vật\',\'assets/cate_0_img/lon.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(4,\'にわとり\',0,\'Động vật\',\'assets/cate_0_img/ga.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(5,\'あひる\',0,\'Động vật\',\'assets/cate_0_img/vit.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(6,\'うま\',0,\'Động vật\',\'assets/cate_0_img/ngua.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(7,\'うし\',0,\'Động vật\',\'assets/cate_0_img/bo.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(8,\'ねずみ\',0,\'Động vật\',\'assets/cate_0_img/chuot.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(9,\'とり\',0,\'Động vật\',\'assets/cate_0_img/chim.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(10,\'ライオン\',0,\'Động vật\',\'assets/cate_0_img/sutu.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(11,\'ぞう\',0,\'Động vật\',\'assets/cate_0_img/voi.jpg\');</item>
+        <item>INSERT INTO "QUESTION" VALUES(12,\'さかな\',0,\'Động vật\',\'assets/cate_0_img/ca.jpg\');</item>
     </string-array>
-    <string-array name="cate_img">
-        <item>assets/img_cat_thumbs/img_cat_dongvat.png</item>
+    <string-array name="upgradeToVersion2">
+        <item>INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (2, \'Hoa quả\', \'Các loại hoa quả cơ bản chúng ta thường gặp hằng ngày.\', \'assets/cate_1_img/cam.jpg\', 0);</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (13, \'いちご\', 0, \'Hoa quả\', \'assets/cate_1_img/dau-tay.jpg\');</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (14, \'もも\', 0, \'Hoa quả\', \'assets/cate_1_img/dao.jpg\');</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (15, \'すいか\', 0, \'Hoa quả\', \'assets/cate_1_img/duahau.jpg\');</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (16, \'ぶどう\', 0, \'Hoa quả\', \'assets/cate_1_img/nho.jpg\');</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (17, \'なし\', 0, \'Hoa quả\', \'assets/cate_1_img/le.jpg\');</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (18, \'みかん\', 0, \'Hoa quả\', \'assets/cate_1_img/quyt.jpg\');</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (19, \'りんご\', 0, \'Hoa quả\', \'assets/cate_1_img/tao.jpg\');</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (20, \'バナナ\', 0, \'Hoa quả\', \'assets/cate_1_img/chuoi.jpg\');</item>
+        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (21, \'オレンジ\', 0, \'Hoa quả\', \'assets/cate_1_img/cam.jpg\');</item>
     </string-array>
 
 </resources>
