@@ -17,35 +17,40 @@ public final class R {
         public static final int fragment_pop_exit=0x7f040005;
     }
     public static final class array {
-        public static final int cate_img=0x7f050002;
         public static final int defaultCategoryQueries=0x7f050000;
         public static final int defaultQuestionQueries=0x7f050001;
         public static final int dict_ja=0x7f050003;
+        public static final int upgradeToVersion2=0x7f050002;
     }
     public static final class attr {
     }
     public static final class color {
-        public static final int answer_color=0x7f06000c;
-        public static final int btn_bomb=0x7f06000a;
-        public static final int btn_choose_from_gallery=0x7f060007;
-        public static final int btn_facebook=0x7f060008;
-        public static final int btn_flag=0x7f06000b;
-        public static final int btn_google=0x7f060009;
+        public static final int answer_color=0x7f06000d;
+        public static final int btn_bomb=0x7f06000b;
+        public static final int btn_choose_from_gallery=0x7f060008;
+        public static final int btn_facebook=0x7f060009;
+        public static final int btn_flag=0x7f06000c;
+        public static final int btn_google=0x7f06000a;
         /**  Testing purpose only 
          */
-        public static final int btn_take_picture=0x7f060006;
+        public static final int btn_take_picture=0x7f060007;
         /**  Start menu
          */
-        public static final int press_button_1=0x7f06000d;
-        public static final int press_button_2=0x7f06000e;
+        public static final int press_button_1=0x7f06000e;
+        public static final int press_button_2=0x7f06000f;
         /**  Application color tone 
          */
         public static final int primary_app_color=0x7f060000;
-        public static final int primary_app_color_2=0x7f060001;
-        public static final int secondary_app_color=0x7f060003;
-        public static final int start_menu_color=0x7f060002;
-        public static final int tertiary_answer_color=0x7f060005;
-        public static final int tertiary_app_color=0x7f060004;
+        public static final int primary_app_color_2=0x7f060002;
+        public static final int primary_app_color_transparent=0x7f060001;
+        /**  creat custom game
+         */
+        public static final int save_to_1=0x7f060010;
+        public static final int save_to_2=0x7f060011;
+        public static final int secondary_app_color=0x7f060004;
+        public static final int start_menu_color=0x7f060003;
+        public static final int tertiary_answer_color=0x7f060006;
+        public static final int tertiary_app_color=0x7f060005;
     }
     public static final class dimen {
         public static final int ac_start_navi_btn_height=0x7f07001a;
@@ -87,34 +92,40 @@ public final class R {
         public static final int tag_size=0x7f070012;
     }
     public static final class drawable {
-        public static final int dr_line_shadow=0x7f020000;
-        public static final int dr_navi_bar_button=0x7f020001;
-        public static final int dr_tag_button_ac_categories=0x7f020002;
-        public static final int dr_tag_button_ac_categories_press=0x7f020003;
-        public static final int dr_tag_button_ac_categories_selector=0x7f020004;
-        public static final int dr_tag_button_ac_start=0x7f020005;
-        public static final int dr_tag_button_ac_start_2=0x7f020006;
-        public static final int dr_tag_button_ac_start_press=0x7f020007;
-        public static final int dr_tag_button_ac_start_press_2=0x7f020008;
-        public static final int dr_tag_button_ac_start_selector=0x7f020009;
-        public static final int dr_tag_button_ac_start_selector_2=0x7f02000a;
-        public static final int dummy_image=0x7f02000b;
-        public static final int ic_arow_back=0x7f02000c;
-        public static final int ic_bomb=0x7f02000d;
-        public static final int ic_btn_back=0x7f02000e;
-        public static final int ic_btn_back_arrow=0x7f02000f;
-        public static final int ic_btn_facebook_arrow=0x7f020010;
-        public static final int ic_close=0x7f020011;
-        public static final int ic_facebook=0x7f020012;
-        public static final int ic_flag=0x7f020013;
-        public static final int ic_google=0x7f020014;
-        public static final int ic_launcher=0x7f020015;
-        public static final int ic_rate_half=0x7f020016;
-        public static final int ic_rate_off=0x7f020017;
-        public static final int ic_rate_on=0x7f020018;
-        public static final int ic_setting=0x7f020019;
-        public static final int ic_tut=0x7f02001a;
-        public static final int logo_app=0x7f02001b;
+        public static final int border_avatar=0x7f020000;
+        public static final int browse_icon=0x7f020001;
+        public static final int camera_icon=0x7f020002;
+        public static final int dr_line_shadow=0x7f020003;
+        public static final int dr_navi_bar_button=0x7f020004;
+        public static final int dr_tag_button_ac_categories=0x7f020005;
+        public static final int dr_tag_button_ac_categories_press=0x7f020006;
+        public static final int dr_tag_button_ac_categories_selector=0x7f020007;
+        public static final int dr_tag_button_ac_start=0x7f020008;
+        public static final int dr_tag_button_ac_start_2=0x7f020009;
+        public static final int dr_tag_button_ac_start_press=0x7f02000a;
+        public static final int dr_tag_button_ac_start_press_2=0x7f02000b;
+        public static final int dr_tag_button_ac_start_selector=0x7f02000c;
+        public static final int dr_tag_button_ac_start_selector_2=0x7f02000d;
+        public static final int dummy_image=0x7f02000e;
+        public static final int ic_arow_back=0x7f02000f;
+        public static final int ic_bomb=0x7f020010;
+        public static final int ic_btn_back=0x7f020011;
+        public static final int ic_btn_back_arrow=0x7f020012;
+        public static final int ic_btn_facebook_arrow=0x7f020013;
+        public static final int ic_close=0x7f020014;
+        public static final int ic_facebook=0x7f020015;
+        public static final int ic_flag=0x7f020016;
+        public static final int ic_google=0x7f020017;
+        public static final int ic_launcher=0x7f020018;
+        public static final int ic_rate_half=0x7f020019;
+        public static final int ic_rate_off=0x7f02001a;
+        public static final int ic_rate_on=0x7f02001b;
+        public static final int ic_setting=0x7f02001c;
+        public static final int ic_tut=0x7f02001d;
+        public static final int logo_app=0x7f02001e;
+        public static final int next_q=0x7f02001f;
+        public static final int next_question=0x7f020020;
+        public static final int ok=0x7f020021;
     }
     public static final class id {
         public static final int answer_tag=0x7f080024;
@@ -187,8 +198,9 @@ public final class R {
         public static final int item_ltv_list_game_categories=0x7f03000c;
         public static final int layout_loading=0x7f03000d;
         public static final int navi_bar=0x7f03000e;
-        public static final int tag_answer=0x7f03000f;
-        public static final int tag_quest=0x7f030010;
+        public static final int popup_finish=0x7f03000f;
+        public static final int tag_answer=0x7f030010;
+        public static final int tag_quest=0x7f030011;
     }
     public static final class string {
         /**  App common 
@@ -242,9 +254,11 @@ public final class R {
         public static final int AppTheme=0x7f0b0001;
         public static final int ac_start_navi_btn_1=0x7f0b0002;
         public static final int ac_start_navi_btn_2=0x7f0b0003;
-        public static final int navi_bar_btn=0x7f0b0004;
-        public static final int tag_answer=0x7f0b0005;
-        public static final int tag_answer_close=0x7f0b0006;
-        public static final int tag_quest=0x7f0b0007;
+        public static final int congratulation_text=0x7f0b0004;
+        public static final int navi_bar_btn=0x7f0b0006;
+        public static final int nomal_text=0x7f0b0005;
+        public static final int tag_answer=0x7f0b0007;
+        public static final int tag_answer_close=0x7f0b0008;
+        public static final int tag_quest=0x7f0b0009;
     }
 }
