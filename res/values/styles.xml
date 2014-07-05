@@ -22,7 +22,24 @@
         <item name="android:background">@drawable/dr_tag_button_ac_start_selector_2</item>
        
     </style>
-
+ 	<style name="congratulation_text">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">38sp</item>     
+        <item name="android:typeface">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@android:color/transparent</item>
+        
+    </style>
+    
+ 	<style name="nomal_text">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>     
+        <item name="android:typeface">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@android:color/transparent</item>
+        
+    </style>
+    
     <style name="navi_bar_btn">
         <item name="android:textColor">#FFFFFFFF</item>
         <item name="android:textSize">19sp</item>
@@ -34,9 +51,9 @@
 
     <style name="tag_answer">
         <item name="android:layout_margin">@dimen/tag_margin</item>
-        <item name="android:background">@color/tertiary_app_color</item>
+       <item name="android:background">@color/btn_flag</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/start_menu_color</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">19sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
@@ -44,7 +61,7 @@
     
     <style name="tag_answer_close">
         <item name="android:layout_margin">@dimen/tag_margin</item>
-        <item name="android:background">@color/tertiary_answer_color</item>
+        <item name="android:background">@color/secondary_app_color</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/start_menu_color</item>
         <item name="android:textSize">19sp</item>
@@ -55,9 +72,9 @@
 
     <style name="tag_quest">
         <item name="android:layout_margin">@dimen/tag_margin</item>
-        <item name="android:background">@color/tertiary_app_color</item>
+        <item name="android:background">@color/btn_flag</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/start_menu_color</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>

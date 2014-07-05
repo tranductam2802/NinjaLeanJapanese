@@ -10,7 +10,7 @@
     <!-- Activity Game -->
     <dimen name="list_game_categories_screen_hozirontal_margin">15dp</dimen>
     <dimen name="list_game_categories_screen_vertical_margin">15dp</dimen>
-    <dimen name="list_game_categories_item_horizontal_padding">5dp</dimen>
+    <dimen name="list_game_categories_item_horizontal_padding">4dp</dimen>
     <dimen name="list_game_categories_item_vertical_padding">2dp</dimen>
     <dimen name="list_game_categories_tag_button_height">60dp</dimen>  
     <dimen name="list_game_categories_avatar_size">64dp</dimen>
@@ -27,6 +27,7 @@
     <dimen name="quest_tag_line_horizontal_space">5dp</dimen>
     <dimen name="quest_answer">90dp</dimen>
     <dimen name="list_game_quest_avatar_size">85dp</dimen>
+   
     <!-- Activity start -->
     <dimen name="ac_start_navi_btn_width">300dp</dimen>
     <dimen name="ac_start_navi_btn_height">61dp</dimen>

@@ -3,7 +3,8 @@
 
     <!-- Application color tone -->
     <color name="primary_app_color">#FF5ad6bc</color>
-    <color name="primary_app_color_2">#FF5ad6bc</color>
+    <color name="primary_app_color_transparent">#BF5ad6bc</color>
+    <color name="primary_app_color_2">#FF0099cc</color>
     <color name="start_menu_color">#FF5ad6bc</color>
     <color name="secondary_app_color">#FF5ad6bc</color>
     <color name="tertiary_app_color">#FFffffff</color>
@@ -16,12 +17,14 @@
     <color name="btn_google">#FFd33e2a</color>
     <color name="btn_bomb">#FF27ae61</color>
     <color name="btn_flag">#FF2dcc70</color>
-    <color name="answer_color">#FFffffff</color>
+    <color name="answer_color">#FF0099cc</color>
     
     <!-- Start menu-->
     <color name="press_button_1">#FFe9fcfd</color>
     <color name="press_button_2">#FF8ddfd3</color>
-    
+     <!-- creat custom game-->
+    <color name="save_to_1">#FFF1C40F</color>
+    <color name="save_to_2">#FFF39C12</color>
     
 
 </resources>

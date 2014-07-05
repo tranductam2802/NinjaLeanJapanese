@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    
+    >
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/secondary_app_color"
+    android:gravity="top|center_horizontal"
+    >
+    
+<TextView
+        
+        style="@style/congratulation_text"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/menu_button_height"
+        android:layout_margin="0dp"
+        android:text="Congratulation!" />
+    
+  <ImageView
+            android:id="@id/img_input_hint_picture"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/hint_input_hint_picture" 
+            android:background="@android:color/white"
+            
+            />
+  <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:orientation="horizontal" 
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:layout_marginTop="15dp"
+    >
+<ImageView
+        android:id="@id/rate_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"             
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_on" 
+        android:layout_margin="2dp"
+        
+        />
+<ImageView
+        android:id="@id/rate_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"               
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_on" 
+        android:layout_margin="2dp"/>
+<ImageView
+        android:id="@id/rate_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"      
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_rate_on" 
+        android:layout_margin="2dp"/>
+  </LinearLayout>
+
+  <TextView
+      style="@style/nomal_text"
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:layout_margin="0dp"
+      android:text="You have 6 points !" />
+
+  <ImageView
+      android:layout_width="100dp"
+      android:layout_height="60dp"
+      android:layout_margin="25dp"
+      android:background="@drawable/next_question"
+      android:padding="10dp"
+      android:src="@drawable/next_q" />
+  
+   
+  
+    
+</LinearLayout>
+<LinearLayout 
+   	android:layout_width="match_parent"
+   	android:layout_height="@dimen/quest_image_button_share_height"
+    android:orientation="horizontal" 
+    android:background="@android:color/transparent"   
+    android:layout_alignParentBottom="true"
+    >
+   <ImageView
+                android:id="@id/btn_share_facebook"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/quest_image_button_share_height"
+                android:background="@color/btn_facebook"
+                android:contentDescription="@string/image_description"
+               	android:layout_weight="1"
+                android:src="@drawable/ic_facebook" 
+                
+                />
+
+            <ImageView
+                android:id="@id/btn_share_google"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/quest_image_button_share_height"
+                android:background="@color/btn_google"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/ic_google" 
+                
+                />
+
+        </LinearLayout>
+</RelativeLayout>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/start_menu_color"
+    android:background="@android:color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
@@ -15,7 +15,7 @@
             android:layout_width="@dimen/quest_image_size"
             android:layout_height="@dimen/quest_image_size"
             android:layout_weight="3"
-            android:background="@color/primary_app_color"
+            android:background="@android:color/white"
             android:contentDescription="@string/image_description"
             android:scaleType="fitXY" />
 
