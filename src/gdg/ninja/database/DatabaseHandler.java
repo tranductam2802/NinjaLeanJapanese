@@ -3,6 +3,7 @@ package gdg.ninja.database;
 import gdg.nat.R;
 import gdg.ninja.gameinfo.CategoriesInfo;
 import gdg.ninja.gameinfo.QuestInfo;
+import gdg.ninja.util.App;
 import gdg.ninja.util.NLog;
 
 import java.security.InvalidKeyException;
@@ -17,9 +18,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-
-	private static final int DATABASE_VERSION = 2;
-
 	private static final String DATABASE_NAME = "NinjaDB";
 
 	private static final String TABLE_CATEGORY = "CATEGORY";
@@ -56,7 +54,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	Context mContext;
 
 	public DatabaseHandler(Context context) {
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		super(context, DATABASE_NAME, null, App.getContext().getResources()
+				.getInteger(R.integer.databaseVersion));
 		mContext = context;
 	}
 
@@ -84,7 +83,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		}
 
 		db.setVersion(1);
-		onUpgrade(db, 1, DATABASE_VERSION);
+		onUpgrade(db, 1, resources.getInteger(R.integer.databaseVersion));
 	}
 
 	@Override
@@ -97,6 +96,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					updateQueries = resources
 							.getStringArray(R.array.upgradeToVersion2);
 					break;
+				case 3:
+					updateQueries = resources
+							.getStringArray(R.array.upgradeToVersion3);
 			}
 			if (updateQueries != null)
 				for (String singleQuery : updateQueries)
