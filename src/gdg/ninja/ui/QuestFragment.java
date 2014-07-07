@@ -54,6 +54,7 @@ public class QuestFragment extends BaseFragment implements
 	private int sizeLineQuestOne = 0;
 	private int sizeLineQuestTwo = 0;
 	private int sizeLineQuestThree = 0;
+	private String mScreenTitle = "";
 	private boolean isAnimate = false;
 
 	private int numAnswered = 0;
@@ -79,6 +80,7 @@ public class QuestFragment extends BaseFragment implements
 			mCategoryId = bundle.getInt(KEY_CATEGORY_ID);
 			mQuestId = bundle.getInt(KEY_QUEST_ID);
 		}
+		mScreenTitle = App.getCategoryById(mCategoryId).getCateName();
 	}
 
 	@Override
@@ -344,7 +346,6 @@ public class QuestFragment extends BaseFragment implements
 		}
 
 		Builder builder = new Builder(getActivity());
-		// TODO: Create new game
 		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -358,25 +359,25 @@ public class QuestFragment extends BaseFragment implements
 	private void onWinDialogNextClicked() {
 		List<QuestInfo> listQuest = App.getListQuestById(mCategoryId);
 		boolean isNext = false;
-		for (QuestInfo quest : listQuest) {
-			if (isNext) {
-				QuestFragment fragment = QuestFragment.getInstance(
-						quest.getQuestId(), mCategoryId);
+		int size = listQuest.size();
+		for (int i = 0; i < size; i++) {
+			int nextQuestIndex = i + 1;
+			if (listQuest.get(i).getQuestId() == mQuestId
+					&& nextQuestIndex < size) {
+				isNext = true;
+				QuestFragment fragment = QuestFragment.getInstance(listQuest
+						.get(nextQuestIndex).getQuestId(), mCategoryId);
 				mNaviManager.showPage(fragment, "");
 				break;
-			} else {
-				if (quest.getQuestId() == mQuestId) {
-					isNext = true;
-				}
 			}
 		}
-		if (isNext)
+		if (!isNext)
 			mNaviManager.goBack();
 	}
 
 	@Override
 	public String getTitle() {
-		return App.getCategoryById(mCategoryId).getCateName();
+		return mScreenTitle;
 	}
 
 	private void shareFacebook() {

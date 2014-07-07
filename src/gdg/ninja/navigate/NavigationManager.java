@@ -60,7 +60,7 @@ public class NavigationManager{
 				"Fragment(" + mBackStack.size() + "): " + fragment.toString());
 		FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
-		if(fragment instanceof QuestFragment) if(size > 0){
+		if(fragment instanceof QuestFragment && size > 0){
 			if(mBackStack.peek() instanceof QuestFragment){
 				mBackStack.pop();
 				fragmentManager.popBackStack();
