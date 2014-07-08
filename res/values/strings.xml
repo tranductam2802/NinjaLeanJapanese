@@ -1,7 +1,7 @@
 <resources>
 
     <!-- App common -->
-    <string name="app_name">Ninja Lean Japanese</string>
+    <string name="app_name">Ninja Learn Japanese</string>
     <string name="image_description">Image</string>
     <string name="loading">Loading…</string>
     <string name="exit_message">Goodbye! Nine to meet you soon.</string>
@@ -21,7 +21,7 @@
     <!-- Start activity menu -->
     <string name="menu_start">Start new game</string>
     <string name="menu_custom_game">Custom game</string>
-    <string name="menu_hight_score">Hight score</string>
+    <string name="menu_hight_score">High score</string>
     <string name="menu_option">Option</string>
     <string name="menu_exit">Exit</string>
     <string name="menu_start_custom">Start custom game</string>
