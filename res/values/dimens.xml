@@ -12,7 +12,7 @@
     <dimen name="list_game_categories_screen_vertical_margin">15dp</dimen>
     <dimen name="list_game_categories_item_horizontal_padding">4dp</dimen>
     <dimen name="list_game_categories_item_vertical_padding">2dp</dimen>
-    <dimen name="list_game_categories_tag_button_height">68dp</dimen>  
+    <dimen name="list_game_categories_tag_button_height">60dp</dimen>  
     <dimen name="list_game_categories_avatar_size">64dp</dimen>
     <dimen name="list_game_categories_divider_height">10dp</dimen>
     <dimen name="quest_image_size">289dp</dimen>

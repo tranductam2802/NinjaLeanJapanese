@@ -17,7 +17,7 @@
     <color name="btn_google">#FFd33e2a</color>
     <color name="btn_bomb">#FF27ae61</color>
     <color name="btn_flag">#FF2dcc70</color>
-    <color name="answer_color">#FF0099cc</color>
+    <color name="answer_color">#FFF1C40F</color>
     
     <!-- Start menu-->
     <color name="press_button_1">#FFe9fcfd</color>

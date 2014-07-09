@@ -25,23 +25,57 @@
             android:layout_weight="1"
             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@id/btn_boom"
+            <RelativeLayout
                 android:layout_width="@dimen/quest_image_button_size"
-                android:layout_height="@dimen/quest_image_button_size"
-                android:background="@color/btn_bomb"
-                android:contentDescription="@string/image_description"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_bomb" />
+                android:layout_height="@dimen/quest_image_button_size" >
 
-            <ImageView
-                android:id="@id/btn_flag"
+                <ImageView
+                    android:id="@id/btn_boom"
+                    android:layout_width="@dimen/quest_image_button_size"
+                    android:layout_height="@dimen/quest_image_button_size"
+                    android:background="@color/btn_bomb"
+                    android:contentDescription="@string/image_description"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_bomb" />
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@android:color/transparent"
+                    android:text="3"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="@dimen/quest_image_button_size"
-                android:layout_height="@dimen/quest_image_button_size"
-                android:background="@color/btn_flag"
-                android:contentDescription="@string/image_description"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_flag" />
+                android:layout_height="@dimen/quest_image_button_size" >
+
+                <ImageView
+                    android:id="@id/btn_flag"
+                    android:layout_width="@dimen/quest_image_button_size"
+                    android:layout_height="@dimen/quest_image_button_size"
+                    android:background="@color/btn_flag"
+                    android:contentDescription="@string/image_description"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_flag" />
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@android:color/transparent"
+                    android:text="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
 
             <ImageView
                 android:id="@id/btn_share_facebook"
