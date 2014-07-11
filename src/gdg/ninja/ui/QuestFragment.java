@@ -23,6 +23,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,7 +35,7 @@ public class QuestFragment extends BaseFragment implements
 		INavigationBarListener, OnClickListener {
 	private static final String KEY_CATEGORY_ID = "category";
 	private static final String KEY_QUEST_ID = "quest";
-	private final int DELAY_TIME = 1 * 1000;
+	private final int DELAY_TIME = 1 * 500;
 
 	private ImageView mImgAvatar;
 	private ImageView mImgShareFacebook;
@@ -312,6 +314,10 @@ public class QuestFragment extends BaseFragment implements
 	/* When the last answer check wrong. Notice for user and remove this view */
 	private void onWrongAnswer() {
 		isAnimate = true;
+		Animation animation = AnimationUtils.loadAnimation(getActivity(),
+				R.anim.shake);
+		mLnlAnswerLayoutOne.startAnimation(animation);
+		mLnlAnswerLayoutTwo.startAnimation(animation);
 		Handler handler = new Handler();
 		Runnable runnable = new Runnable() {
 			@Override
@@ -573,6 +579,7 @@ public class QuestFragment extends BaseFragment implements
 	public void onClick(View v) {
 		if (isAnimate)
 			return;
+		Animation shake = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
 		int id = v.getId();
 		switch (id) {
 			case R.id.btn_share_facebook:
@@ -582,9 +589,11 @@ public class QuestFragment extends BaseFragment implements
 				shareGoogle();
 				break;
 			case R.id.btn_boom:
+				mTxtBombCount.startAnimation(shake);
 				bombQuest();
 				break;
 			case R.id.btn_flag:
+				mTxtCompassCount.startAnimation(shake);
 				compassQuest();
 				break;
 			case R.id.btn_start:
