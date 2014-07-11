@@ -9,14 +9,16 @@ import gdg.ninja.navigate.NavigationBar.BTN_LEFT_MODE;
 import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
 import gdg.ninja.navigate.NavigationBar.INavigationBarListener;
 import gdg.ninja.util.App;
+import gdg.ninja.util.ConfigPreference;
 import gdg.ninja.util.QuestGenerator;
 
 import java.util.List;
 
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
+import android.app.AlertDialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,6 +41,9 @@ public class QuestFragment extends BaseFragment implements
 	private ImageView mImgBomb;
 	private ImageView mImgFlag;
 
+	private TextView mTxtBombCount;
+	private TextView mTxtCompassCount;
+
 	private LinearLayout mLnlAnswerLayoutOne;
 	private LinearLayout mLnlAnswerLayoutTwo;
 	private LinearLayout mLnlQuestLayoutOne;
@@ -60,6 +65,9 @@ public class QuestFragment extends BaseFragment implements
 	private int numAnswered = 0;
 	private int numOfWrongAnswered = 0;
 
+	private int numberOfBomb = 0;
+	private int numberOfCompass = 0;
+
 	public static QuestFragment getInstance(int questId, int cateId) {
 		QuestFragment fragment = new QuestFragment();
 		Bundle bundle = new Bundle();
@@ -80,6 +88,8 @@ public class QuestFragment extends BaseFragment implements
 			mCategoryId = bundle.getInt(KEY_CATEGORY_ID);
 			mQuestId = bundle.getInt(KEY_QUEST_ID);
 		}
+		numberOfBomb = ConfigPreference.getInstance().getNumberOfBomb();
+		numberOfCompass = ConfigPreference.getInstance().getNumberOfCompass();
 		mScreenTitle = App.getCategoryById(mCategoryId).getCateName();
 	}
 
@@ -98,6 +108,8 @@ public class QuestFragment extends BaseFragment implements
 		mImgShareGoogle = (ImageView) v.findViewById(R.id.btn_share_google);
 		mImgBomb = (ImageView) v.findViewById(R.id.btn_boom);
 		mImgFlag = (ImageView) v.findViewById(R.id.btn_flag);
+		mTxtBombCount = (TextView) v.findViewById(R.id.rate_one);
+		mTxtCompassCount = (TextView) v.findViewById(R.id.rate_two);
 		mImgShareFacebook.setOnClickListener(this);
 		mImgShareGoogle.setOnClickListener(this);
 		mImgBomb.setOnClickListener(this);
@@ -109,6 +121,10 @@ public class QuestFragment extends BaseFragment implements
 		mLnlQuestLayoutOne = (LinearLayout) v.findViewById(R.id.quest_one);
 		mLnlQuestLayoutTwo = (LinearLayout) v.findViewById(R.id.quest_two);
 		mLnlQuestLayoutThree = (LinearLayout) v.findViewById(R.id.quest_three);
+
+		// Set bomb count and compass count
+		mTxtBombCount.setText("" + numberOfBomb);
+		mTxtCompassCount.setText("" + numberOfCompass);
 
 		// Get quest info
 		QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
@@ -261,7 +277,6 @@ public class QuestFragment extends BaseFragment implements
 				if (numAnswered > answerSize)
 					return;
 				if (numAnswered == answerSize) {
-					// TODO: Check answer
 					String questText = ((TextView) v).getText().toString();
 					mListAnswer[answerSize - 1].view.setText(questText);
 					mListAnswer[answerSize - 1].view
@@ -276,7 +291,6 @@ public class QuestFragment extends BaseFragment implements
 					}
 					onWinGame();
 				} else {
-					// TODO: add new quest.
 					if (v instanceof TextView) {
 						for (Tag tag : mListAnswer) {
 							if (tag.preView == null) {
@@ -319,7 +333,8 @@ public class QuestFragment extends BaseFragment implements
 
 	private void onWinGame() {
 		// Calculate score base on wrong answered
-		int score;
+		final int score;
+		final boolean isBonus;
 		if (numOfWrongAnswered > 10)
 			score = 3;
 		else if (numOfWrongAnswered > 5)
@@ -330,9 +345,17 @@ public class QuestFragment extends BaseFragment implements
 			score = 6;
 
 		QuestInfo quest = App.getQuestById(mQuestId, mCategoryId);
+		int oldScore = quest.getQuestStt();
+		// Bonus bomb and compass for the first time win game
+		if (oldScore == 0) {
+			isBonus = true;
+			numberOfCompass += score / 2;
+			setNewBombAndCompass(++numberOfBomb, numberOfCompass);
+		} else
+			isBonus = false;
 
 		// Only update score if new score is higher
-		if (score > quest.getQuestStt()) {
+		if (score > oldScore) {
 			// Update Stt for current QuestList and CategoryList
 			quest.setQuestStt(score);
 			CategoriesInfo categoriesInfo = App.getCategoryById(mCategoryId);
@@ -345,15 +368,103 @@ public class QuestFragment extends BaseFragment implements
 			db.updateCateSttByCategoryId(mCategoryId, categoriesInfo.getStt());
 		}
 
-		Builder builder = new Builder(getActivity());
-		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		dialog = new AlertDialog(getActivity(), R.style.full_screen_dialog) {
 			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				onWinDialogNextClicked();
+			protected void onCreate(Bundle savedInstanceState) {
+				super.onCreate(savedInstanceState);
+				setContentView(getViewForWinDialog(score, isBonus));
 			}
-		});
-		dialog = builder.create();
+			@Override
+			public boolean onKeyDown(int keyCode, KeyEvent event) {
+				if (keyCode == KeyEvent.KEYCODE_BACK) {
+					dialog.dismiss();
+					mNaviManager.goBack();
+				}
+				return super.onKeyDown(keyCode, event);
+			}
+		};
 		dialog.show();
+	}
+
+	private View getViewForWinDialog(int score, boolean isBonus) {
+		QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
+
+		final View winDialogView = View.inflate(getActivity(),
+				R.layout.popup_finish, null);
+		ImageView imgAvatar = (ImageView) winDialogView
+				.findViewById(R.id.img_avatar);
+		imgAvatar.setImageDrawable(mImgAvatar.getDrawable());
+
+		TextView mTxtShowPoint = (TextView) winDialogView
+				.findViewById(R.id.txt_welcome);
+		Resources resources = App.getContext().getResources();
+		mTxtShowPoint.setText(resources.getString(R.string.txt_you_got_point)
+				+ " " + score + " " + resources.getString(R.string.txt_point));
+		TextView mTxtAnswer = (TextView) winDialogView
+				.findViewById(R.id.txt_title_navi);
+		mTxtAnswer.setText(questInfo.getAnswer());
+
+		TextView mTxtDefinition = (TextView) winDialogView
+				.findViewById(R.id.txt_input_new_word);
+		mTxtDefinition.setText(questInfo.getDefinition());
+
+		ImageView imgRateOne = (ImageView) winDialogView
+				.findViewById(R.id.rate_one);
+		ImageView imgRateTwo = (ImageView) winDialogView
+				.findViewById(R.id.rate_two);
+		ImageView imgRateThree = (ImageView) winDialogView
+				.findViewById(R.id.rate_three);
+
+		switch (score) {
+			case 6:
+				imgRateThree.setImageResource(R.drawable.ic_rate_on);
+				imgRateTwo.setImageResource(R.drawable.ic_rate_on);
+				imgRateOne.setImageResource(R.drawable.ic_rate_on);
+				break;
+			case 5:
+				imgRateThree.setImageResource(R.drawable.ic_rate_half);
+				imgRateTwo.setImageResource(R.drawable.ic_rate_on);
+				imgRateOne.setImageResource(R.drawable.ic_rate_on);
+				break;
+			case 4:
+				imgRateThree.setImageResource(R.drawable.ic_rate_off);
+				imgRateTwo.setImageResource(R.drawable.ic_rate_on);
+				imgRateOne.setImageResource(R.drawable.ic_rate_on);
+				break;
+			case 3:
+				imgRateThree.setImageResource(R.drawable.ic_rate_off);
+				imgRateTwo.setImageResource(R.drawable.ic_rate_half);
+				imgRateOne.setImageResource(R.drawable.ic_rate_on);
+				break;
+			case 2:
+				imgRateThree.setImageResource(R.drawable.ic_rate_off);
+				imgRateTwo.setImageResource(R.drawable.ic_rate_off);
+				imgRateOne.setImageResource(R.drawable.ic_rate_on);
+				break;
+			case 1:
+				imgRateThree.setImageResource(R.drawable.ic_rate_off);
+				imgRateTwo.setImageResource(R.drawable.ic_rate_off);
+				imgRateOne.setImageResource(R.drawable.ic_rate_half);
+				break;
+			default:
+				imgRateThree.setImageResource(R.drawable.ic_rate_off);
+				imgRateTwo.setImageResource(R.drawable.ic_rate_off);
+				imgRateOne.setImageResource(R.drawable.ic_rate_off);
+				break;
+		}
+
+		ImageView mImgNextBtn = (ImageView) winDialogView
+				.findViewById(R.id.btn_start);
+		ImageView mImgReplayBtn = (ImageView) winDialogView
+				.findViewById(R.id.btn_back);
+		mImgNextBtn.setOnClickListener(this);
+		mImgReplayBtn.setOnClickListener(this);
+
+		View bonusView = winDialogView.findViewById(R.id.place_holder);
+		if (!isBonus)
+			bonusView.setVisibility(View.GONE);
+
+		return winDialogView;
 	}
 
 	private void onWinDialogNextClicked() {
@@ -375,6 +486,12 @@ public class QuestFragment extends BaseFragment implements
 			mNaviManager.goBack();
 	}
 
+	private void onWinDialogReplayClicked() {
+		QuestFragment fragment = QuestFragment.getInstance(mQuestId,
+				mCategoryId);
+		mNaviManager.showPage(fragment, "");
+	}
+
 	@Override
 	public String getTitle() {
 		return mScreenTitle;
@@ -389,34 +506,38 @@ public class QuestFragment extends BaseFragment implements
 	}
 
 	private void bombQuest() {
-		// TODO: implement rule to restrict use bomb
-
-		resetQuestAndAnswer();
-
-		QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
-		String answer = questInfo.getAnswer();
-		for (Tag tag : mListQuest) {
-			if (!answer.contains(tag.string)) {
-				// TODO: implement animation
-				tag.view.setVisibility(View.GONE);
+		// TODO: animation
+		if (numberOfBomb > 0) {
+			numberOfBomb--;
+			reloadBombAndCompassCount();
+			resetQuestAndAnswer();
+			QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
+			String answer = questInfo.getAnswer();
+			for (Tag tag : mListQuest) {
+				if (!answer.contains(tag.string)) {
+					// TODO: implement animation
+					tag.view.setVisibility(View.GONE);
+				}
 			}
 		}
-
 	}
 
 	private void compassQuest() {
-		// TODO: implement rules for use compassQuest and implement animation
-
-		resetQuestAndAnswer();
-		// Fill the first Answer Tag
-		for (Tag tag : mListQuest) {
-			if (tag.string.equals(mListAnswer[0].string)) {
-				mListAnswer[0].view.setText(tag.string);
-				mListAnswer[0].view.setVisibility(View.VISIBLE);
-				mListAnswer[0].preView = tag.view;
-				tag.view.setVisibility(View.INVISIBLE);
-				numAnswered++;
-				return;
+		// TODO: animation
+		if (numberOfCompass > 0) {
+			numberOfCompass--;
+			reloadBombAndCompassCount();
+			resetQuestAndAnswer();
+			// Fill the first Answer Tag
+			for (Tag tag : mListQuest) {
+				if (tag.string.equals(mListAnswer[0].string)) {
+					mListAnswer[0].view.setText(tag.string);
+					mListAnswer[0].view.setVisibility(View.VISIBLE);
+					mListAnswer[0].preView = tag.view;
+					tag.view.setVisibility(View.INVISIBLE);
+					numAnswered++;
+					return;
+				}
 			}
 		}
 
@@ -437,6 +558,17 @@ public class QuestFragment extends BaseFragment implements
 		numAnswered = 0;
 	}
 
+	private void reloadBombAndCompassCount() {
+		mTxtBombCount.setText("" + numberOfBomb);
+		mTxtCompassCount.setText("" + numberOfCompass);
+		setNewBombAndCompass(numberOfBomb, numberOfCompass);
+	}
+
+	private void setNewBombAndCompass(int newBomb, int newCompass) {
+		ConfigPreference.getInstance().setNumberOfBomb(newBomb);
+		ConfigPreference.getInstance().SetNumberOfCompass(newCompass);
+	}
+
 	@Override
 	public void onClick(View v) {
 		if (isAnimate)
@@ -454,6 +586,16 @@ public class QuestFragment extends BaseFragment implements
 				break;
 			case R.id.btn_flag:
 				compassQuest();
+				break;
+			case R.id.btn_start:
+				if (dialog != null)
+					dialog.dismiss();
+				onWinDialogNextClicked();
+				break;
+			case R.id.btn_back:
+				if (dialog != null)
+					dialog.dismiss();
+				onWinDialogReplayClicked();
 				break;
 		}
 	}
