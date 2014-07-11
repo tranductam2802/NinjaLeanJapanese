@@ -39,6 +39,7 @@
                     android:src="@drawable/ic_bomb" />
 
                 <TextView
+                    android:id="@id/rate_one"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentBottom="true"
@@ -65,6 +66,7 @@
                     android:src="@drawable/ic_flag" />
 
                 <TextView
+                    android:id="@id/rate_two"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentBottom="true"

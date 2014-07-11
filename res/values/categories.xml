@@ -1,51 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="databaseVersion" type="integer">3</item>
-    <string-array name="defaultCategoryQueries">
-        <item>INSERT INTO CATEGORY VALUES(1,\'Động vật\',\'Các con vật thân thuộc hằng ngày với con người.\',\'assets/cate_0_img/cho.jpg\',0);</item>
-    </string-array>
-    <string-array name="defaultQuestionQueries">
-        <item>INSERT INTO "QUESTION" VALUES(1,\'いぬ\',0,\'Động vật\',\'assets/cate_0_img/cho.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(2,\'ねこ\',0,\'Động vật\',\'assets/cate_0_img/meo.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(3,\'ぶた\',0,\'Động vật\',\'assets/cate_0_img/lon.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(4,\'にわとり\',0,\'Động vật\',\'assets/cate_0_img/ga.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(5,\'あひる\',0,\'Động vật\',\'assets/cate_0_img/vit.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(6,\'うま\',0,\'Động vật\',\'assets/cate_0_img/ngua.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(7,\'うし\',0,\'Động vật\',\'assets/cate_0_img/bo.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(8,\'ねずみ\',0,\'Động vật\',\'assets/cate_0_img/chuot.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(9,\'とり\',0,\'Động vật\',\'assets/cate_0_img/chim.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(10,\'ライオン\',0,\'Động vật\',\'assets/cate_0_img/sutu.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(11,\'ぞう\',0,\'Động vật\',\'assets/cate_0_img/voi.jpg\');</item>
-        <item>INSERT INTO "QUESTION" VALUES(12,\'さかな\',0,\'Động vật\',\'assets/cate_0_img/ca.jpg\');</item>
-    </string-array>
-    <string-array name="upgradeToVersion2">
-        <item>INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (2, \'Hoa quả\', \'Các loại hoa quả cơ bản chúng ta thường gặp hằng ngày.\', \'assets/cate_1_img/cam.jpg\', 0);</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (13, \'いちご\', 0, \'Hoa quả\', \'assets/cate_1_img/dau-tay.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (14, \'もも\', 0, \'Hoa quả\', \'assets/cate_1_img/dao.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (15, \'すいか\', 0, \'Hoa quả\', \'assets/cate_1_img/duahau.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (16, \'ぶどう\', 0, \'Hoa quả\', \'assets/cate_1_img/nho.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (17, \'なし\', 0, \'Hoa quả\', \'assets/cate_1_img/le.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (18, \'みかん\', 0, \'Hoa quả\', \'assets/cate_1_img/quyt.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (19, \'りんご\', 0, \'Hoa quả\', \'assets/cate_1_img/tao.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (20, \'バナナ\', 0, \'Hoa quả\', \'assets/cate_1_img/chuoi.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (21, \'オレンジ\', 0, \'Hoa quả\', \'assets/cate_1_img/cam.jpg\');</item>
-    </string-array>
-    <string-array name="upgradeToVersion3">
-        <item>INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (3, \'Nghề nghiệp\', \'Một số nghề nghiệp phổ biến chúng ta nên biết.\', \'assets/cate_2_img/canhsat.jpg\', 0);</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (22, \'きょうし\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/giaovien.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (23, \'がくせい\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/hocsinh.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (24, \'ちょうりし\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/daubep.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (25, \'いしゃ\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/bacsi.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (26, \'うんてんしゅ\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/taixe.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (27, \'けいさつかん\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/canhsat.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (28, \'がか\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/hoasi.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (29, \'ジャーナリスト\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/nhabao.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (30, \'けんちくか\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/kientrucsu.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (31, \'りようし\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/thocattoc.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (32, \'かんごふ\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/yta.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (33, \'てんいん\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/nhan_vien_nha_hang.jpg\');</item>
-        <item>INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath]) VALUES (34, \'かいしゃいん\', 0, \'Nghề nghiệp\', \'assets/cate_2_img/nhan_vien_cong_ty.jpg\');</item>
-    </string-array>
+    <item name="databaseVersion" type="integer">1</item>
+    <item name="initiateDbFilePath" type="string">sql/initiateDb.sql</item>
 
 </resources>

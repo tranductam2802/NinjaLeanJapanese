@@ -31,7 +31,7 @@
     <!-- Activity start -->
     <dimen name="ac_start_navi_btn_width">300dp</dimen>
     <dimen name="ac_start_navi_btn_height">61dp</dimen>
-    <dimen name="menu_button_height">90dp</dimen>
+    <dimen name="menu_button_height">70dp</dimen>
     <dimen name="frame_logo">158dp</dimen>
     
     <!-- Naviagator -->

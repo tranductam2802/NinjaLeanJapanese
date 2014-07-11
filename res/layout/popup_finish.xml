@@ -1,162 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    
-    >
-
-
-<LinearLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentTop="true"
-    android:background="@color/secondary_app_color"
-    android:gravity="top|center_horizontal"
-    android:orientation="vertical" >
-
-    <TextView
-        style="@style/congratulation_text"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/menu_button_height"
-        android:layout_margin="0dp"
-        android:text="Congratulation!" />
-
-    <ImageView
-        android:id="@id/img_input_hint_picture"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@android:color/white"
-        android:contentDescription="@string/hint_input_hint_picture" />
+    android:layout_height="match_parent" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/transparent"
+        android:layout_height="match_parent"
+        android:background="@color/secondary_app_color"
         android:gravity="center"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:id="@id/rate_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:contentDescription="@string/image_description"
-            android:src="@drawable/ic_rate_on" />
-
-        <ImageView
-            android:id="@id/rate_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:contentDescription="@string/image_description"
-            android:src="@drawable/ic_rate_on" />
-
-        <ImageView
-            android:id="@id/rate_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:contentDescription="@string/image_description"
-            android:src="@drawable/ic_rate_on" />
-    </LinearLayout>
-
-    <TextView
-        style="@style/nomal_text"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_margin="0dp"
-        android:text="You have 6 points !" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@android:color/transparent"
-        android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
         <TextView
-            style="@style/nomal_text"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_margin="0dp"
-            android:text="Bonus" />
+            style="@style/congratulation_text"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/menu_button_height"
+            android:layout_margin="10dp"
+            android:text="@string/txt_win_game_congratulation" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/image_description"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_bomb" />
-
-        <ImageView
-            android:id="@id/btn_flag"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/image_description"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_flag" />
-    </LinearLayout>
-<LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:background="@android:color/transparent"
-        android:gravity="center"
-        android:layout_margin="15dp"
-        android:orientation="horizontal" >
-    
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/next_question"
-        android:padding="10dp"
-        android:src="@drawable/replay" 
-        android:contentDescription="@android:string/ok"
-        />
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="60dp"       
-        android:background="@drawable/next_question"
-        android:padding="10dp"
-        android:src="@drawable/next_q" 
-        android:contentDescription="@android:string/ok" />
-    
-    </LinearLayout>
-</LinearLayout>
-<LinearLayout 
-   	android:layout_width="match_parent"
-   	android:layout_height="@dimen/quest_image_button_share_height"
-    android:orientation="horizontal" 
-    android:background="@android:color/transparent"   
-    android:layout_alignParentBottom="true"
-    >
-   <ImageView
-                android:id="@id/btn_share_facebook"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/quest_image_button_share_height"
-                android:background="@color/btn_facebook"
-                android:contentDescription="@string/image_description"
-               	android:layout_weight="1"
-                android:src="@drawable/ic_facebook" 
-                
-                />
+        <FrameLayout
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/border_finish_avatar" >
 
             <ImageView
-                android:id="@id/btn_share_google"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="@dimen/quest_image_button_share_height"
-                android:background="@color/btn_google"
-                android:contentDescription="@string/image_description"
-                android:src="@drawable/ic_google" 
-               
-                
-                />
+                android:id="@id/img_avatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:contentDescription="@string/hint_input_hint_picture" />
+        </FrameLayout>
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@id/txt_title_navi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_margin="3dp"
+                android:background="@color/answer_color"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@id/txt_input_new_word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_margin="3dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="26sp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@id/rate_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/ic_rate_on" />
+
+            <ImageView
+                android:id="@id/rate_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/ic_rate_on" />
+
+            <ImageView
+                android:id="@id/rate_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/ic_rate_on" />
         </LinearLayout>
+
+        <TextView
+            android:id="@id/txt_welcome"
+            style="@style/nomal_text"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_margin="0dp"
+            android:text="@string/txt_you_got_point" />
+
+        <LinearLayout
+            android:id="@id/place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/nomal_text"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_margin="0dp"
+                android:text="@string/txt_bonus" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_bomb" />
+
+            <ImageView
+                android:id="@id/btn_flag"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_flag" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@id/btn_back"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/next_question"
+                android:contentDescription="@android:string/ok"
+                android:padding="10dp"
+                android:src="@drawable/replay" />
+
+            <ImageView
+                android:id="@id/btn_start"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:background="@drawable/next_question"
+                android:contentDescription="@android:string/ok"
+                android:padding="10dp"
+                android:src="@drawable/next_q" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/quest_image_button_share_height"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@id/btn_share_facebook"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/quest_image_button_share_height"
+            android:layout_weight="1"
+            android:background="@color/btn_facebook"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_facebook" />
+
+        <ImageView
+            android:id="@id/btn_share_google"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/quest_image_button_share_height"
+            android:layout_weight="1"
+            android:background="@color/btn_google"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_google" />
+    </LinearLayout>
+
 </RelativeLayout>

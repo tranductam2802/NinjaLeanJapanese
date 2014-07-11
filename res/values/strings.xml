@@ -45,9 +45,16 @@
     <!-- Screen title -->
     <string name="sc_list_category_title">List categories</string>
 
+    <!-- Pop-up win game-->
+    <string name="txt_you_got_point">You got</string>
+    <string name="txt_bonus">Bonus</string>
+    <string name="txt_win_game_congratulation">Congratulation!</string>
+    <string name="txt_point">points</string>
+    
     <!-- Error message -->
 
 
     <!-- Other language text -->
+    
 
 </resources>
