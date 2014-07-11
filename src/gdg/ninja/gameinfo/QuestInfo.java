@@ -7,7 +7,16 @@ public class QuestInfo{
 	private String imgPath;
 	private String answer;
 	private int questStt;
+	private String definition;
 	
+	public String getDefinition() {
+		return definition;
+	}
+
+	public void setDefinition(String definition) {
+		this.definition = definition;
+	}
+
 	private final int MAX_ANSWER_LENGTH = 20;
 	
 	public String getImgPath(){
@@ -50,11 +59,13 @@ public class QuestInfo{
 		
 	}
 
-	public QuestInfo(int questId, String imgPath, String answer, int questStt){
+	public QuestInfo(int questId, String imgPath, String answer,
+			String definition, int questStt) {
 		this.questId = questId;
 		this.imgPath = imgPath;
 		this.answer = answer;
 		this.questStt = questStt;
+		this.definition = definition;
 	}
 
 }

@@ -4,8 +4,10 @@ import gdg.nat.R;
 import gdg.ninja.gameinfo.CategoriesInfo;
 import gdg.ninja.gameinfo.QuestInfo;
 import gdg.ninja.util.App;
+import gdg.ninja.util.DbUtils;
 import gdg.ninja.util.NLog;
 
+import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-	private static final String DATABASE_NAME = "NinjaDB";
+	private static final String DATABASE_NAME = "LearnJapaneseDB";
 
 	private static final String TABLE_CATEGORY = "CATEGORY";
 	private static final String TABLE_QUESTION = "QUESTION";
@@ -35,21 +37,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String QUEST_KEY = "QuestKey";
 	private static final String QUEST_ID = "QuestId";
 	private static final String QUEST_IMG_PATH = "QuestImgPath";
-
-	// Create CATEGORY table
-	private static final String CREATE_CATEGORY_TABLE = "CREATE TABLE "
-			+ TABLE_CATEGORY + "(" + CAT_ID
-			+ " INTEGER PRIMARY KEY AUTOINCREMENT," + CAT_NAME
-			+ " CHAR(50) NOT NULL UNIQUE," + CAT_DES + " TEXT," + CAT_IMG_PATH
-			+ " TEXT," + CAT_STT + " INT(1) DEFAULT (0))";
-
-	private static final String CREATE_QUESTION_TABLE = "CREATE TABLE "
-			+ TABLE_QUESTION + "(" + QUEST_ID
-			+ " INTEGER PRIMARY KEY AUTOINCREMENT," + QUEST_KEY
-			+ " CHAR( 50 ) NOT NULL UNIQUE, " + QUEST_STT
-			+ " INT( 1 ) DEFAULT (0), " + CAT_NAME
-			+ " CHAR(50) NOT NULL REFERENCES CATEGORY ( " + CAT_NAME + "),"
-			+ QUEST_IMG_PATH + " NOT NULL)";
+	private static final String QUEST_DEFINITION = "QuestDefinition";
 
 	Context mContext;
 
@@ -61,31 +49,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-
-		// create default tables
-		db.execSQL(CREATE_CATEGORY_TABLE);
-		db.execSQL(CREATE_QUESTION_TABLE);
-
-		// insert default values
+		// get initiate db sql file path from resource
 		Resources resources = mContext.getResources();
-
-		String[] defaultCategoryQueries = resources
-				.getStringArray(R.array.defaultCategoryQueries);
-		String[] defaultQuestionQueries = resources
-				.getStringArray(R.array.defaultQuestionQueries);
-
-		for (String string : defaultCategoryQueries) {
-			db.execSQL(string);
-		}
-
-		for (String string : defaultQuestionQueries) {
-			db.execSQL(string);
+		String initiateDbFilePath = resources.getString(R.string.initiateDbFilePath);
+		
+		// create default tables
+		try {
+			DbUtils.executeSqlScript(mContext, db, initiateDbFilePath);
+		} catch (IOException e) {
+			NLog.i("Initiate Database Failed: " + e.getMessage());
 		}
 
 		db.setVersion(1);
 		onUpgrade(db, 1, resources.getInteger(R.integer.databaseVersion));
 	}
 
+	// TODO: implement onUpgrade
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		Resources resources = mContext.getResources();
@@ -93,16 +72,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			String[] updateQueries = null;
 			switch (i) {
 				case 2:
-					updateQueries = resources
-							.getStringArray(R.array.upgradeToVersion2);
 					break;
 				case 3:
-					updateQueries = resources
-							.getStringArray(R.array.upgradeToVersion3);
+					break;
 			}
-			if (updateQueries != null)
-				for (String singleQuery : updateQueries)
-					db.execSQL(singleQuery);
 		}
 	}
 
@@ -137,6 +110,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(QUEST_IMG_PATH, quest.getImgPath());
 		values.put(QUEST_STT, quest.getQuestStt());
 		values.put(CAT_ID, categoryName);
+		values.put(QUEST_DEFINITION, quest.getDefinition());
 
 		// insert row
 		long question_id = db.insert(TABLE_QUESTION, null, values);
@@ -199,6 +173,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				}
 				quest.setImgPath(c.getString(c.getColumnIndex(QUEST_IMG_PATH)));
 				quest.setQuestStt(c.getInt(c.getColumnIndex(QUEST_STT)));
+				quest.setDefinition(c.getString(c
+						.getColumnIndex(QUEST_DEFINITION)));
 
 				quests.add(quest);
 			} while (c.moveToNext());

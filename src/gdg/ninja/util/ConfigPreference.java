@@ -8,6 +8,9 @@ public class ConfigPreference{
 	private final String TAG = "ConfigPreference";
 	private final int MODE = Context.MODE_PRIVATE;
 	
+	public static final String NUMBER_OF_BOMB = "numberOfBomb";
+	public static final String NUMBER_OF_COMPASS = "numberOfCompass";
+
 	private static ConfigPreference mPreference = new ConfigPreference();
 	
 	private final String KEY_IS_FIRST_TIME = "is_first_time";
@@ -22,13 +25,30 @@ public class ConfigPreference{
 	
 	private Editor getEditor(){
 		return getSharedPreference().edit();
+
 	}
 	
 	public void saveIsFirstTime(){
-		getEditor().putBoolean(KEY_IS_FIRST_TIME, false);
+		getEditor().putBoolean(KEY_IS_FIRST_TIME, false).commit();
 	}
 	
 	public boolean isFirstTime(){
 		return getSharedPreference().getBoolean(KEY_IS_FIRST_TIME, true);
+	}
+
+	public int getNumberOfBomb() {
+		return getSharedPreference().getInt(NUMBER_OF_BOMB, 0);
+	}
+
+	public void setNumberOfBomb(int numberOfBomb) {
+		getEditor().putInt(NUMBER_OF_BOMB, numberOfBomb).commit();
+	}
+
+	public int getNumberOfCompass() {
+		return getSharedPreference().getInt(NUMBER_OF_COMPASS, 0);
+	}
+
+	public void SetNumberOfCompass(int numberOfCompass) {
+		getEditor().putInt(NUMBER_OF_COMPASS, numberOfCompass).commit();
 	}
 }
