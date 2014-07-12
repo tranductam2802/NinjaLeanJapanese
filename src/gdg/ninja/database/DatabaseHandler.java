@@ -134,9 +134,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			do {
 				CategoriesInfo cateInfo = new CategoriesInfo();
 				cateInfo.setCateId(c.getInt(c.getColumnIndex(CAT_ID)));
-				cateInfo.setCateName(c.getString(c.getColumnIndex(CAT_NAME)));
-				cateInfo.setCateDesc(c.getString(c.getColumnIndex(CAT_DES)));
-				cateInfo.setImgPath(c.getString(c.getColumnIndex(CAT_IMG_PATH)));
+				cateInfo.setCateName(c.getString(c.getColumnIndex(CAT_NAME))
+						.trim());
+				cateInfo.setCateDesc(c.getString(c.getColumnIndex(CAT_DES))
+						.trim());
+				cateInfo.setImgPath(c.getString(c.getColumnIndex(CAT_IMG_PATH))
+						.trim());
 				cateInfo.setStt(c.getInt(c.getColumnIndex(CAT_STT)));
 				cateInfo.setListQuest(getAllQuestByCategoryName(cateInfo
 						.getCateName()));
@@ -165,16 +168,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				QuestInfo quest = new QuestInfo();
 				quest.setQuestId(c.getInt(c.getColumnIndex(QUEST_ID)));
 				try {
-					quest.setAnswer(c.getString(c.getColumnIndex(QUEST_KEY)));
+					quest.setAnswer(c.getString(c.getColumnIndex(QUEST_KEY))
+							.trim());
 				} catch (InvalidKeyException e) {
 					NLog.e("Invalid quest answer"
 							+ c.getString(c.getColumnIndex(QUEST_KEY)));
 					continue;
 				}
-				quest.setImgPath(c.getString(c.getColumnIndex(QUEST_IMG_PATH)));
+				quest.setImgPath(c.getString(c.getColumnIndex(QUEST_IMG_PATH))
+						.trim());
 				quest.setQuestStt(c.getInt(c.getColumnIndex(QUEST_STT)));
 				quest.setDefinition(c.getString(c
-						.getColumnIndex(QUEST_DEFINITION)));
+.getColumnIndex(QUEST_DEFINITION)).trim());
 
 				quests.add(quest);
 			} while (c.moveToNext());
