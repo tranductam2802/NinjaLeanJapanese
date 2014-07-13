@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/layout"
+    android:layout_width="@dimen/list_game_quest_avatar_size"
+    android:layout_height="@dimen/list_game_quest_avatar_size"
+    android:background="@android:color/transparent" >
+
+    <ImageView
+        android:id="@id/img_avatar"
+        android:layout_width="@dimen/list_game_quest_avatar_size"
+        android:layout_height="@dimen/list_game_quest_avatar_size"
+        android:layout_centerInParent="true"
+        android:background="@drawable/border_avatar"
+        android:contentDescription="@string/image_description"
+        android:padding="1dp"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:layout_width="@dimen/list_game_quest_avatar_size"
+        android:layout_height="@dimen/list_game_quest_avatar_size"
+        android:layout_centerInParent="true"
+        android:background="@color/primary_app_color_transparent"
+        android:contentDescription="@string/image_description"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/lock" />
+
+</RelativeLayout>

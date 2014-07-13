@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_game_categories_tag_button_height"
+    android:background="@drawable/dr_tag_button_ac_categories_selector" >
+
+   
+    
+    
+    
+        
+<ImageView     
+       
+           
+        android:src="@drawable/lock"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_game_categories_tag_button_height"        
+        android:background="@color/primary_app_color"
+        android:contentDescription="@string/image_description"
+        android:scaleType="centerInside" 
+        android:padding="10dp"
+        
+        
+        />
+</RelativeLayout>
