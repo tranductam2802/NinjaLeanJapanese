@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 public class CreateCustomGameActivity extends BaseActivity implements
@@ -36,7 +35,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	private TextView mTxtChoosePictureButton;
 	
 	private EditText mEditTxtNewWord;
-	private Spinner mSpinChooseCategory;
+	// private Spinner mSpinChooseCategory;
 	private ImageView mImgChoosedPicture;
 	
 	private Uri inputImagePath;
@@ -78,7 +77,8 @@ public class CreateCustomGameActivity extends BaseActivity implements
 		mTxtChoosePictureButton = (TextView) findViewById(R.id.btn_choose_from_galary);
 		mEditTxtNewWord = (EditText) findViewById(R.id.txt_input_new_word);
 		mImgChoosedPicture = (ImageView) findViewById(R.id.img_input_hint_picture);
-		mSpinChooseCategory = (Spinner) findViewById(R.id.spinner_choose_category);
+		// mSpinChooseCategory = (Spinner)
+		// findViewById(R.id.spinner_choose_category);
 		
 		// Set on click listener
 		mTxtCreateButton.setOnClickListener(this);

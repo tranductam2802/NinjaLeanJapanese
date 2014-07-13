@@ -4,11 +4,8 @@
     <!-- Application color tone -->
     <color name="primary_app_color">#FF5ad6bc</color>
     <color name="primary_app_color_transparent">#BF5ad6bc</color>
-    <color name="primary_app_color_2">#FF0099cc</color>
     <color name="start_menu_color">#FF5ad6bc</color>
     <color name="secondary_app_color">#FF5ad6bc</color>
-    <color name="tertiary_app_color">#FFffffff</color>
-    <color name="tertiary_answer_color">#FF5ad6bc</color>
 
     <!-- Testing purpose only -->
     <color name="btn_take_picture">#FF2980b9</color>
