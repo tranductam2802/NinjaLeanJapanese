@@ -30,8 +30,6 @@
 
     <!-- Create custom game Button id -->
     <item name="btn_create" type="id"></item>
-    <item name="btn_take_picture" type="id"></item>
-    <item name="btn_choose_from_galary" type="id"></item>
 
     <!-- Create custom game Text id -->
     <item name="txt_input_new_word" type="id"></item>

@@ -5,46 +5,41 @@
     android:orientation="vertical"
     android:weightSum="6" >
 
-   
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="52dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal" >
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="52dp"         
-            android:background="@android:color/white"
-            android:orientation="horizontal" >
+        <!-- For save and create new game button -->
 
-            <!-- For save and create new game button -->
+        <FrameLayout
+            android:id="@id/btn_start"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@color/secondary_app_color" >
 
-            <FrameLayout
-                android:id="@id/btn_start"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:background="@color/secondary_app_color" >
-
-                <TextView
-                    android:id="@id/btn_create"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ok" />
-            </FrameLayout>
-            <!-- For enter new word -->
-
-            <EditText
-                android:id="@id/txt_input_new_word"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/btn_start"
-                android:hint="@string/hint_enter_new_word" />
-        </RelativeLayout>
-   
+                android:layout_height="match_parent"
+                android:background="@drawable/ok" />
+        </FrameLayout>
+        <!-- For enter new word -->
+
+        <EditText
+            android:id="@id/txt_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/btn_start"
+            android:hint="@string/hint_enter_new_word" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="100dp"
         android:layout_weight="2"
-        android:orientation="horizontal"
-        android:weightSum="5" >
+        android:orientation="horizontal" >
 
         <ImageView
             android:id="@id/img_input_hint_picture"
@@ -62,13 +57,13 @@
             <!-- Button Take Picture -->
 
             <FrameLayout
+                android:id="@id/btn_share_facebook"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/btn_take_picture" >
 
                 <TextView
-                    android:id="@id/btn_take_picture"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
@@ -77,14 +72,13 @@
             <!-- Button Choose from galary -->
 
             <FrameLayout
-                android:id="@id/btn_take_picture"
+                android:id="@id/btn_share_google"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/btn_choose_from_gallery" >
 
                 <TextView
-                    android:id="@id/btn_choose_from_galary"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
@@ -97,8 +91,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2" >
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="0dp"

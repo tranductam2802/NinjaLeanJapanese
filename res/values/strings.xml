@@ -35,6 +35,7 @@
     <string name="intent_select_picture">Select picture from</string>
     <string name="error_input_blank">You forgot to enter new word!</string>
     <string name="error_input_already_exist">The word you enter already exist!</string>
+    <string name="create_new_category">Create new category...</string>
 
     <!-- Crop image activity -->
     <string name="txt_crop_image_title">Adjust your image!</string>
@@ -45,16 +46,18 @@
     <!-- Screen title -->
     <string name="sc_list_category_title">List categories</string>
 
-    <!-- Pop-up win game-->
+    <!-- Pop-up win game -->
     <string name="txt_you_got_point">You got</string>
     <string name="txt_bonus">Bonus</string>
     <string name="txt_win_game_congratulation">Congratulation!</string>
     <string name="txt_point">points</string>
-    
+
     <!-- Error message -->
 
 
     <!-- Other language text -->
-    
+    <string name="dg_create_category_name">Category Name</string>
+    <string name="dg_create_category_description">Category Description</string>
+    <string name="dg_create_category_title">New Category</string>
 
 </resources>

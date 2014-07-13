@@ -2,6 +2,7 @@ package gdg.ninja.ui;
 
 import gdg.nat.R;
 import gdg.ninja.framework.BaseActivity;
+import gdg.ninja.util.App;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -59,6 +60,7 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 	
 	/* Load data and show Start game screen */
 	private void initViewStartGame(){
+		App.changeGameMode(App.SCREEN_STATE.START_GAME);
 		mTxtStartButton.setText(R.string.menu_start);
 		mTxtCustomButton.setText(R.string.menu_custom_game);
 		mTxtHishtScoreButton.setText(R.string.menu_hight_score);
@@ -70,6 +72,7 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 	
 	/* Load data and show Custom game screen */
 	private void initViewCustomGame(){
+		App.changeGameMode(App.SCREEN_STATE.CUSTOM_GAME);
 		mTxtStartButton.setText(R.string.menu_start_custom);
 		mTxtCustomButton.setText(R.string.menu_make_game);
 		mTxtHishtScoreButton.setVisibility(View.GONE);
@@ -182,7 +185,7 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 						startGameAc();
 						break;
 					case CUSTOM_GAME:
-						startCustomGameAc();
+						startGameAc();
 						break;
 					default:
 						break;

@@ -2,38 +2,49 @@ package gdg.ninja.ui;
 
 import gdg.nat.R;
 import gdg.ninja.croplib.Crop;
+import gdg.ninja.database.DatabaseHandler;
 import gdg.ninja.framework.BaseActivity;
+import gdg.ninja.gameinfo.QuestInfo;
+import gdg.ninja.util.App;
 import gdg.ninja.util.NLog;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class CreateCustomGameActivity extends BaseActivity implements
-		OnClickListener{
+		OnClickListener, OnItemSelectedListener {
 	
 	private final int MEDIA_TYPE_IMAGE = 0;
 	private final int GALLERY_PIC_REQUEST = 1;
 	private final int CAMERA_PIC_REQUEST = 2;
 	private final String IMG_HINT_URI = "saved_image_uri";
 	
-	private TextView mTxtCreateButton;
-	private TextView mTxtTakePictureButton;
-	private TextView mTxtChoosePictureButton;
+	private FrameLayout mTxtCreateButton;
+	private FrameLayout mTxtTakePictureButton;
+	private FrameLayout mTxtChoosePictureButton;
 	
 	private EditText mEditTxtNewWord;
 	private Spinner mSpinChooseCategory;
@@ -45,6 +56,7 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	private String TAG = "CREATE CUSTOM GAME ACTIVITY";
 	
 	private Activity mActivity;
+	private String inputImagePathString;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -66,17 +78,16 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState){
-		// TODO Auto-generated method stub
 		outputImagePath = (Uri) savedInstanceState.getParcelable(IMG_HINT_URI);
 		mImgChoosedPicture.setImageURI(outputImagePath);
 		super.onRestoreInstanceState(savedInstanceState);
 	}
 	
 	private void initView(){
-		mTxtCreateButton = (TextView) findViewById(R.id.btn_create);
-		mTxtTakePictureButton = (TextView) findViewById(R.id.btn_take_picture);
-		mTxtChoosePictureButton = (TextView) findViewById(R.id.btn_choose_from_galary);
-		mEditTxtNewWord = (EditText) findViewById(R.id.txt_input_new_word);
+		mTxtCreateButton = (FrameLayout) findViewById(R.id.btn_start);
+		mTxtTakePictureButton = (FrameLayout) findViewById(R.id.btn_share_facebook);
+		mTxtChoosePictureButton = (FrameLayout) findViewById(R.id.btn_share_google);
+		mEditTxtNewWord = (EditText) findViewById(R.id.txt_welcome);
 		mImgChoosedPicture = (ImageView) findViewById(R.id.img_input_hint_picture);
 		mSpinChooseCategory = (Spinner) findViewById(R.id.spinner_choose_category);
 		
@@ -90,7 +101,19 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	}
 	
 	private void initSpinner(){
-		// TODO: Implement query to database and put category list into spinner
+		DatabaseHandler db = new DatabaseHandler(App.getContext());
+
+		// Spinner Drop down elements
+		List<String> labels = db.getAllCustomCategoryName();
+		labels.add(App.getContext().getResources()
+				.getString(R.string.create_new_category));
+
+		// Creating adapter for spinner
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(mActivity,
+				android.R.layout.simple_spinner_item, labels);
+		mSpinChooseCategory.setOnItemSelectedListener(this);
+
+		mSpinChooseCategory.setAdapter(dataAdapter);
 	}
 	
 	/* Validate data and create new game */
@@ -98,7 +121,16 @@ public class CreateCustomGameActivity extends BaseActivity implements
 		String new_word = mEditTxtNewWord.getText().toString();
 		if(isDataValidated(new_word, inputImagePath, "Default")){
 			NLog.i(TAG, "Word: " + new_word + " Image Path: " + inputImagePath);
-			// TODO: Implement save new word to database
+			QuestInfo newQuest = new QuestInfo(0, inputImagePathString,
+					new_word, "", 0);
+			DatabaseHandler db = new DatabaseHandler(App.getContext());
+			long check = db.createCustomQuest(newQuest, mSpinChooseCategory
+					.getSelectedItem().toString());
+			App.setListCustomCategories(new DatabaseHandler(mActivity)
+					.getAllCustomCategory());
+			if (check != -1)
+				Toast.makeText(mActivity, "Create Successfully",
+						Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -110,22 +142,13 @@ public class CreateCustomGameActivity extends BaseActivity implements
 			mEditTxtNewWord.requestFocus();
 			return false;
 		}
-		// else if (false){ // TODO: Check new word already exist!
-		// mEditTxtNewWord.setError(getString(R.string.error_input_already_exist));
-		// mEditTxtNewWord.requestFocus();
-		// return false;
-		// }
 		
 		/* Validate image path */
-		// TODO: implement validate image
 		if(imagePath == null || imagePath.getPath().isEmpty()){
 			// Set ImageView to some image which cute and can remind user to
 			// input image
 			return false;
 		}
-		
-		/* Validate for category */
-		// TODO: Implement validate for category, it should exist!
 		
 		// If everything is ok, return true
 		return true;
@@ -176,7 +199,14 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	private void takePictureFromCamera(){
 		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
 		File newFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+		if (newFile == null) {
+			Toast.makeText(mActivity,
+					"Your phone doesn't support external storage",
+					Toast.LENGTH_SHORT).show();
+			return;
+		}
 		inputImagePath = Uri.fromFile(newFile);
+		inputImagePathString = "file://" + newFile.getAbsolutePath();
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, inputImagePath);
 		startActivityForResult(intent, CAMERA_PIC_REQUEST);
 	}
@@ -208,18 +238,70 @@ public class CreateCustomGameActivity extends BaseActivity implements
 	public void onClick(View view){
 		int viewID = view.getId();
 		switch(viewID){
-			case R.id.btn_create:
+			case R.id.btn_start:
 				createGame();
 				break;
-			case R.id.btn_take_picture:
+			case R.id.btn_share_facebook:
 				takePictureFromCamera();
 				break;
-			case R.id.btn_choose_from_galary:
+			case R.id.btn_share_google:
 				choosePictureFromGallery();
 				break;
 			default:
 				break;
 		}
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int position,
+			long id) {
+		String label = parent.getItemAtPosition(position).toString();
+		Resources resource = App.getContext().getResources();
+		if (label.equals(resource.getString(R.string.create_new_category))) {
+			View dgView = View.inflate(mActivity,
+					R.layout.dg_create_new_category, null);
+			final EditText mCatName = (EditText) dgView
+					.findViewById(R.id.txt_welcome);
+			final EditText mCatDes = (EditText) dgView
+					.findViewById(R.id.txt_title_navi);
+
+			AlertDialog.Builder build = new AlertDialog.Builder(mActivity);
+			build.setTitle(resource
+					.getString(R.string.dg_create_category_title));
+			build.setView(dgView);
+			build.setPositiveButton(R.string.dg_accept_button,
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							String newCatName = mCatName.getText().toString();
+							String newCatDes = mCatDes.getText().toString();
+
+							DatabaseHandler db = new DatabaseHandler(mActivity);
+							db.createCustomCategory(newCatName, newCatDes);
+							initSpinner();
+						}
+					});
+			build.setNegativeButton(R.string.dg_cancel_button,
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							mSpinChooseCategory.setSelection(0);
+							dialog.dismiss();
+						}
+					});
+			build.setCancelable(false);
+
+			dialog = build.create();
+			dialog.show();
+		}
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+
 	}
 	
 }

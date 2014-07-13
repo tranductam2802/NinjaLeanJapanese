@@ -16,12 +16,41 @@ import android.content.Context;
  */
 public class App extends Application {
 	// Application context be private to prevent change this static data.
+	public static enum SCREEN_STATE {
+		START_GAME, CUSTOM_GAME
+	}
+
 	private static Context CurrentApp;
 
-	private static List<CategoriesInfo> listCategories = new ArrayList<CategoriesInfo>();
+	private static List<CategoriesInfo> listCategories;
+	private static List<CategoriesInfo> listDefaultCategories = new ArrayList<CategoriesInfo>();
+	private static List<CategoriesInfo> listCustomCategories = new ArrayList<CategoriesInfo>();
 
 	public static void setListCate(List<CategoriesInfo> listCategories) {
 		App.listCategories = listCategories;
+	}
+
+	public static void loadData(List<CategoriesInfo> listDefaultCategories,
+			List<CategoriesInfo> listCustomCategories) {
+		App.listDefaultCategories = listDefaultCategories;
+		App.listCustomCategories = listCustomCategories;
+	}
+
+	public static void setListCustomCategories(
+			List<CategoriesInfo> listCustomCategories) {
+		App.listCustomCategories = listCustomCategories;
+	}
+
+	public static void changeGameMode(SCREEN_STATE state) {
+		switch (state) {
+			case START_GAME:
+				App.listCategories = listDefaultCategories;
+				break;
+
+			case CUSTOM_GAME:
+				App.listCategories = listCustomCategories;
+				break;
+		}
 	}
 
 	public static List<CategoriesInfo> getListCategories() {

@@ -25,6 +25,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_CATEGORY = "CATEGORY";
 	private static final String TABLE_QUESTION = "QUESTION";
 
+	private static final String TABLE_CUSTOM_CATEGORY = "CUSTOM_CATEGORY";
+	private static final String TABLE_CUSTOM_QUESTION = "CUSTOM_QUESTION";
 	// Column for CATEGORY table
 	private static final String CAT_STT = "CatStt";
 	private static final String CAT_DES = "CatDes";
@@ -51,8 +53,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// get initiate db sql file path from resource
 		Resources resources = mContext.getResources();
-		String initiateDbFilePath = resources.getString(R.string.initiateDbFilePath);
-		
+		String initiateDbFilePath = resources
+				.getString(R.string.initiateDbFilePath);
+
 		// create default tables
 		try {
 			DbUtils.executeSqlScript(mContext, db, initiateDbFilePath);
@@ -64,17 +67,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		onUpgrade(db, 1, resources.getInteger(R.integer.databaseVersion));
 	}
 
-	// TODO: implement onUpgrade
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Resources resources = mContext.getResources();
 		for (int i = oldVersion + 1; i <= newVersion; i++) {
-			String[] updateQueries = null;
-			switch (i) {
-				case 2:
-					break;
-				case 3:
-					break;
+			String sqlUpdateFilePath = "sql/update" + i + ".sql";
+			try {
+				DbUtils.executeSqlScript(mContext, db, sqlUpdateFilePath);
+			} catch (IOException e) {
+				NLog.i("Update Database Failed at version: " + i);
 			}
 		}
 	}
@@ -106,7 +106,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(QUEST_KEY, quest.getAnswer());
 		values.put(QUEST_IMG_PATH, quest.getImgPath());
 		values.put(QUEST_STT, quest.getQuestStt());
 		values.put(CAT_ID, categoryName);
@@ -178,8 +177,77 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				quest.setImgPath(c.getString(c.getColumnIndex(QUEST_IMG_PATH))
 						.trim());
 				quest.setQuestStt(c.getInt(c.getColumnIndex(QUEST_STT)));
-				quest.setDefinition(c.getString(c
-.getColumnIndex(QUEST_DEFINITION)).trim());
+				quest.setDefinition(c.getString(
+						c.getColumnIndex(QUEST_DEFINITION)).trim());
+
+				quests.add(quest);
+			} while (c.moveToNext());
+		}
+
+		return quests;
+	}
+
+	/*
+	 * Get all category
+	 */
+	public List<CategoriesInfo> getAllCustomCategory() {
+		List<CategoriesInfo> cateList = new ArrayList<CategoriesInfo>();
+
+		String selectQuery = "SELECT * FROM " + TABLE_CUSTOM_CATEGORY
+				+ " ORDER BY " + CAT_ID;
+
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor c = db.rawQuery(selectQuery, null);
+
+		if (c.moveToFirst()) {
+			do {
+				CategoriesInfo cateInfo = new CategoriesInfo();
+				cateInfo.setCateId(c.getInt(c.getColumnIndex(CAT_ID)));
+				cateInfo.setCateName(c.getString(c.getColumnIndex(CAT_NAME))
+						.trim());
+				cateInfo.setCateDesc(c.getString(c.getColumnIndex(CAT_DES)));
+				cateInfo.setImgPath(c.getString(c.getColumnIndex(CAT_IMG_PATH)));
+				cateInfo.setStt(c.getInt(c.getColumnIndex(CAT_STT)));
+				cateInfo.setListQuest(getAllCustomQuestByCategoryName(cateInfo
+						.getCateName()));
+
+				cateList.add(cateInfo);
+			} while (c.moveToNext());
+		}
+
+		return cateList;
+	}
+
+	/*
+	 * Get all Quest by Category Name
+	 */
+	public List<QuestInfo> getAllCustomQuestByCategoryName(String category_name) {
+		List<QuestInfo> quests = new ArrayList<QuestInfo>();
+
+		String selectQuery = "SELECT * FROM " + TABLE_CUSTOM_QUESTION
+				+ " WHERE " + CAT_NAME + " = '" + category_name + "' ORDER BY "
+				+ QUEST_ID;
+
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor c = db.rawQuery(selectQuery, null);
+
+		if (c.moveToFirst()) {
+			do {
+				QuestInfo quest = new QuestInfo();
+				quest.setQuestId(c.getInt(c.getColumnIndex(QUEST_ID)));
+				try {
+					quest.setAnswer(c.getString(c.getColumnIndex(QUEST_KEY))
+							.trim());
+				} catch (InvalidKeyException e) {
+					NLog.e("Invalid quest answer"
+							+ c.getString(c.getColumnIndex(QUEST_KEY)));
+					continue;
+				}
+				quest.setImgPath(c.getString(c.getColumnIndex(QUEST_IMG_PATH)));
+				quest.setQuestStt(c.getInt(c.getColumnIndex(QUEST_STT)));
+				quest.setDefinition(c.getString(
+c
+						.getColumnIndex(QUEST_DEFINITION)));
 
 				quests.add(quest);
 			} while (c.moveToNext());
@@ -212,5 +280,59 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		return db.update(TABLE_CATEGORY, values, CAT_ID + " = ?",
 				new String[] { String.valueOf(cateId) });
+	}
+
+	/**
+	 * 
+	 * @return List of name of all custom category
+	 */
+	public List<String> getAllCustomCategoryName() {
+		List<String> categoryNameList = new ArrayList<String>();
+
+		String selectQuery = "SELECT " + CAT_NAME + " FROM "
+				+ TABLE_CUSTOM_CATEGORY;
+
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		if (cursor.moveToFirst()) {
+			do {
+				categoryNameList.add(cursor.getString(0));
+			} while (cursor.moveToNext());
+		}
+
+		cursor.close();
+		db.close();
+
+		return categoryNameList;
+	}
+
+	public long createCustomCategory(String catName, String catDes) {
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(CAT_NAME, catName.trim());
+		values.put(CAT_DES, catDes.trim());
+
+		// insert row
+		long question_id = db.insert(TABLE_CUSTOM_CATEGORY, null, values);
+
+		return question_id;
+	}
+
+	public long createCustomQuest(QuestInfo quest, String cateName) {
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(QUEST_KEY, quest.getAnswer());
+		values.put(QUEST_IMG_PATH, quest.getImgPath());
+		values.put(QUEST_STT, quest.getQuestStt());
+		values.put(CAT_NAME, cateName.trim());
+		values.put(QUEST_DEFINITION, quest.getDefinition());
+
+		// insert row
+		long question_id = db.insert(TABLE_CUSTOM_QUESTION, null, values);
+
+		return question_id;
 	}
 }

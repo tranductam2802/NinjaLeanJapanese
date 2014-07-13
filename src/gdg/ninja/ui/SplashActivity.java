@@ -65,6 +65,9 @@ public class SplashActivity extends BaseActivity {
 	private void loadingAppData() {
 		DatabaseHandler mDatabase = new DatabaseHandler(this);
 		List<CategoriesInfo> listCategories = mDatabase.getAllCategory();
+		List<CategoriesInfo> listCustomCategoriesInfos = mDatabase
+				.getAllCustomCategory();
+		App.loadData(listCategories, listCustomCategoriesInfos);
 		App.setListCate(listCategories);
 	}
 
