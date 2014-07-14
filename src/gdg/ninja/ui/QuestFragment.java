@@ -76,12 +76,16 @@ public class QuestFragment extends BaseFragment implements
 	private String mScreenTitle = "";
 	private boolean isAnimate = false;
 	private boolean isTextAnimate = false;
+	private boolean isBombed = false;
+
 
 	private int numAnswered = 0;
 	private int numOfWrongAnswered = 0;
 
 	private int numberOfBomb = 0;
 	private int numberOfCompass = 0;
+
+	private int numberOfCompassUsed = 0;
 
 	public static QuestFragment getInstance(int questId, int cateId) {
 		QuestFragment fragment = new QuestFragment();
@@ -484,7 +488,7 @@ public class QuestFragment extends BaseFragment implements
 				}
 			}
 		});
-		
+
 		switchText.start();
 
 		ImageView imgRateOne = (ImageView) winDialogView
@@ -589,37 +593,58 @@ public class QuestFragment extends BaseFragment implements
 		Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
 	}
 
+	// remove frog tag (only remove tag on Quest line)
 	private void bombQuest() {
 		// TODO: animation
-		if (numberOfBomb > 0) {
+		if (numberOfBomb > 0 && !isBombed) {
 			numberOfBomb--;
+			isBombed = true;
 			reloadBombAndCompassCount();
-			resetQuestAndAnswer();
 			QuestInfo questInfo = App.getQuestById(mQuestId, mCategoryId);
 			String answer = questInfo.getAnswer();
 			for (Tag tag : mListQuest) {
 				if (!answer.contains(tag.string)) {
 					// TODO: implement animation
-					tag.view.setVisibility(View.GONE);
+					if (tag.view.getVisibility() == View.VISIBLE)
+						tag.view.setVisibility(View.GONE);
 				}
 			}
 		}
 	}
 
+	// fill the answer and each time it cost one compass
 	private void compassQuest() {
 		// TODO: animation
-		if (numberOfCompass > 0) {
+		if (numberOfCompass > 0 && !isAnimate) {
 			numberOfCompass--;
+
+			// Update bomb and compass count in textview
 			reloadBombAndCompassCount();
-			resetQuestAndAnswer();
-			// Fill the first Answer Tag
+
+			// clear all the tag in answer line which hasn't been filled by
+			// compassQuest
+			resetAnswerLineAfterPosition(numberOfCompassUsed);
 			for (Tag tag : mListQuest) {
-				if (tag.string.equals(mListAnswer[0].string)) {
-					mListAnswer[0].view.setText(tag.string);
-					mListAnswer[0].view.setVisibility(View.VISIBLE);
-					mListAnswer[0].preView = tag.view;
+				if (tag.string.equals(mListAnswer[numberOfCompassUsed].string)) {
+					mListAnswer[numberOfCompassUsed].view.setText(tag.string);
+					mListAnswer[numberOfCompassUsed].view
+							.setVisibility(View.VISIBLE);
+					mListAnswer[numberOfCompassUsed].preView = tag.view;
+
+					// Disable view so user can't remove it from answer line
+					mListAnswer[numberOfCompassUsed].view.setEnabled(false);
 					tag.view.setVisibility(View.INVISIBLE);
-					numAnswered++;
+
+					// Increase number of compass used by one
+					numberOfCompassUsed++;
+
+					// Increase number of answered
+					numAnswered = numberOfCompassUsed;
+
+					// Check if the last tag hasn't been filled, if true show
+					// dialog win game
+					if (numAnswered == mListAnswer.length)
+						onWinGame();
 					return;
 				}
 			}
@@ -630,20 +655,38 @@ public class QuestFragment extends BaseFragment implements
 	/*
 	 * Reset Quest Tag and Answer Tag
 	 */
-	private void resetQuestAndAnswer() {
-		for (Tag tag : mListAnswer) {
-			if (tag.preView != null) {
-				tag.view.setText("");
-				tag.view.setVisibility(View.INVISIBLE);
-				tag.preView.setVisibility(View.VISIBLE);
-				tag.preView = null;
+	private void resetAnswerLineAfterPosition(int pos) {
+		for (int i = pos; i < mListAnswer.length; i++) {
+			if (mListAnswer[i].preView != null) {
+				mListAnswer[i].view.setText("");
+				mListAnswer[i].view.setVisibility(View.INVISIBLE);
+				mListAnswer[i].preView.setVisibility(View.VISIBLE);
+				mListAnswer[i].preView = null;
 			}
 		}
 		numAnswered = 0;
 	}
 
 	private void resetGame() {
-		resetQuestAndAnswer();
+		// TODO: reset game
+
+		// Reset state of compass and bomb usage
+		numberOfCompassUsed = 0;
+		isBombed = false;
+
+		// Reset num of answered
+		numAnswered = 0;
+
+		// Reset all tag to their default state
+		for (Tag tag : mListAnswer) {
+			if (tag.view.getVisibility() == View.VISIBLE) {
+				tag.view.setVisibility(View.INVISIBLE);
+				tag.preView.setVisibility(View.VISIBLE);
+				tag.view.setEnabled(true);
+				tag.preView.setEnabled(true);
+				tag.preView = null;
+			}
+		}
 		for (Tag tag : mListQuest) {
 			if (tag.view.getVisibility() == View.GONE) {
 				tag.view.setVisibility(View.VISIBLE);
