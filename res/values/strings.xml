@@ -56,14 +56,10 @@
     <string name="txt_high_score">High Score</string>
 
     <!-- Error message -->
-<<<<<<< HEAD
     <string name="coming_soon">Coming soon</string>
-=======
-
 
     <!-- Other language text -->
     <string name="txt_high_score_fighting">Fighting, you can be better!</string>
     <string name="txt_high_score_newbie">NEWBIE</string>
->>>>>>> origin/master
 
 </resources>
