@@ -2,6 +2,7 @@
 
     <!-- App common -->
     <string name="app_name">Ninja Learn Japanese</string>
+    <string name="facebook_id">753724238025958</string>
     <string name="image_description">Image</string>
     <string name="loading">Loading…</string>
     <string name="exit_message">Goodbye! Nine to meet you soon.</string>
@@ -52,9 +53,6 @@
     <string name="txt_point">points</string>
     
     <!-- Error message -->
-
-
-    <!-- Other language text -->
-    
+    <string name="coming_soon">Coming soon</string>
 
 </resources>

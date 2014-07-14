@@ -4,7 +4,9 @@ import gdg.nat.R;
 import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.navigate.NavigationBar;
 import gdg.ninja.navigate.NavigationManager;
+import gdg.ninja.util.FacebookUtil;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,6 +20,12 @@ public class GameActivity extends BaseActivity{
 		setContentView(R.layout.ac_game);
 		initView();
 		showListGameFragment();
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data){
+		super.onActivityResult(requestCode, resultCode, data);
+		FacebookUtil.onActivityResult(this, requestCode, resultCode, data);
 	}
 	
 	public NavigationManager getNavigationManager(){
