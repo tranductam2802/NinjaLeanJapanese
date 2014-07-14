@@ -595,8 +595,8 @@ public class QuestFragment extends BaseFragment implements
 	@Override
 	public void onClick(View v){
 		if(isAnimate) return;
-		Animation shake = AnimationUtils.loadAnimation(getActivity(),
-				R.anim.shake);
+		Animation btn_animation_blink = AnimationUtils.loadAnimation(
+				getActivity(), R.anim.btn_animation_blink);
 		int id = v.getId();
 		switch(id){
 			case R.id.btn_share_facebook:
@@ -606,11 +606,11 @@ public class QuestFragment extends BaseFragment implements
 				shareGoogle();
 				break;
 			case R.id.btn_boom:
-				mTxtBombCount.startAnimation(shake);
+				mImgBomb.startAnimation(btn_animation_blink);
 				bombQuest();
 				break;
 			case R.id.btn_flag:
-				mTxtCompassCount.startAnimation(shake);
+				mImgFlag.startAnimation(btn_animation_blink);
 				compassQuest();
 				break;
 			case R.id.btn_start:

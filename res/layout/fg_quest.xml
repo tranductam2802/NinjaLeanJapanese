@@ -27,13 +27,14 @@
 
             <RelativeLayout
                 android:layout_width="@dimen/quest_image_button_size"
-                android:layout_height="@dimen/quest_image_button_size" >
+                android:layout_height="@dimen/quest_image_button_size"
+                android:background="@color/btn_bomb" >
 
                 <ImageView
                     android:id="@id/btn_boom"
                     android:layout_width="@dimen/quest_image_button_size"
                     android:layout_height="@dimen/quest_image_button_size"
-                    android:background="@color/btn_bomb"
+                    android:background="@android:color/transparent"
                     android:contentDescription="@string/image_description"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_bomb" />
@@ -53,13 +54,14 @@
 
             <RelativeLayout
                 android:layout_width="@dimen/quest_image_button_size"
-                android:layout_height="@dimen/quest_image_button_size" >
+                android:layout_height="@dimen/quest_image_button_size"
+                android:background="@color/btn_flag" >
 
                 <ImageView
                     android:id="@id/btn_flag"
                     android:layout_width="@dimen/quest_image_button_size"
                     android:layout_height="@dimen/quest_image_button_size"
-                    android:background="@color/btn_flag"
+                    android:background="@android:color/transparent"
                     android:contentDescription="@string/image_description"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_flag" />
