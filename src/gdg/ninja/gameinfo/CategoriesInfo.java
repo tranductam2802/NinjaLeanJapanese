@@ -65,12 +65,16 @@ public class CategoriesInfo {
 		this.listQuest.add(quest);
 	}
 
-	public void reCalculateStt(){
-		int sumSttOfAllQuest = 0;
-		for(QuestInfo x : listQuest){
-			sumSttOfAllQuest += x.getQuestStt();
+	public void reCalculateStt() {
+		cateStt = getTotalStt() / listQuest.size();
+	}
+
+	public int getTotalStt() {
+		int sumOfAllStar = 0;
+		for (QuestInfo x : listQuest) {
+			sumOfAllStar += x.getQuestStt();
 		}
-		cateStt = sumSttOfAllQuest / listQuest.size();
+		return sumOfAllStar;
 	}
 
 	public CategoriesInfo(String imgPath, String categoriesName,

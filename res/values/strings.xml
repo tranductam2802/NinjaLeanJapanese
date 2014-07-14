@@ -45,16 +45,20 @@
     <!-- Screen title -->
     <string name="sc_list_category_title">List categories</string>
 
-    <!-- Pop-up win game-->
+    <!-- Pop-up win game -->
     <string name="txt_you_got_point">You got</string>
     <string name="txt_bonus">Bonus</string>
     <string name="txt_win_game_congratulation">Congratulation!</string>
     <string name="txt_point">points</string>
-    
+
+    <!-- High Score Activity -->
+    <string name="txt_high_score">High Score</string>
+
     <!-- Error message -->
 
 
     <!-- Other language text -->
-    
+    <string name="txt_high_score_fighting">Fighting, you can be better!</string>
+    <string name="txt_high_score_newbie">NEWBIE</string>
 
 </resources>
