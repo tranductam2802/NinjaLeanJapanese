@@ -191,7 +191,11 @@ public class StartActivity extends BaseActivity implements OnClickListener{
 			case R.id.btn_custom:
 				switch(mScreenState){
 					case START_GAME:
-						changeScreenState(SCREEN_STATE.CUSTOM_GAME);
+						String msg = getString(R.string.coming_soon);
+						Toast.makeText(getApplicationContext(), msg,
+								Toast.LENGTH_LONG).show();
+						// TODO: implement soon
+						// changeScreenState(SCREEN_STATE.CUSTOM_GAME);
 						break;
 					case CUSTOM_GAME:
 						startMakeGameAc();
