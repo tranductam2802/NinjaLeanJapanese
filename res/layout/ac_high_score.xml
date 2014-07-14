@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/secondary_app_color"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/congratulation_text"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/menu_button_height"
+            android:layout_margin="10dp"
+            android:text="@string/txt_high_score" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_score"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@id/txt_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_margin="16dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="76sp" />
+        </FrameLayout>
+
+        <TextView
+            style="@style/nomal_text"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_margin="0dp"
+            android:text="@string/txt_high_score_fighting" />
+
+        <LinearLayout
+            android:id="@id/place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@id/txt_title_navi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:text="@string/txt_high_score_newbie"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@id/btn_start"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/next_question"
+            android:contentDescription="@android:string/ok"
+            android:padding="5dp"
+            android:src="@drawable/trophy1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/quest_image_button_share_height"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@id/btn_share_facebook"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/quest_image_button_share_height"
+            android:layout_weight="1"
+            android:background="@color/btn_facebook"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_facebook" />
+
+        <ImageView
+            android:id="@id/btn_share_google"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/quest_image_button_share_height"
+            android:layout_weight="1"
+            android:background="@color/btn_google"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_google" />
+    </LinearLayout>
+
+</RelativeLayout>

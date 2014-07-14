@@ -67,9 +67,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// TODO: implement onUpgrade
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Resources resources = mContext.getResources();
 		for (int i = oldVersion + 1; i <= newVersion; i++) {
-			String[] updateQueries = null;
 			switch (i) {
 				case 2:
 					break;

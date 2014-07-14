@@ -1,10 +1,12 @@
 package gdg.ninja.framework;
 
 import gdg.ninja.navigate.NavigationManager;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.support.v4.app.FragmentActivity;
 
 /** Base activity of the framework */
+@SuppressLint("Registered")
 public class BaseActivity extends FragmentActivity{
 	protected AlertDialog dialog;
 	
