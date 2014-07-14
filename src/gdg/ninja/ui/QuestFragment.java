@@ -379,7 +379,7 @@ public class QuestFragment extends BaseFragment implements
 		// Bonus bomb and compass for the first time win game
 		if (oldScore == 0) {
 			isBonus = true;
-			numberOfCompass += score / 2;
+			numberOfCompass += 1;
 			setNewBombAndCompass(++numberOfBomb, numberOfCompass);
 		} else
 			isBonus = false;
@@ -597,6 +597,13 @@ public class QuestFragment extends BaseFragment implements
 	private void bombQuest() {
 		// TODO: animation
 		if (numberOfBomb > 0 && !isBombed) {
+
+			// Animate bomb
+			Animation btn_animation_blink = AnimationUtils.loadAnimation(
+					getActivity(), R.anim.btn_animation_blink);
+			mImgBomb.startAnimation(btn_animation_blink);
+
+			// Decrease number of bombs
 			numberOfBomb--;
 			isBombed = true;
 			reloadBombAndCompassCount();
@@ -609,13 +616,25 @@ public class QuestFragment extends BaseFragment implements
 						tag.view.setVisibility(View.GONE);
 				}
 			}
+		} else {
+			// Animate on out of bomb
+			Animation shake = AnimationUtils.loadAnimation(getActivity(),
+					R.anim.shake);
+			mImgBomb.startAnimation(shake);
 		}
 	}
 
 	// fill the answer and each time it cost one compass
 	private void compassQuest() {
-		// TODO: animation
-		if (numberOfCompass > 0 && !isAnimate) {
+		if (numberOfCompass > 0 && !isAnimate
+				&& numAnswered < mListAnswer.length) {
+
+			// Animate flag
+			Animation btn_animation_blink = AnimationUtils.loadAnimation(
+					getActivity(), R.anim.btn_animation_blink);
+			mImgFlag.startAnimation(btn_animation_blink);
+
+			// Decrease one compass
 			numberOfCompass--;
 
 			// Update bomb and compass count in textview
@@ -648,6 +667,11 @@ public class QuestFragment extends BaseFragment implements
 					return;
 				}
 			}
+		} else {
+			// Animate on out of flags
+			Animation shake = AnimationUtils.loadAnimation(getActivity(),
+					R.anim.shake);
+			mImgFlag.startAnimation(shake);
 		}
 
 	}
@@ -668,7 +692,7 @@ public class QuestFragment extends BaseFragment implements
 	}
 
 	private void resetGame() {
-		// TODO: reset game
+		reloadBombAndCompassCount();
 
 		// Reset state of compass and bomb usage
 		numberOfCompassUsed = 0;
