@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- App common -->
@@ -55,11 +56,34 @@
     <!-- High Score Activity -->
     <string name="txt_high_score">High Score</string>
 
+    <string-array name="txt_high_score_label">
+        <item>NEWBIE</item>
+        <item>ELEMENTARY</item>
+        <item>PRE-INTERMEDIATE</item>
+        <item>INTERMEDIATE</item>
+        <item>UPPER-INTERMEDIATE</item>
+        <item>ADVANCE</item>
+        <item>PROFICIENCY</item>
+        <item>MASTER</item>
+    </string-array>
+    <string-array name="txt_high_score_message">
+        <item>Fighting, you can be better!</item>
+        <item>You are pure potential, let\'s try more !</item>
+        <item>Leaning Japanese is your favorite !</item>
+        <item>Wow, you are very good at Japanese !</item>
+        <item>You are gifted at Japanese</item>
+        <item>Amazing, your Japanese is excellent</item>
+        <item>You can do everything with your Japanese !</item>
+        <item>You are the best, Master of Japanese !</item>
+    </string-array>
+
     <!-- Error message -->
     <string name="coming_soon">Coming soon</string>
 
     <!-- Other language text -->
     <string name="txt_high_score_fighting">Fighting, you can be better!</string>
     <string name="txt_high_score_newbie">NEWBIE</string>
+    <string name="title_activity_help">Help</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

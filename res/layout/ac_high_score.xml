@@ -14,33 +14,33 @@
             style="@style/congratulation_text"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/menu_button_height"
-            android:layout_margin="10dp"
+            android:layout_margin="30dp"
             android:text="@string/txt_high_score" />
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_score"
-            android:gravity="center" >
+            android:gravity="center"
+            android:padding="30dp" >
 
             <TextView
                 android:id="@id/txt_welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:textColor="@android:color/white"
-                android:textSize="76sp" />
+                android:textSize="56sp" />
         </FrameLayout>
 
         <TextView
+            android:id="@id/txt_title_navi"
             style="@style/nomal_text"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_margin="0dp"
-            android:text="@string/txt_high_score_fighting" />
+            android:layout_margin="0dp" />
 
         <LinearLayout
             android:id="@id/place_holder"
@@ -51,17 +51,16 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:id="@id/txt_title_navi"
+                android:id="@id/txt_categories_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
-                android:text="@string/txt_high_score_newbie"
                 android:textColor="@android:color/white"
                 android:textSize="25sp" />
         </LinearLayout>
 
         <ImageView
-            android:id="@id/btn_start"
+            android:id="@id/img_avatar"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/next_question"
