@@ -574,6 +574,7 @@ public class QuestFragment extends BaseFragment implements
 		class TakeScreenShot extends AsyncTask<Void, Void, Void> {
 			AlertDialog replaceDialog;
 			ShareUtils.SHARE_TYPE shareType;
+			Bitmap b;
 
 			public TakeScreenShot(ShareUtils.SHARE_TYPE shareType) {
 				super();
@@ -590,17 +591,15 @@ public class QuestFragment extends BaseFragment implements
 						.getString(R.string.please_wait));
 				dialog.setCancelable(false);
 				dialog.show();
-
-			}
-
-			@Override
-			protected Void doInBackground(Void... params) {
-				Bitmap b = Bitmap.createBitmap(mPopupView.getWidth(),
+				b = Bitmap.createBitmap(mPopupView.getWidth(),
 						mPopupView.getHeight(), Config.ARGB_8888);
 
 				Canvas canvas = new Canvas(b);
 				mPopupView.draw(canvas);
+			}
 
+			@Override
+			protected Void doInBackground(Void... params) {
 				File file = new File(ShareUtils.DEFAULT_SCREENSHOT_PATH);
 				try {
 					file.createNewFile();

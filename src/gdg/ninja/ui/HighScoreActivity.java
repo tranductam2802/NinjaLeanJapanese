@@ -118,11 +118,13 @@ public class HighScoreActivity extends Activity implements OnClickListener {
 	class TakeScreenShot extends AsyncTask<Void, Void, Void> {
 		AlertDialog mDialog;
 		ShareUtils.SHARE_TYPE shareType;
+		Bitmap b;
 
 		public TakeScreenShot(ShareUtils.SHARE_TYPE shareType) {
 			super();
 			this.shareType = shareType;
 		}
+
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -132,16 +134,15 @@ public class HighScoreActivity extends Activity implements OnClickListener {
 					.getString(R.string.please_wait));
 			mDialog.setCancelable(false);
 			mDialog.show();
-
-		}
-
-		@Override
-		protected Void doInBackground(Void... params) {
-			Bitmap b = Bitmap.createBitmap(mScreenView.getWidth(),
+			b = Bitmap.createBitmap(mScreenView.getWidth(),
 					mScreenView.getHeight(), Config.ARGB_8888);
 
 			Canvas canvas = new Canvas(b);
 			mScreenView.draw(canvas);
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
 
 			File file = new File(ShareUtils.DEFAULT_SCREENSHOT_PATH);
 			try {

@@ -52,10 +52,9 @@ public class GameActivity extends BaseActivity {
 	}
 
 	public class TakeScreenShot extends AsyncTask<Void, Void, Void> {
-
 		AlertDialog replaceDialog;
-
 		ShareUtils.SHARE_TYPE shareType;
+		Bitmap b;
 
 		public TakeScreenShot(ShareUtils.SHARE_TYPE shareType) {
 			super();
@@ -72,16 +71,15 @@ public class GameActivity extends BaseActivity {
 					.getString(R.string.please_wait));
 			dialog.setCancelable(false);
 			dialog.show();
-
-		}
-
-		@Override
-		protected Void doInBackground(Void... params) {
-			Bitmap b = Bitmap.createBitmap(screenView.getWidth(),
+			b = Bitmap.createBitmap(screenView.getWidth(),
 					screenView.getHeight(), Config.ARGB_8888);
 
 			Canvas canvas = new Canvas(b);
 			screenView.draw(canvas);
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
 
 			File file = new File(ShareUtils.DEFAULT_SCREENSHOT_PATH);
 			try {
