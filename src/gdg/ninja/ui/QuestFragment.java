@@ -10,20 +10,25 @@ import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
 import gdg.ninja.navigate.NavigationBar.INavigationBarListener;
 import gdg.ninja.util.App;
 import gdg.ninja.util.ConfigPreference;
-import gdg.ninja.util.FacebookStoryBuilder;
 import gdg.ninja.util.FacebookUtil;
 import gdg.ninja.util.QuestGenerator;
+import gdg.ninja.util.ShareUtils;
+import gdg.ninja.util.ShareUtils.SHARE_TYPE;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
-import java.util.Locale;
 
 import android.app.AlertDialog;
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -36,9 +41,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
 
 import com.squareup.picasso.Picasso;
@@ -78,7 +83,6 @@ public class QuestFragment extends BaseFragment implements
 	private boolean isTextAnimate = false;
 	private boolean isBombed = false;
 
-
 	private int numAnswered = 0;
 	private int numOfWrongAnswered = 0;
 
@@ -94,6 +98,7 @@ public class QuestFragment extends BaseFragment implements
 		bundle.putInt(KEY_QUEST_ID, questId);
 		fragment.setArguments(bundle);
 		return fragment;
+
 	}
 
 	@Override
@@ -111,9 +116,19 @@ public class QuestFragment extends BaseFragment implements
 		numberOfCompass = ConfigPreference.getInstance().getNumberOfCompass();
 		mScreenTitle = App.getCategoryById(mCategoryId).getCateName();
 
+		// Display help when user play first time
 		if (ConfigPreference.getInstance().isFirstTime()) {
-			Intent intent = new Intent(getActivity(), HelpActivity.class);
-			startActivity(intent);
+			Handler mHandler = new Handler();
+			mHandler.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					Intent intent = new Intent(getActivity(),
+							HelpActivity.class);
+					startActivity(intent);
+
+				}
+			}, 2000);
 			ConfigPreference.getInstance().saveIsFirstTime();
 		}
 	}
@@ -383,7 +398,7 @@ public class QuestFragment extends BaseFragment implements
 		QuestInfo quest = App.getQuestById(mQuestId, mCategoryId);
 		int oldScore = quest.getQuestStt();
 		// Bonus bomb and compass for the first time win game
-		if (oldScore == 0) {
+		if (oldScore == 0 && quest.getQuestId() % 3 == 0) {
 			isBonus = true;
 			numberOfCompass += 1;
 			setNewBombAndCompass(++numberOfBomb, numberOfCompass);
@@ -430,7 +445,10 @@ public class QuestFragment extends BaseFragment implements
 				R.layout.popup_finish, null);
 		ImageView imgAvatar = (ImageView) winDialogView
 				.findViewById(R.id.img_avatar);
-		imgAvatar.setImageDrawable(mImgAvatar.getDrawable());
+		Picasso.with(getActivity())
+				.load(questInfo.getImgPath().replace("assets",
+						"file:///android_asset")).resize(250, 250)
+				.placeholder(R.drawable.dummy_image).into(imgAvatar);
 
 		TextView mTxtShowPoint = (TextView) winDialogView
 				.findViewById(R.id.txt_welcome);
@@ -448,6 +466,7 @@ public class QuestFragment extends BaseFragment implements
 				t.setGravity(Gravity.CENTER_HORIZONTAL);
 				t.setBackgroundColor(App.getContext().getResources()
 						.getColor(R.color.answer_color));
+				t.setTextColor(Color.WHITE);
 				t.setTextSize(26);
 				return t;
 			}
@@ -549,6 +568,96 @@ public class QuestFragment extends BaseFragment implements
 		mImgNextBtn.setOnClickListener(this);
 		mImgReplayBtn.setOnClickListener(this);
 
+		final RelativeLayout mPopupView = (RelativeLayout) winDialogView
+				.findViewById(R.id.btn_choose_from_galary);
+
+		class TakeScreenShot extends AsyncTask<Void, Void, Void> {
+			AlertDialog replaceDialog;
+			ShareUtils.SHARE_TYPE shareType;
+
+			public TakeScreenShot(ShareUtils.SHARE_TYPE shareType) {
+				super();
+				this.shareType = shareType;
+			}
+
+			@Override
+			protected void onPreExecute() {
+				super.onPreExecute();
+				// Showing progress dialog
+				replaceDialog = dialog;
+				dialog = new ProgressDialog(getActivity());
+				dialog.setMessage(App.getContext().getResources()
+						.getString(R.string.please_wait));
+				dialog.setCancelable(false);
+				dialog.show();
+
+			}
+
+			@Override
+			protected Void doInBackground(Void... params) {
+				Bitmap b = Bitmap.createBitmap(mPopupView.getWidth(),
+						mPopupView.getHeight(), Config.ARGB_8888);
+
+				Canvas canvas = new Canvas(b);
+				mPopupView.draw(canvas);
+
+				File file = new File(ShareUtils.DEFAULT_SCREENSHOT_PATH);
+				try {
+					file.createNewFile();
+					FileOutputStream ostream = new FileOutputStream(file);
+
+					b.compress(CompressFormat.PNG, 80, ostream);
+					ostream.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (shareType == SHARE_TYPE.FACEBOOK)
+					ShareUtils.postPhotoToFacebook(getActivity(), new File(
+							ShareUtils.DEFAULT_SCREENSHOT_PATH));
+				else
+					ShareUtils.postPhotoToGoogle(getActivity(), new File(
+							ShareUtils.DEFAULT_SCREENSHOT_PATH));
+
+				return null;
+			}
+
+			@Override
+			protected void onPostExecute(Void result) {
+				super.onPostExecute(result);
+				// Dismiss the progress dialog
+				if (dialog.isShowing())
+					dialog.dismiss();
+				dialog = replaceDialog;
+			}
+
+		}
+
+		final TakeScreenShot takeScreenShotFb = new TakeScreenShot(
+				SHARE_TYPE.FACEBOOK);
+		final TakeScreenShot takeScreenShotGg = new TakeScreenShot(
+				SHARE_TYPE.GOOGLE);
+
+		ImageView mBtnFacebook = (ImageView) winDialogView
+				.findViewById(R.id.btn_custom);
+		ImageView mBtnGoogle = (ImageView) winDialogView
+				.findViewById(R.id.btn_create);
+		mBtnFacebook.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (takeScreenShotFb.getStatus() != AsyncTask.Status.FINISHED)
+					takeScreenShotFb.execute();
+			}
+		});
+		mBtnGoogle.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (takeScreenShotGg.getStatus() != AsyncTask.Status.FINISHED)
+					takeScreenShotGg.execute();
+			}
+		});
+
 		View bonusView = winDialogView.findViewById(R.id.place_holder);
 		if (!isBonus)
 			bonusView.setVisibility(View.GONE);
@@ -581,22 +690,15 @@ public class QuestFragment extends BaseFragment implements
 	}
 
 	private void shareFacebook() {
-		FacebookStoryBuilder builder = new FacebookStoryBuilder();
-		builder.setTitle("Facebook SDK for Android");
-		DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm",
-				Locale.JAPAN);
-		String date = df.format(Calendar.getInstance().getTime());
-		builder.setCaption(date);
-		builder.setDescription("The Facebook SDK for Android makes it easier and faster to develop Facebook integrated Android apps.");
-		builder.setLink("https://developers.facebook.com/android");
-		builder.setPictureLink("https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png");
-		FacebookUtil.postStatus(getActivity(), builder.create());
+		isAnimate = true;
+		takeScreenShot(SHARE_TYPE.FACEBOOK);
+		isAnimate = false;
 	}
 
 	private void shareGoogle() {
-		Context context = getActivity();
-		int content = R.string.coming_soon;
-		Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
+		isAnimate = true;
+		takeScreenShot(SHARE_TYPE.GOOGLE);
+		isAnimate = false;
 	}
 
 	// remove frog tag (only remove tag on Quest line)
@@ -706,6 +808,7 @@ public class QuestFragment extends BaseFragment implements
 
 		// Reset num of answered
 		numAnswered = 0;
+		numOfWrongAnswered = 0;
 
 		// Reset all tag to their default state
 		for (Tag tag : mListAnswer) {

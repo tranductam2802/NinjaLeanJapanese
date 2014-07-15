@@ -37,7 +37,7 @@ public class ConfigPreference{
 	}
 
 	public int getNumberOfBomb() {
-		return getSharedPreference().getInt(NUMBER_OF_BOMB, 0);
+		return getSharedPreference().getInt(NUMBER_OF_BOMB, 1);
 	}
 
 	public void setNumberOfBomb(int numberOfBomb) {
@@ -45,7 +45,7 @@ public class ConfigPreference{
 	}
 
 	public int getNumberOfCompass() {
-		return getSharedPreference().getInt(NUMBER_OF_COMPASS, 0);
+		return getSharedPreference().getInt(NUMBER_OF_COMPASS, 1);
 	}
 
 	public void SetNumberOfCompass(int numberOfCompass) {

@@ -124,7 +124,7 @@ public class NavigationBar extends RelativeLayout{
 	}
 	
 	public void setBtnSetting(){
-		btnRight.setImageResource(R.drawable.ic_setting);
+		btnRight.setImageResource(R.drawable.ic_tut);
 		btnRight.setVisibility(View.VISIBLE);
 		if(btnRight.getVisibility() == View.GONE){
 			btnRight.setVisibility(View.INVISIBLE);

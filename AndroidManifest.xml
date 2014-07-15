@@ -48,6 +48,10 @@
             android:name="gdg.ninja.ui.HelpActivity"
             android:label="@string/title_activity_help" >
         </activity>
+        <activity
+            android:name="gdg.ninja.ui.AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
     </application>
 
 </manifest>

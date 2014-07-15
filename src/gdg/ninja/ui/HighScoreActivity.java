@@ -1,23 +1,41 @@
 package gdg.ninja.ui;
 
 import gdg.nat.R;
-import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.gameinfo.CategoriesInfo;
 import gdg.ninja.util.App;
+import gdg.ninja.util.ShareUtils;
+import gdg.ninja.util.ShareUtils.SHARE_TYPE;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class HighScoreActivity extends BaseActivity {
+public class HighScoreActivity extends Activity implements OnClickListener {
 
 	TextView mTxtScore;
 	TextView mTxtLabel;
 	TextView mTxtMessage;
 	ImageView mImgTrophy;
+	ImageView mBtnShareFb;
+	ImageView mBtnShareGg;
+	RelativeLayout mScreenView;
+	Activity mActivity;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -29,6 +47,8 @@ public class HighScoreActivity extends BaseActivity {
 	}
 
 	private void initData() {
+		mActivity = this;
+
 		Resources resources = App.getContext().getResources();
 
 		String[] highScoreLabel = resources
@@ -80,6 +100,9 @@ public class HighScoreActivity extends BaseActivity {
 		mTxtMessage.setText(highScoreMessage[txtPosition]);
 		mTxtScore.setText(String.valueOf(totalScore));
 		mImgTrophy.setImageResource(tropyImgId);
+		mBtnShareFb.setOnClickListener(this);
+		mBtnShareGg.setOnClickListener(this);
+
 	}
 
 	private void initViews() {
@@ -87,5 +110,80 @@ public class HighScoreActivity extends BaseActivity {
 		mTxtLabel = (TextView) findViewById(R.id.txt_categories_description);
 		mTxtMessage = (TextView) findViewById(R.id.txt_title_navi);
 		mImgTrophy = (ImageView) findViewById(R.id.img_avatar);
+		mBtnShareFb = (ImageView) findViewById(R.id.btn_share_facebook);
+		mBtnShareGg = (ImageView) findViewById(R.id.btn_share_google);
+		mScreenView = (RelativeLayout) findViewById(R.id.btn_choose_from_galary);
+	}
+
+	class TakeScreenShot extends AsyncTask<Void, Void, Void> {
+		AlertDialog mDialog;
+		ShareUtils.SHARE_TYPE shareType;
+
+		public TakeScreenShot(ShareUtils.SHARE_TYPE shareType) {
+			super();
+			this.shareType = shareType;
+		}
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			// Showing progress dialog
+			mDialog = new ProgressDialog(mActivity);
+			mDialog.setMessage(App.getContext().getResources()
+					.getString(R.string.please_wait));
+			mDialog.setCancelable(false);
+			mDialog.show();
+
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			Bitmap b = Bitmap.createBitmap(mScreenView.getWidth(),
+					mScreenView.getHeight(), Config.ARGB_8888);
+
+			Canvas canvas = new Canvas(b);
+			mScreenView.draw(canvas);
+
+			File file = new File(ShareUtils.DEFAULT_SCREENSHOT_PATH);
+			try {
+				file.createNewFile();
+				FileOutputStream ostream = new FileOutputStream(file);
+
+				b.compress(CompressFormat.PNG, 80, ostream);
+				ostream.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			if (shareType == SHARE_TYPE.FACEBOOK)
+				ShareUtils.postPhotoToFacebook(mActivity, new File(
+						ShareUtils.DEFAULT_SCREENSHOT_PATH));
+			else
+				ShareUtils.postPhotoToGoogle(mActivity, new File(
+						ShareUtils.DEFAULT_SCREENSHOT_PATH));
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			// Dismiss the progress dialog
+			if (mDialog.isShowing())
+				mDialog.dismiss();
+		}
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.btn_share_facebook:
+				new TakeScreenShot(SHARE_TYPE.FACEBOOK).execute();
+				break;
+
+			case R.id.btn_share_google:
+				new TakeScreenShot(SHARE_TYPE.GOOGLE).execute();
+				break;
+		}
+
 	}
 }

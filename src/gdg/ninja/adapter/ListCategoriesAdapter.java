@@ -112,7 +112,7 @@ public class ListCategoriesAdapter extends BaseAdapter {
 			if (item.getImgPath() != null)
 				Picasso.with(mContext)
 						.load(item.getImgPath().replace("assets",
-								"file:///android_asset"))
+								"file:///android_asset")).resize(200, 200)
 						.placeholder(R.drawable.dummy_image)
 						.into(holder.imgAvatar);
 			holder.txtCategoryName.setText(item.getCateName());

@@ -79,11 +79,14 @@
 
     <!-- Error message -->
     <string name="coming_soon">Coming soon</string>
+    <string name="facebook_app_not_found">Facebook App not found</string>
+    <string name="please_wait">Please wait&#8230;</string>
 
     <!-- Other language text -->
     <string name="txt_high_score_fighting">Fighting, you can be better!</string>
     <string name="txt_high_score_newbie">NEWBIE</string>
     <string name="title_activity_help">Help</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_about">About</string>
 
 </resources>

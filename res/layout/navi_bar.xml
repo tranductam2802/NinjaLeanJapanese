@@ -39,6 +39,7 @@
         android:layout_centerVertical="true"
         android:background="@android:color/transparent"
         android:contentDescription="@string/image_description"
-        android:src="@drawable/ic_setting" />
+        android:padding="5dp"
+        android:src="@drawable/ic_tut" />
 
 </gdg.ninja.navigate.NavigationBar>

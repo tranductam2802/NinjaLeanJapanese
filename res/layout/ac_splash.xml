@@ -6,10 +6,10 @@
 
     <TextView
         android:id="@id/txt_welcome"
-        android:layout_width="320dp"
-        android:layout_height="140dp"
+        android:layout_width="280dp"
+        android:layout_height="270dp"
         android:layout_gravity="center"
-        android:background="@drawable/logo_app"
+        android:background="@drawable/logo_team"
         android:textColor="#FFFFFFFF"
         android:textSize="35sp"
         android:textStyle="bold" />

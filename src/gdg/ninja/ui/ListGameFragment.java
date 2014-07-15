@@ -80,7 +80,7 @@ public class ListGameFragment extends BaseFragment implements
 	
 	@Override
 	public void onRightClicked(){
-		Intent intent = new Intent(getActivity(), OptionActivity.class);
+		Intent intent = new Intent(getActivity(), HelpActivity.class);
 		startActivity(intent);
 	}
 }

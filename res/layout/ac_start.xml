@@ -69,6 +69,7 @@
             android:layout_weight="1"
             android:background="@color/btn_flag"
             android:contentDescription="@string/image_description"
+            android:padding="8dp"
             android:src="@drawable/ic_tut" />
 
         <ImageView

@@ -153,7 +153,7 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 
 	/* Start option screen */
 	private void startOptionAc() {
-		Intent intent = new Intent(this, OptionActivity.class);
+		Intent intent = new Intent(this, AboutActivity.class);
 		startActivity(intent);
 	}
 

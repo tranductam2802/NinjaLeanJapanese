@@ -137,7 +137,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:text="La Bàn sẽ giúp bạn mở ra chữ cái đầu tiên của câu hỏi, số La bàn là có giới hạn."
+                android:text="La Bàn sẽ giúp bạn mở ra lần lượt cá chữ cái, số La bàn là có giới hạn."
                 android:textColor="@android:color/black"
                 android:textSize="17sp" />
         </LinearLayout>
@@ -179,7 +179,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Nhấn vào các nút share tương ứng để nhờ bạn bè Facebook hoặc Google+ trợ giúp, không giới hạn số lần."
+                android:text="Nhấn các nút này để nhờ bạn bè Facebook hoặc Google+ trợ giúp, không giới hạn số lần."
                 android:textColor="@android:color/black"
                 android:textSize="17sp" />
         </LinearLayout>
@@ -205,7 +205,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Bạn có thể xem tổng số điểm bạn đạt được và trình độ tương ứng của mình ở menu High Score."
+                android:text="Xem tổng số điểm bạn đạt được và trình độ tương ứng của mình ở menu High Score."
                 android:textColor="@android:color/black"
                 android:textSize="17sp" />
         </LinearLayout>

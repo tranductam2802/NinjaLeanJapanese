@@ -31,6 +31,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String CAT_NAME = "CatName";
 	private static final String CAT_ID = "CatID";
 	private static final String CAT_IMG_PATH = "CatImgPath";
+	private static final String CAT_LEVEL = "CatLevel";
 
 	// Column for QUESTION table
 	private static final String QUEST_STT = "QuestStt";
@@ -51,8 +52,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// get initiate db sql file path from resource
 		Resources resources = mContext.getResources();
-		String initiateDbFilePath = resources.getString(R.string.initiateDbFilePath);
-		
+		String initiateDbFilePath = resources
+				.getString(R.string.initiateDbFilePath);
+
 		// create default tables
 		try {
 			DbUtils.executeSqlScript(mContext, db, initiateDbFilePath);
@@ -123,7 +125,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		List<CategoriesInfo> cateList = new ArrayList<CategoriesInfo>();
 
 		String selectQuery = "SELECT * FROM " + TABLE_CATEGORY + " ORDER BY "
-				+ CAT_ID;
+				+ CAT_LEVEL;
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor c = db.rawQuery(selectQuery, null);
@@ -131,7 +133,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		if (c.moveToFirst()) {
 			do {
 				CategoriesInfo cateInfo = new CategoriesInfo();
-				cateInfo.setCateId(c.getInt(c.getColumnIndex(CAT_ID)));
+				cateInfo.setCateId(c.getInt(c.getColumnIndex(CAT_LEVEL)));
 				cateInfo.setCateName(c.getString(c.getColumnIndex(CAT_NAME))
 						.trim());
 				cateInfo.setCateDesc(c.getString(c.getColumnIndex(CAT_DES))
@@ -160,9 +162,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor c = db.rawQuery(selectQuery, null);
-
 		if (c.moveToFirst()) {
 			do {
+
 				QuestInfo quest = new QuestInfo();
 				quest.setQuestId(c.getInt(c.getColumnIndex(QUEST_ID)));
 				try {
@@ -176,8 +178,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				quest.setImgPath(c.getString(c.getColumnIndex(QUEST_IMG_PATH))
 						.trim());
 				quest.setQuestStt(c.getInt(c.getColumnIndex(QUEST_STT)));
-				quest.setDefinition(c.getString(c
-.getColumnIndex(QUEST_DEFINITION)).trim());
+				quest.setDefinition(c.getString(
+						c.getColumnIndex(QUEST_DEFINITION)).trim());
 
 				quests.add(quest);
 			} while (c.moveToNext());
@@ -208,7 +210,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		ContentValues values = new ContentValues();
 		values.put(CAT_STT, newStt);
 
-		return db.update(TABLE_CATEGORY, values, CAT_ID + " = ?",
+		return db.update(TABLE_CATEGORY, values, CAT_LEVEL + " = ?",
 				new String[] { String.valueOf(cateId) });
 	}
 }

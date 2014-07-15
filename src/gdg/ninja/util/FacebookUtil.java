@@ -2,6 +2,8 @@ package gdg.ninja.util;
 
 import gdg.nat.R;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
@@ -129,6 +131,41 @@ public class FacebookUtil{
 		}
 	}
 	
+	public static void postPhoto(Activity context, File file) {
+		Session session = Session.getActiveSession();
+		if (session != null && !session.isClosed()) {
+			List<String> permissions = session.getPermissions();
+			if (!isSubsetOf(PERMISSIONS, permissions)) {
+				pendingPublishReauthorization = true;
+				Session.NewPermissionsRequest newPermissionsRequest = new Session.NewPermissionsRequest(
+						context, PERMISSIONS);
+				session.requestNewPublishPermissions(newPermissionsRequest);
+			} else {
+				try {
+					postPhoto(file);
+				} catch (FileNotFoundException e) {
+					NLog.e(e.getMessage());
+				}
+			}
+		} else {
+			pendingReadReauthorization = true;
+			login(context);
+		}
+	}
+
+	private static void postPhoto(File file) throws FileNotFoundException {
+		Session session = Session.getActiveSession();
+		Request request = Request.newUploadPhotoRequest(session, file,
+				new Request.Callback() {
+
+					@Override
+					public void onCompleted(Response response) {
+
+					}
+				});
+		request.executeAsync();
+	}
+
 	private static void publishStory(){
 		if(postParam == null) return;
 		Session session = Session.getActiveSession();

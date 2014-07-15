@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="top|center_horizontal"
+    android:background="@color/btn_choose_from_gallery"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="30dp"
+            android:text="Thông tin sản phẩm"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size" >
+
+                <TextView
+                    android:id="@id/rate_one"
+                    android:layout_width="@dimen/quest_image_button_size"
+                    android:layout_height="@dimen/quest_image_button_size"
+                    android:background="@color/btn_flag"
+                    android:gravity="center"
+                    android:text="v1.0"
+                    android:textColor="@android:color/white"
+                    android:textSize="40sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Phiên bản hiện tại của phần mềm là 1.0.\nSẽ được cập nhật trong tương lai."
+                android:textColor="@color/btn_choose_from_gallery"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quest_image_button_size"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:background="@color/save_to_2"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_learn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Học Từ Vựng, Ngữ Pháp, Kanji trên Windows bằng phần mềm Ninja Learn Japanese."
+                android:textColor="@color/btn_choose_from_gallery"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:background="@color/btn_google"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerInside"
+                android:src="@drawable/logo_team" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Xem thông tin, Học bảng chữ cái tiếng Nhật và Tải các phần mềm của Team tại địa chỉ Japese.com"
+                android:textColor="@color/btn_choose_from_gallery"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quest_image_button_size"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:background="@color/primary_app_color"
+                android:contentDescription="@android:string/ok"
+                android:src="@drawable/logo_play" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Phần mềm Ninja Play Japanese được viết và phát triển bởi Ninja Android Team."
+                android:textColor="@color/btn_choose_from_gallery"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@id/btn_start"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/next_question"
+            android:contentDescription="@android:string/ok"
+            android:focusable="true"
+            android:padding="10dp"
+            android:src="@drawable/ready" />
+    </LinearLayout>
+
+</ScrollView>

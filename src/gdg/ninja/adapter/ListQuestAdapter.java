@@ -91,6 +91,7 @@ public class ListQuestAdapter extends BaseAdapter {
 							.findViewById(R.id.layout);
 					holder.imgAvatar = (ImageView) convertView
 							.findViewById(R.id.img_avatar);
+					convertView.setTag(holder);
 					holder.unlockStatus = LOCKED_QUEST;
 					break;
 
@@ -171,7 +172,8 @@ public class ListQuestAdapter extends BaseAdapter {
 			Picasso.with(mContext)
 					.load(item.getImgPath().replace("assets",
 							"file:///android_asset"))
-					.placeholder(R.drawable.dummy_image).into(holder.imgAvatar);
+					.placeholder(R.drawable.dummy_image).resize(200, 200)
+					.into(holder.imgAvatar);
 		}
 		return convertView;
 	}

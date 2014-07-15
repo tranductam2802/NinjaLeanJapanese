@@ -6,15 +6,18 @@ CREATE TABLE CATEGORY (
                            UNIQUE,
     CatDes     TEXT,
     CatImgPath TEXT,
-    CatStt     INT( 1 )    DEFAULT ( 0 ) 
+    CatStt     INT( 1 )    DEFAULT ( 0 ),
+    CatLevel   INTEGER 
 );
 
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (1, 'Động vật', 'Các con vật thân thuộc hằng ngày với con người.', 'assets/cate_0_img/cho.jpg', 0);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (2, 'Hoa quả', 'Các loại hoa quả cơ bản chúng ta thường gặp hằng ngày.', 'assets/cate_1_img/cam.jpg', 0);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (3, 'Nghề nghiệp', 'Một số nghề nghiệp phổ biến chúng ta nên biết.', 'assets/cate_2_img/canhsat.jpg', 0);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (4, 'Thức ăn', 'Những thứ chúng ta ăn hằng ngày', 'assets/food/thucan.jpg', 0);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (5, 'Nhân vật hoạt hình', 'Các nhân vật hoạt hình quen thuộc', 'assets/cartoon/doraemon.jpg', 0);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt]) VALUES (6, 'Gia đình', 'Các cách xưng hô trong gia đình', 'assets/family/giadinh.jpg', 0);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (1, 'Động vật', 'Các con vật thân thuộc hằng ngày với con người.', 'assets/cate_0_img/cho.jpg', 0, 4);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (2, 'Hoa quả', 'Các loại hoa quả cơ bản chúng ta thường gặp hằng ngày.', 'assets/cate_1_img/cam.jpg', 0, 5);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (3, 'Nghề nghiệp', 'Một số nghề nghiệp phổ biến chúng ta nên biết.', 'assets/cate_2_img/canhsat.jpg', 0, 8);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (4, 'Thức ăn', 'Những thứ chúng ta ăn hằng ngày', 'assets/food/thucan.jpg', 0, 2);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (5, 'Nhân vật hoạt hình', 'Các nhân vật hoạt hình quen thuộc', 'assets/cartoon/doraemon.jpg', 0, 1);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (6, 'Gia đình', 'Các cách xưng hô trong gia đình', 'assets/family/giadinh.jpg', 0, 7);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (7, 'Quốc tịch', 'Tên các quốc gia trên thế giới viết bằng tiếng Nhật.', 'assets/quoctich/vietnam.jpg', 0, 6);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (8, 'Đồ dùng hằng ngày', 'Các đồ vật chúng ta thường dùng hằng ngày', 'assets/dodac/butchi.jpg', 0, 3);
 
 -- Table: CUSTOM_CATEGORY
 CREATE TABLE CUSTOM_CATEGORY ( 
@@ -107,10 +110,10 @@ INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgP
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (59, 'さかな', 0, 'Thức ăn', 'assets/food/ca.jpg', 'Cá');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (60, 'ごはん', 0, 'Thức ăn', 'assets/food/com.jpg', 'Cơm');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (61, 'やさい', 0, 'Thức ăn', 'assets/food/rau.jpg', 'Rau');
-INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (62, 'ドラえみおん', 0, 'Nhân vật hoạt hình', 'assets/cartoon/doraemon.jpg', 'Đô Rê Mon (Doraemon)');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (62, 'ドラえもん', 0, 'Nhân vật hoạt hình', 'assets/cartoon/doraemon.jpg', 'Đô Rê Mon (Doraemon)');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (63, 'のびた', 0, 'Nhân vật hoạt hình', 'assets/cartoon/nobita.jpg', 'Nô bi ta (Nobita)');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (64, 'しずか', 0, 'Nhân vật hoạt hình', 'assets/cartoon/xuka.jpg', 'Xuka　(Shizuka )');
-INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (65, 'すねお', 0, 'Nhân vật hoạt hình', 'assets/assets/cartoon/xeko.jpg', 'Xêkô（Suneo)');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (65, 'すねお', 0, 'Nhân vật hoạt hình', 'assets/cartoon/xeko.jpg', 'Xêkô（Suneo)');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (66, 'ジャイアン', 0, 'Nhân vật hoạt hình', 'assets/cartoon/jaian.jpg', 'Chaien ( Jaian)');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (67, 'そんごく', 0, 'Nhân vật hoạt hình', 'assets/cartoon/songoku.jpg', 'Songoku');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (68, 'ナルト', 0, 'Nhân vật hoạt hình', 'assets/cartoon/naruto.jpg', 'Naruto');
@@ -119,7 +122,7 @@ INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgP
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (71, 'ヒナタ', 0, 'Nhân vật hoạt hình', 'assets/cartoon/hinata.jpg', 'Hinata');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (72, 'ツナデ', 0, 'Nhân vật hoạt hình', 'assets/cartoon/tsunade.jpg', 'Tsunade');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (73, 'ピカチュウ', 0, 'Nhân vật hoạt hình', 'assets/cartoon/pikachu.jpg', 'Pikachu');
-INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (74, 'ロックリー', 0, 'Nhân vật hoạt hình', 'assets/cartoon/rooklee.jpg', 'Rook Lee');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (74, 'ロックリー', 0, 'Nhân vật hoạt hình', 'assets/cartoon/rocklee.jpg', 'Rook Lee');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (75, 'かずく', 0, 'Gia đình', 'assets/family/giadinh.jpg', 'Gia đình');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (76, 'おねえさん', 0, 'Gia đình', 'assets/family/chigai.jpg', 'Chị gái');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (77, 'おにいさん', 0, 'Gia đình', 'assets/family/anhtrai.jpg', 'Anh trai');
@@ -130,3 +133,39 @@ INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgP
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (82, 'こども', 0, 'Gia đình', 'assets/family/con.jpg', 'Con');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (83, 'おとうさん', 0, 'Gia đình', 'assets/family/bo.jpg', 'Bố');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (84, 'おかあさん', 0, 'Gia đình', 'assets/family/bo.jpg', 'Mẹ');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (85, 'マレーシア', 0, 'Quốc tịch', 'assets/quoctich/malay.jpg', 'Malaysia');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (86, 'インドネシア', 0, 'Quốc tịch', 'assets/quoctich/indo.jpg', 'Indonesia');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (87, 'ベトナム', 0, 'Quốc tịch', 'assets/quoctich/vietnam.jpg', 'Việt Nam');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (88, 'かんこく', 0, 'Quốc tịch', 'assets/quoctich/hanquoc.jpg', 'Hàn Quốc');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (89, 'フィリピン', 0, 'Quốc tịch', 'assets/quoctich/philip.jpg', 'Phi líp pin');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (90, 'タイ', 0, 'Quốc tịch', 'assets/quoctich/thai.jpg', 'Thái Lan');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (91, 'にほん', 0, 'Quốc tịch', 'assets/quoctich/nhat.jpg', 'Nhật Bản');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (92, 'インド', 0, 'Quốc tịch', 'assets/quoctich/ando.jpg', 'Ấn Độ');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (93, 'アメリカ', 0, 'Quốc tịch', 'assets/quoctich/my.jpg', 'Mỹ');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (94, 'ちゅうごく', 0, 'Quốc tịch', 'assets/quoctich/trungquoc.jpg', 'Trung Quốc');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (95, 'たばこ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/thuocla.jpg', 'Thuốc lá');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (96, 'シャープペンシル', 0, 'Đồ dùng hằng ngày', 'assets/dodac/chimay.jpg', 'Bút chì máy');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (97, 'ボールペン', 0, 'Đồ dùng hằng ngày', 'assets/dodac/butbi.jpg', 'Bút bi');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (98, 'てがみ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/thu.jpg', 'Thư');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (99, 'ドア', 0, 'Đồ dùng hằng ngày', 'assets/dodac/cua.jpg', 'Cửa ra vào');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (100, 'はこ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/hop.jpg', 'Hộp');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (101, 'いす', 0, 'Đồ dùng hằng ngày', 'assets/dodac/ghe.jpg', 'Ghế');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (102, 'つくえ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/ban.jpg', 'Bàn');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (103, 'しんぶん', 0, 'Đồ dùng hằng ngày', 'assets/dodac/bao.jpg', 'Báo');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (104, 'テレビ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/tivi.jpg', 'Ti vi');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (105, 'ざっし', 0, 'Đồ dùng hằng ngày', 'assets/dodac/tapchi.jpg', 'Tạp chí');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (106, 'じしょ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/tudien.jpg', 'Từ điển');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (107, 'かぎ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/chiakhoa.jpg', 'Chìa khóa');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (108, 'えんぴつ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/butchi.jpg', 'Bút chì');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (109, 'かばん', 0, 'Đồ dùng hằng ngày', 'assets/dodac/cap.jpg', 'Cặp');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (110, 'ほん', 0, 'Đồ dùng hằng ngày', 'assets/dodac/sach.jpg', 'Sách');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (111, 'マッチ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/diem.jpg', 'Diêm');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (112, 'でんわ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/dienthoai.jpg', 'Điện thoại');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (113, 'ラジオ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/radio.jpg', 'Ra đi ô');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (114, 'まど', 0, 'Đồ dùng hằng ngày', 'assets/dodac/cuaso.jpg', 'Cửa sổ');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (115, 'かみ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/giay.jpg', 'Giấy');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (116, 'ノート', 0, 'Đồ dùng hằng ngày', 'assets/dodac/vo.jpg', 'Vở');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (117, 'とけい', 0, 'Đồ dùng hằng ngày', 'assets/dodac/dongho.jpg', 'Đồng hồ');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (118, 'ライター', 0, 'Đồ dùng hằng ngày', 'assets/dodac/batlua.jpg', 'Bật lửa');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (119, 'うち', 0, 'Đồ dùng hằng ngày', 'assets/dodac/nha.jpg', 'Nhà');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (120, 'カメラ', 0, 'Đồ dùng hằng ngày', 'assets/dodac/mayanh.jpg', 'Máy Ảnh');
