@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="top|center_horizontal"
+    android:background="@color/save_to_2"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/save_to_2"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="30dp"
+            android:text="Hướng Dẫn Chơi"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:background="@color/primary_app_color"
+                android:contentDescription="@string/image_description"
+                android:padding="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Để mở khóa bạn cần vượt qua các câu hỏi hoặc chủ đề trước đó và giành đủ số sao."
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size" >
+
+                <ImageView
+                    android:id="@id/btn_boom"
+                    android:layout_width="@dimen/quest_image_button_size"
+                    android:layout_height="@dimen/quest_image_button_size"
+                    android:background="@color/btn_bomb"
+                    android:contentDescription="@string/image_description"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_bomb" />
+
+                <TextView
+                    android:id="@id/rate_one"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@android:color/transparent"
+                    android:text="3"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Boom sẽ giúp bạn sẽ phá hủy các chữ cái làm nhiễu, số Boom là có giới hạn."
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size" >
+
+                <ImageView
+                    android:id="@id/btn_flag"
+                    android:layout_width="@dimen/quest_image_button_size"
+                    android:layout_height="@dimen/quest_image_button_size"
+                    android:background="@color/btn_flag"
+                    android:contentDescription="@string/image_description"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_flag" />
+
+                <TextView
+                    android:id="@id/rate_one"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@android:color/transparent"
+                    android:text="3"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="La Bàn sẽ giúp bạn mở ra chữ cái đầu tiên của câu hỏi, số La bàn là có giới hạn."
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quest_image_button_size"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@id/btn_share_facebook"
+                    android:layout_width="@dimen/quest_image_button_size"
+                    android:layout_height="@dimen/quest_image_button_share_height"
+                    android:background="@color/btn_facebook"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/ic_facebook" />
+
+                <ImageView
+                    android:id="@id/btn_share_google"
+                    android:layout_width="@dimen/quest_image_button_size"
+                    android:layout_height="@dimen/quest_image_button_share_height"
+                    android:background="@color/btn_google"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/ic_google" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Nhấn vào các nút share tương ứng để nhờ bạn bè Facebook hoặc Google+ trợ giúp, không giới hạn số lần."
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quest_image_button_size"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/quest_image_button_size"
+                android:layout_height="@dimen/quest_image_button_size"
+                android:background="@color/primary_app_color"
+                android:contentDescription="@android:string/ok"
+                android:padding="5dp"
+                android:src="@drawable/trophy1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Bạn có thể xem tổng số điểm bạn đạt được và trình độ tương ứng của mình ở menu High Score."
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@id/btn_start"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/next_question"
+            android:contentDescription="@android:string/ok"
+            android:focusable="true"
+            android:padding="10dp"
+            android:src="@drawable/ready" />
+    </LinearLayout>
+
+</ScrollView>

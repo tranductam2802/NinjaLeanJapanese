@@ -28,8 +28,9 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 
 	private TextView mTxtStartButton;
 	private TextView mTxtCustomButton;
-	private TextView mTxtHishtScoreButton;
+	private TextView mTxtHishScoreButton;
 	private ImageView mTxtOptionButton;
+	private ImageView mTxtHelpButton;
 	private ImageView mTxtExitButton;
 
 	@Override
@@ -43,15 +44,17 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 	private void initView() {
 		mTxtStartButton = (TextView) findViewById(R.id.btn_start);
 		mTxtCustomButton = (TextView) findViewById(R.id.btn_custom);
-		mTxtHishtScoreButton = (TextView) findViewById(R.id.btn_high_score);
+		mTxtHishScoreButton = (TextView) findViewById(R.id.btn_high_score);
 		mTxtOptionButton = (ImageView) findViewById(R.id.btn_option);
+		mTxtHelpButton = (ImageView) findViewById(R.id.btn_left_navi);
 		mTxtExitButton = (ImageView) findViewById(R.id.btn_back);
 
 		// Set on click listener
 		mTxtStartButton.setOnClickListener(this);
 		mTxtCustomButton.setOnClickListener(this);
-		mTxtHishtScoreButton.setOnClickListener(this);
+		mTxtHishScoreButton.setOnClickListener(this);
 		mTxtOptionButton.setOnClickListener(this);
+		mTxtHelpButton.setOnClickListener(this);
 		mTxtExitButton.setOnClickListener(this);
 
 		changeScreenState(mScreenState);
@@ -61,8 +64,8 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 	private void initViewStartGame() {
 		mTxtStartButton.setText(R.string.menu_start);
 		mTxtCustomButton.setText(R.string.menu_custom_game);
-		mTxtHishtScoreButton.setText(R.string.menu_hight_score);
-		mTxtHishtScoreButton.setVisibility(View.VISIBLE);
+		mTxtHishScoreButton.setText(R.string.menu_hight_score);
+		mTxtHishScoreButton.setVisibility(View.VISIBLE);
 		// mTxtOptionButton.setText(R.string.menu_option);
 		mTxtOptionButton.setVisibility(View.VISIBLE);
 		// mTxtExitButton.setText(R.string.menu_exit);
@@ -72,7 +75,7 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 	private void initViewCustomGame() {
 		mTxtStartButton.setText(R.string.menu_start_custom);
 		mTxtCustomButton.setText(R.string.menu_make_game);
-		mTxtHishtScoreButton.setVisibility(View.GONE);
+		mTxtHishScoreButton.setVisibility(View.GONE);
 		mTxtOptionButton.setVisibility(View.GONE);
 		// mTxtExitButton.setText(R.string.menu_back);
 	}
@@ -236,8 +239,16 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 						break;
 				}
 				break;
+			case R.id.btn_left_navi:
+				startHelpAc();
+				break;
 			default:
 				break;
 		}
+	}
+
+	private void startHelpAc() {
+		Intent intent = new Intent(this, HelpActivity.class);
+		startActivity(intent);
 	}
 }

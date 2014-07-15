@@ -110,6 +110,12 @@ public class QuestFragment extends BaseFragment implements
 		numberOfBomb = ConfigPreference.getInstance().getNumberOfBomb();
 		numberOfCompass = ConfigPreference.getInstance().getNumberOfCompass();
 		mScreenTitle = App.getCategoryById(mCategoryId).getCateName();
+
+		if (ConfigPreference.getInstance().isFirstTime()) {
+			Intent intent = new Intent(getActivity(), HelpActivity.class);
+			startActivity(intent);
+			ConfigPreference.getInstance().saveIsFirstTime();
+		}
 	}
 
 	@Override

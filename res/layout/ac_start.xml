@@ -8,15 +8,13 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"    
+        android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="@android:color/transparent" 
-        >
-		
+        android:background="@android:color/transparent" >
+
         <ImageView
             android:layout_width="330dp"
             android:layout_height="179dp"
-            
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:contentDescription="@string/image_description"
@@ -52,42 +50,36 @@
         android:layout_height="@dimen/ac_start_navi_btn_height"
         android:background="@android:color/transparent"
         android:orientation="horizontal" >
-        
 
         <ImageView
             android:id="@id/btn_option"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:background="@color/btn_bomb"
-            android:contentDescription="@string/image_description" 
-            android:src="@drawable/ic_setting"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            />
-        
+            android:layout_weight="1"
+            android:background="@color/btn_bomb"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_setting" />
 
         <ImageView
-            android:layout_height="match_parent"
+            android:id="@id/btn_left_navi"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/btn_flag"
-            android:contentDescription="@string/image_description" 
-         	android:layout_gravity="center" 
-            android:src="@drawable/ic_tut"
-            />
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_tut" />
 
         <ImageView
             android:id="@id/btn_back"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:background="@color/btn_google"
             android:contentDescription="@string/image_description"
-            android:layout_gravity="center" 
-            android:src="@drawable/ic_close"
-            
-            />
-        
+            android:src="@drawable/ic_close" />
     </LinearLayout>
 
 </LinearLayout>
