@@ -84,6 +84,7 @@ public class ListCategoriesAdapter extends BaseAdapter {
 									R.layout.item_ltv_list_game_categories_locked,
 									null);
 					holder.unlockStatus = LOCKED_QUEST;
+					convertView.setTag(holder);
 					break;
 				case UNLOCKED_QUEST:
 					convertView = View.inflate(mContext,
