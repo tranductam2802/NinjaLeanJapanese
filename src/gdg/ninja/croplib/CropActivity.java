@@ -1,6 +1,6 @@
 package gdg.ninja.croplib;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.croplib.Crop.Extra;
 import gdg.ninja.croplib.utils.CropView;
 import gdg.ninja.croplib.utils.FileUtils;

@@ -88,5 +88,6 @@
     <string name="title_activity_help">Help</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_about">About</string>
+    <string name="share_text">Do you have any idea&#8230;</string>
 
 </resources>

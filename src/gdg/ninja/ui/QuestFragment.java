@@ -1,6 +1,6 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.database.DatabaseHandler;
 import gdg.ninja.framework.BaseFragment;
 import gdg.ninja.gameinfo.CategoriesInfo;
@@ -10,10 +10,11 @@ import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
 import gdg.ninja.navigate.NavigationBar.INavigationBarListener;
 import gdg.ninja.util.App;
 import gdg.ninja.util.ConfigPreference;
-import gdg.ninja.util.FacebookUtil;
 import gdg.ninja.util.QuestGenerator;
 import gdg.ninja.util.ShareUtils;
 import gdg.ninja.util.ShareUtils.SHARE_TYPE;
+import gdg.ninja.util.SoundUtils;
+import gdg.ninja.util.SoundUtils.SOUND_NAME;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -144,8 +145,8 @@ public class QuestFragment extends BaseFragment implements
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		FacebookUtil.onActivityResult(getActivity(), requestCode, resultCode,
-				data);
+		// FacebookUtil.onActivityResult(getActivity(), requestCode, resultCode,
+		// data);
 	}
 
 	public void initView(View v) {
@@ -294,6 +295,7 @@ public class QuestFragment extends BaseFragment implements
 					mListAnswer[index].preView.setVisibility(View.VISIBLE);
 					mListAnswer[index].preView = null;
 					numAnswered--;
+					SoundUtils.getInstance().play(SOUND_NAME.TYPING);
 				}
 
 			}
@@ -347,6 +349,8 @@ public class QuestFragment extends BaseFragment implements
 								tag.view.setVisibility(View.VISIBLE);
 								tag.preView = v;
 								v.setVisibility(View.INVISIBLE);
+								SoundUtils.getInstance()
+										.play(SOUND_NAME.TYPING);
 								break;
 							}
 						}
@@ -359,6 +363,7 @@ public class QuestFragment extends BaseFragment implements
 	/* When the last answer check wrong. Notice for user and remove this view */
 	private void onWrongAnswer() {
 		isAnimate = true;
+		SoundUtils.getInstance().play(SOUND_NAME.WRONG);
 		Animation animation = AnimationUtils.loadAnimation(getActivity(),
 				R.anim.shake);
 		mLnlAnswerLayoutOne.startAnimation(animation);
@@ -383,6 +388,7 @@ public class QuestFragment extends BaseFragment implements
 	}
 
 	private void onWinGame() {
+		SoundUtils.getInstance().play(SOUND_NAME.RIGHT);
 		// Calculate score base on wrong answered
 		final int score;
 		final boolean isBonus;
@@ -605,7 +611,7 @@ public class QuestFragment extends BaseFragment implements
 					file.createNewFile();
 					FileOutputStream ostream = new FileOutputStream(file);
 
-					b.compress(CompressFormat.PNG, 80, ostream);
+					b.compress(CompressFormat.JPEG, 80, ostream);
 					ostream.close();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -705,6 +711,9 @@ public class QuestFragment extends BaseFragment implements
 		// TODO: animation
 		if (numberOfBomb > 0 && !isBombed) {
 
+			// Sound for bomb
+			SoundUtils.getInstance().play(SOUND_NAME.BOOM);
+
 			// Animate bomb
 			Animation btn_animation_blink = AnimationUtils.loadAnimation(
 					getActivity(), R.anim.btn_animation_blink);
@@ -724,6 +733,7 @@ public class QuestFragment extends BaseFragment implements
 				}
 			}
 		} else {
+			SoundUtils.getInstance().play(SOUND_NAME.WRONG);
 			// Animate on out of bomb
 			Animation shake = AnimationUtils.loadAnimation(getActivity(),
 					R.anim.shake);
@@ -735,7 +745,7 @@ public class QuestFragment extends BaseFragment implements
 	private void compassQuest() {
 		if (numberOfCompass > 0 && !isAnimate
 				&& numAnswered < mListAnswer.length) {
-
+			SoundUtils.getInstance().play(SOUND_NAME.COMPASS);
 			// Animate flag
 			Animation btn_animation_blink = AnimationUtils.loadAnimation(
 					getActivity(), R.anim.btn_animation_blink);
@@ -776,6 +786,7 @@ public class QuestFragment extends BaseFragment implements
 			}
 		} else {
 			// Animate on out of flags
+			SoundUtils.getInstance().play(SOUND_NAME.WRONG);
 			Animation shake = AnimationUtils.loadAnimation(getActivity(),
 					R.anim.shake);
 			mImgFlag.startAnimation(shake);
@@ -846,9 +857,11 @@ public class QuestFragment extends BaseFragment implements
 		int id = v.getId();
 		switch (id) {
 			case R.id.btn_share_facebook:
+				SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 				shareFacebook();
 				break;
 			case R.id.btn_share_google:
+				SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 				shareGoogle();
 				break;
 			case R.id.btn_boom:
@@ -860,12 +873,14 @@ public class QuestFragment extends BaseFragment implements
 				compassQuest();
 				break;
 			case R.id.btn_start:
+				SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 				isTextAnimate = false;
 				if (dialog != null)
 					dialog.dismiss();
 				onWinDialogNextClicked();
 				break;
 			case R.id.btn_back:
+				SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 				isTextAnimate = false;
 				if (dialog != null)
 					dialog.dismiss();

@@ -1,6 +1,6 @@
 package gdg.ninja.util;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

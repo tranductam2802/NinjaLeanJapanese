@@ -1,13 +1,14 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import com.crashlytics.android.Crashlytics;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.database.DatabaseHandler;
 import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.gameinfo.CategoriesInfo;
 import gdg.ninja.util.App;
 import gdg.ninja.util.Config;
-import gdg.ninja.util.FacebookUtil;
 import gdg.ninja.util.NLog;
+import gdg.ninja.util.SoundUtils;
 
 import java.util.List;
 
@@ -31,8 +32,9 @@ public class SplashActivity extends BaseActivity{
 	@Override
 	protected void onCreate(Bundle arg0){
 		super.onCreate(arg0);
+		Crashlytics.start(this);
 		NLog.i(TAG, "App status: On create");
-		FacebookUtil.printKeyHash(getPackageManager(), "gdg.nat");
+		// FacebookUtil.printKeyHash(getPackageManager(), "gdg.nat");
 		setContentView(R.layout.ac_splash);
 		Handler handler = new Handler();
 		Runnable runnable = new Runnable(){
@@ -58,6 +60,7 @@ public class SplashActivity extends BaseActivity{
 		isLoadedData = false;
 		isLoadingTimeEnd = false;
 		loadingAppData();
+		SoundUtils.getInstance(); // Init sound resources
 		if(isLoadingTimeEnd) redirectToMain();
 		isLoadedData = true;
 	}

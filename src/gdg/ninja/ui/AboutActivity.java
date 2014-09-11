@@ -1,6 +1,8 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
+import gdg.ninja.util.SoundUtils;
+import gdg.ninja.util.SoundUtils.SOUND_NAME;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,7 @@ public class AboutActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
+				SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 				finish();
 			}
 		});

@@ -1,8 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:layout_gravity="center_horizontal"
+    android:background="@color/save_to_1"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="10dp" >
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_welcome"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@id/btn_left_navi"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/next_question"
+            android:contentDescription="@android:string/ok"
+            android:focusable="true"
+            android:padding="10dp"
+            android:src="@drawable/on" />
+
+        <ImageView
+            android:id="@id/btn_right_navi"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/next_question"
+            android:contentDescription="@android:string/ok"
+            android:focusable="true"
+            android:padding="10dp"
+            android:src="@drawable/info" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@id/btn_start"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/setting_button"
+        android:contentDescription="@android:string/ok"
+        android:focusable="true"
+        android:padding="10dp"
+        android:src="@drawable/ready" />
+
+    <TextView
+        android:id="@id/txt_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Cài Đặt"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+
+</RelativeLayout>

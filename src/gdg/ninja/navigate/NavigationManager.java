@@ -1,6 +1,6 @@
 package gdg.ninja.navigate;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.ui.QuestFragment;
 import gdg.ninja.util.NLog;
 

@@ -1,6 +1,6 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.croplib.Crop;
 import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.util.NLog;

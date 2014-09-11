@@ -1,10 +1,12 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.gameinfo.CategoriesInfo;
 import gdg.ninja.util.App;
 import gdg.ninja.util.ShareUtils;
 import gdg.ninja.util.ShareUtils.SHARE_TYPE;
+import gdg.ninja.util.SoundUtils;
+import gdg.ninja.util.SoundUtils.SOUND_NAME;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -102,7 +104,7 @@ public class HighScoreActivity extends Activity implements OnClickListener {
 		mImgTrophy.setImageResource(tropyImgId);
 		mBtnShareFb.setOnClickListener(this);
 		mBtnShareGg.setOnClickListener(this);
-
+		mScreenView.setOnClickListener(this);
 	}
 
 	private void initViews() {
@@ -149,7 +151,7 @@ public class HighScoreActivity extends Activity implements OnClickListener {
 				file.createNewFile();
 				FileOutputStream ostream = new FileOutputStream(file);
 
-				b.compress(CompressFormat.PNG, 80, ostream);
+				b.compress(CompressFormat.JPEG, 80, ostream);
 				ostream.close();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -176,6 +178,7 @@ public class HighScoreActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 		switch (v.getId()) {
 			case R.id.btn_share_facebook:
 				new TakeScreenShot(SHARE_TYPE.FACEBOOK).execute();
@@ -183,6 +186,9 @@ public class HighScoreActivity extends Activity implements OnClickListener {
 
 			case R.id.btn_share_google:
 				new TakeScreenShot(SHARE_TYPE.GOOGLE).execute();
+				break;
+			case R.id.btn_choose_from_galary:
+				finish();
 				break;
 		}
 

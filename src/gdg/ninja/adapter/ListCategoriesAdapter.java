@@ -1,6 +1,6 @@
 package gdg.ninja.adapter;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.gameinfo.CategoriesInfo;
 
 import java.util.ArrayList;

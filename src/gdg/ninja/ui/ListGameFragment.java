@@ -1,6 +1,6 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.adapter.ListCategoriesAdapter;
 import gdg.ninja.framework.BaseFragment;
 import gdg.ninja.gameinfo.CategoriesInfo;
@@ -8,6 +8,8 @@ import gdg.ninja.navigate.NavigationBar.BTN_LEFT_MODE;
 import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
 import gdg.ninja.navigate.NavigationBar.INavigationBarListener;
 import gdg.ninja.util.App;
+import gdg.ninja.util.SoundUtils;
+import gdg.ninja.util.SoundUtils.SOUND_NAME;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,9 +44,13 @@ public class ListGameFragment extends BaseFragment implements
 				if(position != 0){
 					CategoriesInfo previousItem = mAdapter
 							.getItem(position - 1);
-					if(previousItem.getStt() < 3) return;
+					if (previousItem.getStt() < 3) {
+						SoundUtils.getInstance().play(SOUND_NAME.WRONG);
+						return;
+					}
 				}
 
+				SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 				ListQuestFragment fragment = ListQuestFragment.getInstance(item
 						.getCateId());
 				mNaviManager.showPage(fragment, "");

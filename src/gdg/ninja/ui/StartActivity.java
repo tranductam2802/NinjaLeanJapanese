@@ -1,7 +1,9 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.framework.BaseActivity;
+import gdg.ninja.util.SoundUtils;
+import gdg.ninja.util.SoundUtils.SOUND_NAME;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -153,7 +155,7 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 
 	/* Start option screen */
 	private void startOptionAc() {
-		Intent intent = new Intent(this, AboutActivity.class);
+		Intent intent = new Intent(this, OptionActivity.class);
 		startActivity(intent);
 	}
 
@@ -179,6 +181,10 @@ public class StartActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		int viewId = view.getId();
+		if (viewId == R.id.btn_start)
+			SoundUtils.getInstance().play(SOUND_NAME.START_BTN);
+		else
+			SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 		switch (viewId) {
 			case R.id.btn_start:
 				switch (mScreenState) {

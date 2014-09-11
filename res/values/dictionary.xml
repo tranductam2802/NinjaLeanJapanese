@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="dict_ja">
+    <string-array name="dict_ja" translatable="false">
         <item>あ</item>
         <item>ア</item>
         <item>い</item>

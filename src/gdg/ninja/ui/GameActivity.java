@@ -1,11 +1,10 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.framework.BaseActivity;
 import gdg.ninja.navigate.NavigationBar;
 import gdg.ninja.navigate.NavigationManager;
 import gdg.ninja.util.App;
-import gdg.ninja.util.FacebookUtil;
 import gdg.ninja.util.ShareUtils;
 import gdg.ninja.util.ShareUtils.SHARE_TYPE;
 
@@ -40,7 +39,7 @@ public class GameActivity extends BaseActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		FacebookUtil.onActivityResult(this, requestCode, resultCode, data);
+		// FacebookUtil.onActivityResult(this, requestCode, resultCode, data);
 	}
 
 	public NavigationManager getNavigationManager() {

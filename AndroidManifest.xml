@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="gdg.nat"
-    android:versionCode="1"
+    package="gdg.nat.ninjalearnjapanese"
+    android:versionCode="2"
     android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="10"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="20" />
+
+    <compatible-screens>
+
+        <!-- all normal size screens -->
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="480"
+            android:screenSize="normal" />
+    </compatible-screens>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -37,8 +48,6 @@
         <activity android:name="gdg.ninja.ui.HighScoreActivity" />
         <activity android:name="gdg.ninja.ui.OptionActivity" />
         <activity android:name="gdg.ninja.croplib.CropActivity" />
-        <activity android:name="com.facebook.LoginActivity" >
-        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -52,6 +61,10 @@
             android:name="gdg.ninja.ui.AboutActivity"
             android:label="@string/title_activity_about" >
         </activity>
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="c2e8f6a06e960bd092711d1a109760662267b1e1" />
     </application>
 
 </manifest>

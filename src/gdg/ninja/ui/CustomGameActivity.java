@@ -1,7 +1,7 @@
 package gdg.ninja.ui;
 
 import android.os.Bundle;
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.framework.BaseActivity;
 
 public class CustomGameActivity extends BaseActivity{

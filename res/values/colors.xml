@@ -10,6 +10,7 @@
     <!-- Testing purpose only -->
     <color name="btn_take_picture">#FF2980b9</color>
     <color name="btn_choose_from_gallery">#FF3498db</color>
+    <color name="logo_color">#FF0099cc</color>
     <color name="btn_facebook">#FF3b5999</color>
     <color name="btn_google">#FFd33e2a</color>
     <color name="btn_bomb">#FF27ae61</color>

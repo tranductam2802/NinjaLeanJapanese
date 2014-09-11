@@ -1,6 +1,6 @@
 package gdg.ninja.navigate;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.util.NLog;
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -116,6 +116,7 @@ public class NavigationBar extends RelativeLayout{
 	}
 	
 	public void setBtnBack(){
+		setupLeftButton();
 		btnLeft.setImageResource(R.drawable.ic_arow_back);
 		btnLeft.setVisibility(View.VISIBLE);
 		if(btnRight.getVisibility() == View.GONE){
@@ -124,6 +125,7 @@ public class NavigationBar extends RelativeLayout{
 	}
 	
 	public void setBtnSetting(){
+		setupRightButton();
 		btnRight.setImageResource(R.drawable.ic_tut);
 		btnRight.setVisibility(View.VISIBLE);
 		if(btnRight.getVisibility() == View.GONE){

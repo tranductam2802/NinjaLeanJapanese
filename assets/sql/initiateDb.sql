@@ -11,13 +11,13 @@ CREATE TABLE CATEGORY (
 );
 
 INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (1, 'Động vật', 'Các con vật thân thuộc hằng ngày với con người.', 'assets/cate_0_img/cho.jpg', 0, 4);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (2, 'Hoa quả', 'Các loại hoa quả cơ bản chúng ta thường gặp hằng ngày.', 'assets/cate_1_img/cam.jpg', 0, 5);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (3, 'Nghề nghiệp', 'Một số nghề nghiệp phổ biến chúng ta nên biết.', 'assets/cate_2_img/canhsat.jpg', 0, 8);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (2, 'Hoa quả', 'Các loại hoa quả cơ bản chúng ta thường gặp hằng ngày.', 'assets/cate_1_img/cam.jpg', 0, 3);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (3, 'Nghề nghiệp', 'Một số nghề nghiệp phổ biến chúng ta nên biết.', 'assets/cate_2_img/canhsat.jpg', 0, 5);
 INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (4, 'Thức ăn', 'Những thứ chúng ta ăn hằng ngày', 'assets/food/thucan.jpg', 0, 2);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (5, 'Nhân vật hoạt hình', 'Các nhân vật hoạt hình quen thuộc', 'assets/cartoon/doraemon.jpg', 0, 1);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (6, 'Gia đình', 'Các cách xưng hô trong gia đình', 'assets/family/giadinh.jpg', 0, 7);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (7, 'Quốc tịch', 'Tên các quốc gia trên thế giới viết bằng tiếng Nhật.', 'assets/quoctich/vietnam.jpg', 0, 6);
-INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (8, 'Đồ dùng hằng ngày', 'Các đồ vật chúng ta thường dùng hằng ngày', 'assets/dodac/butchi.jpg', 0, 3);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (5, 'Nhân vật hoạt hình', 'Các nhân vật hoạt hình quen thuộc', 'assets/cartoon/doraemon.jpg', 0, 7);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (6, 'Gia đình', 'Các cách xưng hô trong gia đình', 'assets/family/giadinh.jpg', 0, 6);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (7, 'Quốc tịch', 'Tên các quốc gia trên thế giới viết bằng tiếng Nhật.', 'assets/quoctich/vietnam.jpg', 0, 8);
+INSERT INTO [CATEGORY] ([CatID], [CatName], [CatDes], [CatImgPath], [CatStt], [CatLevel]) VALUES (8, 'Đồ dùng hằng ngày', 'Các đồ vật chúng ta thường dùng hằng ngày', 'assets/dodac/butchi.jpg', 0, 1);
 
 -- Table: CUSTOM_CATEGORY
 CREATE TABLE CUSTOM_CATEGORY ( 
@@ -130,9 +130,9 @@ INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgP
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (79, 'ととうと', 0, 'Gia đình', 'assets/family/emtrai.jpg', 'Em trai');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (80, 'かない', 0, 'Gia đình', 'assets/family/vo.jpg', 'Vợ');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (81, 'しゅじｎ', 0, 'Gia đình', 'assets/family/chong.jpg', 'Chồng');
-INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (82, 'こども', 0, 'Gia đình', 'assets/family/con.jpg', 'Con');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (82, 'こども', 0, 'Gia đình', 'assets/family/concai.jpg', 'Con');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (83, 'おとうさん', 0, 'Gia đình', 'assets/family/bo.jpg', 'Bố');
-INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (84, 'おかあさん', 0, 'Gia đình', 'assets/family/bo.jpg', 'Mẹ');
+INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (84, 'おかあさん', 0, 'Gia đình', 'assets/family/me.jpg', 'Mẹ');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (85, 'マレーシア', 0, 'Quốc tịch', 'assets/quoctich/malay.jpg', 'Malaysia');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (86, 'インドネシア', 0, 'Quốc tịch', 'assets/quoctich/indo.jpg', 'Indonesia');
 INSERT INTO [QUESTION] ([QuestId], [QuestKey], [QuestStt], [CatName], [QuestImgPath], [QuestDefinition]) VALUES (87, 'ベトナム', 0, 'Quốc tịch', 'assets/quoctich/vietnam.jpg', 'Việt Nam');

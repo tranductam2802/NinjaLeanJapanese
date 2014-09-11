@@ -2,7 +2,7 @@
 <resources>
 
     <!-- App common -->
-    <string name="app_name">Ninja Play Japanese</string>
+    <string name="app_name">Ninja học tiếng Nhật</string>
     <string name="facebook_id">753724238025958</string>
     <string name="image_description">Image</string>
     <string name="loading">Loading…</string>
@@ -88,5 +88,6 @@
     <string name="title_activity_help">Help</string>
     <string name="hello_world">Hello world!</string>
     <string name="share_text">Ai giỏi tiếng Nhật giúp mình với&#8230;</string>
+    <string name="title_activity_about">Thông tin</string>
 
 </resources>

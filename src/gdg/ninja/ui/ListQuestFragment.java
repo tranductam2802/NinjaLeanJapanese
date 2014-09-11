@@ -1,6 +1,6 @@
 package gdg.ninja.ui;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.adapter.ListQuestAdapter;
 import gdg.ninja.framework.BaseFragment;
 import gdg.ninja.gameinfo.QuestInfo;
@@ -8,6 +8,8 @@ import gdg.ninja.navigate.NavigationBar.BTN_LEFT_MODE;
 import gdg.ninja.navigate.NavigationBar.BTN_RIGHT_MODE;
 import gdg.ninja.navigate.NavigationBar.INavigationBarListener;
 import gdg.ninja.util.App;
+import gdg.ninja.util.SoundUtils;
+import gdg.ninja.util.SoundUtils.SOUND_NAME;
 
 import java.util.List;
 
@@ -99,8 +101,13 @@ public class ListQuestFragment extends BaseFragment implements
 				QuestInfo item = mAdapter.getItem(position);
 				if(position != 0){
 					QuestInfo previousItem = mAdapter.getItem(position - 1);
-					if(previousItem.getQuestStt() < 3) return;
+					if (previousItem.getQuestStt() < 3) {
+						SoundUtils.getInstance().play(SOUND_NAME.WRONG);
+						return;
+					}
 				}
+
+				SoundUtils.getInstance().play(SOUND_NAME.OTHER_BTN);
 				QuestFragment fragment = QuestFragment.getInstance(
 						item.getQuestId(), mCategoryId);
 				mNaviManager.showPage(fragment, "");

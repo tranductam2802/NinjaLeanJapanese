@@ -1,6 +1,6 @@
 package gdg.ninja.database;
 
-import gdg.nat.R;
+import gdg.nat.ninjalearnjapanese.R;
 import gdg.ninja.gameinfo.CategoriesInfo;
 import gdg.ninja.gameinfo.QuestInfo;
 import gdg.ninja.util.App;
