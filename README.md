@@ -32,5 +32,7 @@ Download this app here: https://play.google.com/store/apps/details?id=gdg.nat.ni
 Member ship:
 ------------
 Tran Duc Tam		|	Android developer (Team leader)
+
 Nguyen Hoang Long	|	Android developer
+
 Nguyen Xuan Tai		|	Android developer + Designer
